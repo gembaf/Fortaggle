@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
         mc:Ignorable="d ignore"
-        Height="300"
-        Width="300"
-        Title="MVVM Light Application"
+        Height="768"
+        Width="1024"
+        Title="Fortagle"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     
     <Grid x:Name="LayoutRoot">
