@@ -14,8 +14,9 @@
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
 
-            <!--Skinの適用-->
+            <!--SkinとThemeの適用-->
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/presentationframework.AeroLite;component/themes/aerolite.normalcolor.xaml" />
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
