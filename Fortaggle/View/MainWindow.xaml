@@ -10,17 +10,12 @@
         Width="1024"
         Title="Fortagle"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    
-    <Grid x:Name="LayoutRoot">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="20*" />
-        </Grid.RowDefinitions>
+    <StackPanel>
 
         <ListView ItemsSource="{Binding Pages}"
                   SelectedItem="{Binding SelectedPage}"
-                  Grid.Row="0">
+                  Height="32">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="3"/>
@@ -28,7 +23,7 @@
             </ListView.ItemsPanel>
         </ListView>
 
-        <ContentControl Content="{Binding SelectedPage}"
-                        Grid.Row="1"/>
-    </Grid>
+        <ContentControl Content="{Binding SelectedPage}"/>
+
+    </StackPanel>
 </Window>
