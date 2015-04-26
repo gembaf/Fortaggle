@@ -1,5 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using Fortaggle.Model;
+﻿using Fortaggle.ViewModel.ItemGroup;
+using Fortaggle.ViewModel.Ranking;
+using Fortaggle.ViewModel.TagGroup;
+using GalaSoft.MvvmLight;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Fortaggle.ViewModel
 {
@@ -11,62 +15,46 @@ namespace Fortaggle.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;
+        #region 変更通知プロパティ
 
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
+        #region ViewModelBase SelectedPage
 
-        private string _welcomeTitle = string.Empty;
-
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
+        private ViewModelBase _SelectedPage;
+        public ViewModelBase SelectedPage
         {
-            get
-            {
-                return _welcomeTitle;
-            }
-
+            get { return _SelectedPage; }
             set
             {
-                if (_welcomeTitle == value)
+                if (_SelectedPage != value)
                 {
-                    return;
+                    _SelectedPage = value;
+                    RaisePropertyChanged("SelectedPage");
                 }
-
-                _welcomeTitle = value;
-                RaisePropertyChanged(WelcomeTitlePropertyName);
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel(IDataService dataService)
-        {
-            _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
+        #endregion
 
-                    WelcomeTitle = item.Title;
-                });
+        #endregion
+
+        #region プロパティ
+
+        public List<ViewModelBase> Pages { get; private set; }
+
+        #endregion
+
+        #region コンストラクタ
+
+        public MainViewModel()
+        {
+            Pages = new List<ViewModelBase>() {
+                new ItemGroupManageViewModel(),
+                new TagGroupManageViewModel(),
+                new RankingViewModel()
+            };
+            SelectedPage = Pages.First();
         }
 
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
+        #endregion
     }
 }

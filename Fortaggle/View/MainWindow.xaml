@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.ignore.com"
+        xmlns:local="clr-namespace:Fortaggle"
         mc:Ignorable="d ignore"
         Height="768"
         Width="1024"
@@ -12,13 +13,22 @@
     
     <Grid x:Name="LayoutRoot">
 
-        <TextBlock FontSize="36"
-                   FontWeight="Bold"
-                   Foreground="Purple"
-                   Text="{Binding WelcomeTitle}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
 
+        <ListView ItemsSource="{Binding Pages}"
+                  SelectedItem="{Binding SelectedPage}"
+                  Grid.Row="0">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+
+        <ContentControl Content="{Binding SelectedPage}"
+                        Grid.Row="1"/>
     </Grid>
 </Window>

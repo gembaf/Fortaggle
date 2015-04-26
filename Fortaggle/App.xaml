@@ -4,17 +4,40 @@
              xmlns:vm="clr-namespace:Fortaggle.ViewModel"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm_itemgroup="clr-namespace:Fortaggle.ViewModel.ItemGroup"
+             xmlns:vm_taggroup="clr-namespace:Fortaggle.ViewModel.TagGroup"
+             xmlns:vm_ranking="clr-namespace:Fortaggle.ViewModel.Ranking"
+             xmlns:view_itemgroup="clr-namespace:Fortaggle.View.ItemGroup"
+             xmlns:view_taggroup="clr-namespace:Fortaggle.View.TagGroup"
+             xmlns:view_ranking="clr-namespace:Fortaggle.View.Ranking"
              StartupUri="View/MainWindow.xaml"
              mc:Ignorable="d">
     
     <Application.Resources>
         <ResourceDictionary>
 
-            <!--Global View Model Locator-->
+            <!-- === Global View Model Locator === -->
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
+            
+            <!-- === ViewModelとViewの紐付け === -->
+            
+            <!--ItemGroup-->
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
+                <view_itemgroup:ItemGroupManage />
+            </DataTemplate>
 
-            <!--SkinとThemeの適用-->
+            <!--TagGroup-->
+            <DataTemplate DataType="{x:Type vm_taggroup:TagGroupManageViewModel}">
+                <view_taggroup:TagGroupManage />
+            </DataTemplate>
+
+            <!--Ranking-->
+            <DataTemplate DataType="{x:Type vm_ranking:RankingViewModel}">
+                <view_ranking:Ranking />
+            </DataTemplate>
+
+            <!-- === SkinとThemeの適用 === -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/presentationframework.AeroLite;component/themes/aerolite.normalcolor.xaml" />
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
