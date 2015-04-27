@@ -110,9 +110,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ItemGroup\ItemGroup.cs" />
+    <Compile Include="Model\ItemGroup\ItemGroupList.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDetailViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupListViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupManageViewModel.cs" />
+    <Compile Include="ViewModel\ItemGroup\ItemGroupViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Ranking\RankingViewModel.cs" />
     <Compile Include="ViewModel\TagGroup\TagGroupManageViewModel.cs" />
@@ -216,9 +219,7 @@
   <ItemGroup>
     <Content Include="PresentationFramework.AeroLite.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
