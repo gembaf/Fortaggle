@@ -15,12 +15,21 @@
 
         <ListView ItemsSource="{Binding Pages}"
                   SelectedItem="{Binding SelectedPage}"
-                  Height="32">
+                  Height="32"
+                  HorizontalContentAlignment="Stretch">
+
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="3"/>
+                    <UniformGrid Columns="3" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Label}"
+                               TextAlignment="Center"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
         <ContentControl Content="{Binding SelectedPage}"/>
