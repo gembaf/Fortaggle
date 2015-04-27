@@ -27,6 +27,16 @@
                 <view_itemgroup:ItemGroupManage />
             </DataTemplate>
 
+            <!--ItemGroupList-->
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupListViewModel}">
+                <view_itemgroup:ItemGroupList />
+            </DataTemplate>
+
+            <!--ItemGroupList-->
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDetailViewModel}">
+                <view_itemgroup:ItemGroupDetail />
+            </DataTemplate>
+
             <!--TagGroup-->
             <DataTemplate DataType="{x:Type vm_taggroup:TagGroupManageViewModel}">
                 <view_taggroup:TagGroupManage />

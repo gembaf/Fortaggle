@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Fortaggle.View.ItemGroup.ItemGroupManage"
+﻿<UserControl x:Class="Fortaggle.View.ItemGroup.ItemGroupList"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
-
-        <ContentControl Content="{Binding ItemGroupList}"
-                        Grid.Column="0"/>
-        <ContentControl Content="{Binding ItemGroupDetail}"
-                        Grid.Column="1"/>
+        <TextBlock>ItemGroupList</TextBlock>
     </Grid>
 </UserControl>
