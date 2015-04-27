@@ -5,6 +5,7 @@ using System.Linq;
 namespace Fortaggle.ViewModel.ItemGroup
 {
     using Fortaggle.Model.ItemGroup;
+using System;
     
     public class ItemGroupListViewModel : ViewModelBase
     {
@@ -23,6 +24,7 @@ namespace Fortaggle.ViewModel.ItemGroup
                 if (_SelectedItemGroup != value)
                 {
                     _SelectedItemGroup = value;
+                    itemGroupSelectAction();
                     RaisePropertyChanged("SelectedItemGroup");
                 }
             }
@@ -35,13 +37,15 @@ namespace Fortaggle.ViewModel.ItemGroup
         #region private 変数
 
         private ItemGroupList itemGroupList;
+        private Action itemGroupSelectAction;
 
         #endregion
 
         #region コンストラクタ
 
-        public ItemGroupListViewModel()
+        public ItemGroupListViewModel(Action itemGroupSelectAction)
         {
+            this.itemGroupSelectAction = itemGroupSelectAction;
             itemGroupList = new ItemGroupList();
             Collections = Load();
             SelectedItemGroup = Collections.First();

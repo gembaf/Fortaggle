@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock>ItemGroupDetail</TextBlock>
+        <TextBlock Text="{Binding Name}" />
     </Grid>
 </UserControl>
