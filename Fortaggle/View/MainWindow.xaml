@@ -11,12 +11,13 @@
         Title="Fortagle"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
-    <StackPanel>
+    <DockPanel>
 
         <ListView ItemsSource="{Binding Pages}"
                   SelectedItem="{Binding SelectedPage}"
                   Height="32"
-                  HorizontalContentAlignment="Stretch">
+                  HorizontalContentAlignment="Stretch"
+                  DockPanel.Dock="Top">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -34,5 +35,5 @@
 
         <ContentControl Content="{Binding SelectedPage}"/>
 
-    </StackPanel>
+    </DockPanel>
 </Window>
