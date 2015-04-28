@@ -6,14 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*" />
-        </Grid.ColumnDefinitions>
-
-        <ContentControl Content="{Binding ItemGroupList}"
-                        Grid.Column="0"/>
-        <ContentControl Content="{Binding ItemGroupDetail}"
-                        Grid.Column="1"/>
+        <ContentControl Content="{Binding ItemGroupList}" />
     </Grid>
 </UserControl>

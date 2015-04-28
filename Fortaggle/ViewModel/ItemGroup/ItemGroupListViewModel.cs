@@ -24,8 +24,26 @@ using System;
                 if (_SelectedItemGroup != value)
                 {
                     _SelectedItemGroup = value;
-                    itemGroupSelectAction();
+                    ItemGroupDetail = new ItemGroupDetailViewModel(value);
                     RaisePropertyChanged("SelectedItemGroup");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ItemGroupDetailViewModel ItemGroupDetail
+
+        private ItemGroupDetailViewModel _ItemGroupDetail;
+        public ItemGroupDetailViewModel ItemGroupDetail
+        {
+            get { return _ItemGroupDetail; }
+            set
+            {
+                if (_ItemGroupDetail != value)
+                {
+                    _ItemGroupDetail = value;
+                    RaisePropertyChanged("ItemGroupDetail");
                 }
             }
         }
@@ -37,17 +55,15 @@ using System;
         #region private 変数
 
         private ItemGroupList itemGroupList;
-        private Action itemGroupSelectAction;
 
         #endregion
 
         #region コンストラクタ
 
-        public ItemGroupListViewModel(Action itemGroupSelectAction)
+        public ItemGroupListViewModel()
         {
-            this.itemGroupSelectAction = itemGroupSelectAction;
             itemGroupList = new ItemGroupList();
-            Collections = Load();
+            Collections = GetItemGroupListViewModel();
             SelectedItemGroup = Collections.First();
         }
 
@@ -55,7 +71,7 @@ using System;
 
         #region private メソッド
 
-        private List<ItemGroupViewModel> Load()
+        private List<ItemGroupViewModel> GetItemGroupListViewModel()
         {
             var collections = new List<ItemGroupViewModel>();
             foreach (ItemGroup e in itemGroupList.Collections)
