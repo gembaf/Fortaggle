@@ -1,15 +1,35 @@
 ﻿using GalaSoft.MvvmLight;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace Fortaggle.ViewModel.ItemGroup
 {
     using Fortaggle.Model.ItemGroup;
-using System;
     
     public class ItemGroupListViewModel : ViewModelBase
     {
         #region プロパティ
+
+        #region ItemGroupDialogViewModel ItemGroupDialog
+
+        private ItemGroupDialogViewModel _ItemGroupDialog;
+        public ItemGroupDialogViewModel ItemGroupDialog
+        {
+            get { return _ItemGroupDialog; }
+            set
+            {
+                if (_ItemGroupDialog != value)
+                {
+                    _ItemGroupDialog = value;
+                    RaisePropertyChanged("ItemGroupDialog");
+                }
+            }
+        }
+
+        #endregion
 
         public List<ItemGroupViewModel> Collections { get; private set; }
 
@@ -79,6 +99,27 @@ using System;
                 collections.Add(new ItemGroupViewModel(e));
             }
             return collections;
+        }
+
+        #endregion
+
+        #region コマンド
+
+        private ICommand _ItemGroupDialogOpenCommand;
+        public ICommand ItemGroupDialogOpenCommand
+        {
+            get
+            {
+                if (_ItemGroupDialogOpenCommand == null)
+                {
+                    _ItemGroupDialogOpenCommand = new RelayCommand(() =>
+                        ItemGroupDialog = new ItemGroupDialogViewModel(() =>
+                            ItemGroupDialog = null
+                        )
+                    );
+                }
+                return _ItemGroupDialogOpenCommand;
+            }
         }
 
         #endregion

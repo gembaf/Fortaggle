@@ -113,6 +113,7 @@
     <Compile Include="Model\ItemGroup\ItemGroup.cs" />
     <Compile Include="Model\ItemGroup\ItemGroupList.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDetailViewModel.cs" />
+    <Compile Include="ViewModel\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupListViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupManageViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupViewModel.cs" />
@@ -120,8 +121,12 @@
     <Compile Include="ViewModel\Ranking\RankingViewModel.cs" />
     <Compile Include="ViewModel\TagGroup\TagGroupManageViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\Behavior\DialogBehavior.cs" />
     <Compile Include="View\ItemGroup\ItemGroupDetail.xaml.cs">
       <DependentUpon>ItemGroupDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ItemGroup\ItemGroupDialog.xaml.cs">
+      <DependentUpon>ItemGroupDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ItemGroup\ItemGroupList.xaml.cs">
       <DependentUpon>ItemGroupList.xaml</DependentUpon>
@@ -133,6 +138,10 @@
       <DependentUpon>TagGroupManage.xaml</DependentUpon>
     </Compile>
     <Page Include="View\ItemGroup\ItemGroupDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ItemGroup\ItemGroupDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
