@@ -16,30 +16,23 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <!-- === Global View Model Locator === -->
+            <!--Global View Model Locator-->
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
-            
-            <!-- === ViewModelとViewの紐付け === -->
-            
-            <!--ItemGroup-->
+
+            <!--ItemGroupManage-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
                 <view_itemgroup:ItemGroupManage />
-            </DataTemplate>
-
-            <!--ItemGroupList-->
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupListViewModel}">
-                <view_itemgroup:ItemGroupList />
-            </DataTemplate>
-
-            <!--ItemGroupDetail-->
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDetailViewModel}">
-                <view_itemgroup:ItemGroupDetail />
             </DataTemplate>
 
             <!--ItemGroupDialog-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />
+            </DataTemplate>
+
+            <!--ItemGroupDitail-->
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDetailViewModel}">
+                <view_itemgroup:ItemGroupDetail />
             </DataTemplate>
 
             <!--TagGroup-->
@@ -52,13 +45,12 @@
                 <view_ranking:Ranking />
             </DataTemplate>
 
-            <!-- === SkinとThemeの適用 === -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/presentationframework.AeroLite;component/themes/aerolite.normalcolor.xaml" />
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
+
     </Application.Resources>
     
 </Application>

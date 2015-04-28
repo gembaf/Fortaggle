@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Fortaggle")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ozzio PC")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Fortaggle")]
-[assembly: AssemblyCopyright("Copyright © Ozzio PC 2015")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

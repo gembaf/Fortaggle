@@ -3,9 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:behavior="clr-namespace:Fortaggle.View.Behavior"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <i:Interaction.Behaviors>
+        <behavior:DialogBehavior Content="{Binding ItemGroupDialog}" />
+    </i:Interaction.Behaviors>
+
     <Grid>
-        <ContentControl Content="{Binding ItemGroupList}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView ItemsSource="{Binding Collections}"
+                  SelectedItem="{Binding SelectedItemGroup}"
+                  Grid.Column="0">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Column="1">
+            <Button Content="アイテムグループダイアログ"
+                    Command="{Binding ItemGroupDialogOpenCommand}"/>
+            <ContentControl Content="{Binding ItemGroupDetail}" />
+        </StackPanel>
+
     </Grid>
 </UserControl>
