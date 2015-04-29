@@ -29,11 +29,19 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Column="1">
-            <Button Content="アイテムグループダイアログ"
-                    Command="{Binding ItemGroupDialogOpenCommand}"/>
-            <ContentControl Content="{Binding ItemGroupDetail}" />
-        </StackPanel>
+        <DockPanel Grid.Column="1">
 
+            <UniformGrid Columns="4"
+                         Height="30"
+                         DockPanel.Dock="Top">
+                
+                <Button Content="アイテムグループ追加"
+                        Command="{Binding ItemGroupDialogOpenCommand}"/>
+
+            </UniformGrid>
+
+            <ContentControl Content="{Binding ItemGroupDetail}" />
+            
+        </DockPanel>
     </Grid>
 </UserControl>
