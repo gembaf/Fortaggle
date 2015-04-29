@@ -79,7 +79,10 @@ namespace Fortaggle.ViewModel.ItemGroup
         public ItemGroupManageViewModel()
         {
             Collections = ItemGroupViewModel.Create();
-            SelectedItemGroup = Collections.First();
+            if (Collections.Count > 0)
+            {
+                SelectedItemGroup = Collections.First();
+            }
         }
 
         //--- コマンド

@@ -10,7 +10,7 @@ namespace Fortaggle.Model.Item
     {
         //--- 定数
 
-        private static readonly string filePath = "ItemGroupData.xml";
+        private const string FileName = "ItemGroupData.xml";
 
         //--- private static 変数
 
@@ -31,11 +31,11 @@ namespace Fortaggle.Model.Item
         {
         }
 
-        //--- 静的コンストラクタ
+        //--- static コンストラクタ
 
         static ItemGroup()
         {
-            itemGroupList = XML.XMLFileManager.ReadXml<List<ItemGroup>>(filePath);
+            itemGroupList = XML.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
         }
 
         //--- public static メソッド
@@ -52,7 +52,7 @@ namespace Fortaggle.Model.Item
 
         public static void Save()
         {
-            XML.XMLFileManager.WriteXml<List<ItemGroup>>(filePath, itemGroupList);
+            XML.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
         }
     }
 }
