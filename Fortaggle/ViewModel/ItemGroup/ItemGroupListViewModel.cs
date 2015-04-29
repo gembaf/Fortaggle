@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace Fortaggle.ViewModel.ItemGroup
 {
     using Fortaggle.Model.ItemGroup;
+    using System.Collections.ObjectModel;
 
     public class ItemGroupListViewModel : ViewModelBase
     {
@@ -37,7 +38,7 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         #endregion
 
-        public List<ItemGroupViewModel> Collections { get; private set; }
+        public ObservableCollection<ItemGroupViewModel> Collections { get; private set; }
 
         #region ItemGroupViewModel SelectedItemGroup
 
@@ -91,9 +92,9 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         //--- private メソッド
 
-        private List<ItemGroupViewModel> GetItemGroupListViewModel()
+        private ObservableCollection<ItemGroupViewModel> GetItemGroupListViewModel()
         {
-            var collections = new List<ItemGroupViewModel>();
+            var collections = new ObservableCollection<ItemGroupViewModel>();
             foreach (ItemGroup e in itemGroupList.Collections)
             {
                 collections.Add(new ItemGroupViewModel(e));
@@ -112,14 +113,16 @@ namespace Fortaggle.ViewModel.ItemGroup
             {
                 if (_ItemGroupDialogOpenCommand == null)
                 {
-                    _ItemGroupDialogOpenCommand = new RelayCommand(() =>
-                        ItemGroupDialog = new ItemGroupDialogViewModel(() =>
-                            ItemGroupDialog = null
-                        )
-                    );
+                    _ItemGroupDialogOpenCommand = new RelayCommand(() => ItemGroupDialog = new ItemGroupDialogViewModel(CloseAction));
                 }
                 return _ItemGroupDialogOpenCommand;
             }
+        }
+
+        private void CloseAction()
+        {
+            Collections.Add(ItemGroupDialog.ItemGroup);
+            ItemGroupDialog = null;
         }
 
         #endregion

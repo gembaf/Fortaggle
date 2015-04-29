@@ -11,6 +11,7 @@ namespace Fortaggle.ViewModel.ItemGroup
         public string Name
         {
             get { return itemGroup.Name; }
+            set { itemGroup.Name = value; }
         }
 
         //--- private 変数
@@ -22,6 +23,10 @@ namespace Fortaggle.ViewModel.ItemGroup
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
+        }
+
+        public ItemGroupViewModel() : this(new ItemGroup())
+        {
         }
     }
 }

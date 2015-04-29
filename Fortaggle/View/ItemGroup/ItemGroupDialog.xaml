@@ -19,8 +19,28 @@
         </behavior:WindowStyleBehavior>
     </i:Interaction.Behaviors>
 
-
     <Grid>
-        <TextBlock>hogehoge</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="アイテムグループ名"
+                   Grid.Column="0"
+                   Grid.Row="0"/>
+        <TextBox Text="{Binding ItemGroup.Name}"
+                 MinWidth="100"
+                 Grid.Column="1"
+                 Grid.Row="0"/>
+
+        <Button Content="保存"
+                Command="{Binding SaveItemGroupCommand}"
+                Grid.Column="1"
+                Grid.Row="1"/>
     </Grid>
 </UserControl>

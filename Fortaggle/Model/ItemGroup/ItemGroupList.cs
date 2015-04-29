@@ -8,7 +8,11 @@ namespace Fortaggle.Model.ItemGroup
 {
     public class ItemGroupList
     {
+        //--- プロパティ
+
         public List<ItemGroup> Collections { get; private set; }
+
+        //--- コンストラクタ
 
         public ItemGroupList()
         {
@@ -20,6 +24,13 @@ namespace Fortaggle.Model.ItemGroup
                 new ItemGroup("piyo"),
                 new ItemGroup("fuga")
             };
+        }
+
+        //--- public メソッド
+
+        public void Add(ItemGroup itemGroup)
+        {
+            Collections.Add(itemGroup);
         }
     }
 }

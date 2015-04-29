@@ -8,19 +8,19 @@ namespace Fortaggle.Model.ItemGroup
 {
     public class ItemGroup
     {
-        #region プロパティ
+        //--- プロパティ
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        #endregion
-
-        #region コンストラクタ
+        //--- コンストラクタ
 
         public ItemGroup(string name)
         {
             Name = name;
         }
 
-        #endregion
+        public ItemGroup() : this(null)
+        {
+        }
     }
 }
