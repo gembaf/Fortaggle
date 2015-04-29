@@ -6,7 +6,8 @@
              xmlns:behavior="clr-namespace:Fortaggle.View.Behavior"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="100" d:DesignWidth="300"
+             MinHeight="100" MinWidth="400">
 
     <i:Interaction.Behaviors>
         <behavior:WindowStyleBehavior>
@@ -19,9 +20,9 @@
         </behavior:WindowStyleBehavior>
     </i:Interaction.Behaviors>
 
-    <Grid>
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
@@ -31,10 +32,10 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="アイテムグループ名"
+                   Style="{StaticResource HeaderStyle}"
                    Grid.Column="0"
                    Grid.Row="0"/>
         <TextBox Text="{Binding ItemGroup.Name}"
-                 MinWidth="100"
                  Grid.Column="1"
                  Grid.Row="0"/>
 

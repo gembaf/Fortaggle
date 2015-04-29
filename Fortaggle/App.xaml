@@ -48,7 +48,8 @@
                 <ResourceDictionary Source="Themes/Office2010Blue/Office2010Blue.MSControls.Toolkit.Implicit.xaml" />
 
                 <!--Skinの適用-->
-                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+                <ResourceDictionary Source="Skins/OverrideTheme.xaml" />
+                <ResourceDictionary Source="Skins/Common.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

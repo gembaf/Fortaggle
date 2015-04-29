@@ -6,7 +6,7 @@
              xmlns:behavior="clr-namespace:Fortaggle.View.Behavior"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="700" d:DesignWidth="1024">
 
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemGroupDialog}" />
@@ -32,7 +32,8 @@
         <DockPanel Grid.Column="1">
 
             <UniformGrid Columns="4"
-                         Height="30"
+                         Height="40"
+                         Margin="3"
                          DockPanel.Dock="Top">
                 
                 <Button Content="アイテムグループ追加"
@@ -40,7 +41,8 @@
 
             </UniformGrid>
 
-            <ContentControl Content="{Binding ItemGroupDetail}" />
+            <ContentControl Content="{Binding ItemGroupDetail}"
+                            Margin="5"/>
             
         </DockPanel>
     </Grid>
