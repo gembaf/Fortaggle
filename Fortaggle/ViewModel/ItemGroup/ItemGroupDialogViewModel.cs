@@ -39,10 +39,16 @@ namespace Fortaggle.ViewModel.ItemGroup
             {
                 if (_SaveItemGroupCommand == null)
                 {
-                    _SaveItemGroupCommand = new RelayCommand(closeAction);
+                    _SaveItemGroupCommand = new RelayCommand(CloseAction);
                 }
                 return _SaveItemGroupCommand;
             }
+        }
+
+        private void CloseAction()
+        {
+            ItemGroup.CreateModel();
+            closeAction();
         }
 
         #endregion

@@ -38,11 +38,18 @@ namespace Fortaggle.ViewModel
         public MainViewModel()
         {
             Pages = new List<ViewModelBase>() {
-                new ItemGroupListViewModel(),
+                new ItemGroupManageViewModel(),
                 new TagGroupListViewModel(),
                 new RankingViewModel()
             };
             SelectedPage = Pages.First();
+        }
+
+        //--- デストラクタ
+
+        ~MainViewModel()
+        {
+            Fortaggle.Model.Item.ItemGroup.Save();
         }
     }
 }

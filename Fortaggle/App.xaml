@@ -21,8 +21,8 @@
                                  d:IsDataSource="True" />
 
             <!--ItemGroup-->
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupListViewModel}">
-                <view_itemgroup:ItemGrouList />
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
+                <view_itemgroup:ItemGrouManage />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />

@@ -17,9 +17,9 @@ namespace Fortaggle.View.ItemGroup
     /// <summary>
     /// ItemGroupManage.xaml の相互作用ロジック
     /// </summary>
-    public partial class ItemGrouList : UserControl
+    public partial class ItemGrouManage : UserControl
     {
-        public ItemGrouList()
+        public ItemGrouManage()
         {
             InitializeComponent();
         }

@@ -1,15 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Fortaggle.ViewModel.ItemGroup
 {
-    using Fortaggle.Model.ItemGroup;
-    using System.Collections.ObjectModel;
-
-    public class ItemGroupListViewModel : ViewModelBase
+    public class ItemGroupManageViewModel : ViewModelBase
     {
         //--- 静的プロパティ
 
@@ -77,29 +74,12 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         #endregion
 
-        //--- private 変数
-
-        private ItemGroupList itemGroupList;
-
         //--- コンストラクタ
 
-        public ItemGroupListViewModel()
+        public ItemGroupManageViewModel()
         {
-            itemGroupList = new ItemGroupList();
-            Collections = GetItemGroupListViewModel();
+            Collections = ItemGroupViewModel.Create();
             SelectedItemGroup = Collections.First();
-        }
-
-        //--- private メソッド
-
-        private ObservableCollection<ItemGroupViewModel> GetItemGroupListViewModel()
-        {
-            var collections = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in itemGroupList.Collections)
-            {
-                collections.Add(new ItemGroupViewModel(e));
-            }
-            return collections;
         }
 
         //--- コマンド
@@ -122,7 +102,6 @@ namespace Fortaggle.ViewModel.ItemGroup
         private void CloseAction()
         {
             Collections.Add(ItemGroupDialog.ItemGroup);
-            itemGroupList.Add(ItemGroupDialog.ItemGroup.ItemGroup);
             ItemGroupDialog = null;
         }
 
