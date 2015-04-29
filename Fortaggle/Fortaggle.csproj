@@ -77,6 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\ItemGroup\ItemGroup.cs" />
     <Compile Include="Model\ItemGroup\ItemGroupList.cs" />
+    <Compile Include="Model\XML\XMLFileManager.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDetailViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupListViewModel.cs" />

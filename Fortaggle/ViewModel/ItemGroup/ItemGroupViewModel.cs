@@ -10,19 +10,17 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         public string Name
         {
-            get { return itemGroup.Name; }
-            set { itemGroup.Name = value; }
+            get { return ItemGroup.Name; }
+            set { ItemGroup.Name = value; }
         }
 
-        //--- private 変数
-
-        private ItemGroup itemGroup;
+        public ItemGroup ItemGroup { get; set; }
 
         //--- コンストラクタ
 
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
-            this.itemGroup = itemGroup;
+            ItemGroup = itemGroup;
         }
 
         public ItemGroupViewModel() : this(new ItemGroup())

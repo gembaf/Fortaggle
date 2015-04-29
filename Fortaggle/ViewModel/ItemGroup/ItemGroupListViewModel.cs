@@ -122,6 +122,7 @@ namespace Fortaggle.ViewModel.ItemGroup
         private void CloseAction()
         {
             Collections.Add(ItemGroupDialog.ItemGroup);
+            itemGroupList.Add(ItemGroupDialog.ItemGroup.ItemGroup);
             ItemGroupDialog = null;
         }
 

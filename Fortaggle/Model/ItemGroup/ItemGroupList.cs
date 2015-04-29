@@ -16,14 +16,12 @@ namespace Fortaggle.Model.ItemGroup
 
         public ItemGroupList()
         {
-            Collections = new List<ItemGroup>()
-            {
-                new ItemGroup("hoge"),
-                new ItemGroup("foo"),
-                new ItemGroup("bar"),
-                new ItemGroup("piyo"),
-                new ItemGroup("fuga")
-            };
+            Collections = XML.XMLFileManager.ReadXml<List<ItemGroup>>("ItemGroupData.xml");
+        }
+
+        ~ItemGroupList()
+        {
+            XML.XMLFileManager.WriteXml<List<ItemGroup>>("ItemGroupData.xml", Collections);
         }
 
         //--- public メソッド
