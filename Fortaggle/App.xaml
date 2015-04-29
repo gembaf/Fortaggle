@@ -20,24 +20,20 @@
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
 
-            <!--ItemGroupManage-->
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
-                <view_itemgroup:ItemGroupManage />
+            <!--ItemGroup-->
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupListViewModel}">
+                <view_itemgroup:ItemGrouList />
             </DataTemplate>
-
-            <!--ItemGroupDialog-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />
             </DataTemplate>
-
-            <!--ItemGroupDitail-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDetailViewModel}">
                 <view_itemgroup:ItemGroupDetail />
             </DataTemplate>
 
             <!--TagGroup-->
-            <DataTemplate DataType="{x:Type vm_taggroup:TagGroupManageViewModel}">
-                <view_taggroup:TagGroupManage />
+            <DataTemplate DataType="{x:Type vm_taggroup:TagGroupListViewModel}">
+                <view_taggroup:TagGroupList />
             </DataTemplate>
 
             <!--Ranking-->
@@ -45,6 +41,7 @@
                 <view_ranking:Ranking />
             </DataTemplate>
 
+            <!--Skinの適用-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>

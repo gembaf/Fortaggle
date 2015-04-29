@@ -70,11 +70,11 @@
     <Compile Include="Model\ItemGroup\ItemGroupList.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDetailViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupDialogViewModel.cs" />
-    <Compile Include="ViewModel\ItemGroup\ItemGroupManageViewModel.cs" />
+    <Compile Include="ViewModel\ItemGroup\ItemGroupListViewModel.cs" />
     <Compile Include="ViewModel\ItemGroup\ItemGroupViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Ranking\RankingViewModel.cs" />
-    <Compile Include="ViewModel\TagGroup\TagGroupManageViewModel.cs" />
+    <Compile Include="ViewModel\TagGroup\TagGroupListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Behavior\DialogBehavior.cs" />
     <Compile Include="View\ItemGroup\ItemGroupDetail.xaml.cs">
@@ -83,14 +83,14 @@
     <Compile Include="View\ItemGroup\ItemGroupDialog.xaml.cs">
       <DependentUpon>ItemGroupDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ItemGroup\ItemGroupManage.xaml.cs">
-      <DependentUpon>ItemGroupManage.xaml</DependentUpon>
+    <Compile Include="View\ItemGroup\ItemGroupList.xaml.cs">
+      <DependentUpon>ItemGroupList.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Ranking\Ranking.xaml.cs">
       <DependentUpon>Ranking.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TagGroup\TagGroupManage.xaml.cs">
-      <DependentUpon>TagGroupManage.xaml</DependentUpon>
+    <Compile Include="View\TagGroup\TagGroupList.xaml.cs">
+      <DependentUpon>TagGroupList.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -116,7 +116,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ItemGroup\ItemGroupManage.xaml">
+    <Page Include="View\ItemGroup\ItemGroupList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,7 +124,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TagGroup\TagGroupManage.xaml">
+    <Page Include="View\TagGroup\TagGroupList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

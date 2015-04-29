@@ -9,7 +9,7 @@ namespace Fortaggle.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        #region 変更通知プロパティ
+        //--- 変更通知プロパティ
 
         #region ViewModelBase SelectedPage
 
@@ -29,27 +29,20 @@ namespace Fortaggle.ViewModel
 
         #endregion
 
-        #endregion
-
-        #region プロパティ
+        //--- プロパティ
 
         public List<ViewModelBase> Pages { get; private set; }
 
-        #endregion
-
-        #region コンストラクタ
+        //--- コンストラクタ
 
         public MainViewModel()
         {
             Pages = new List<ViewModelBase>() {
-                new ItemGroupManageViewModel(),
-                new TagGroupManageViewModel(),
+                new ItemGroupListViewModel(),
+                new TagGroupListViewModel(),
                 new RankingViewModel()
             };
             SelectedPage = Pages.First();
         }
-
-        #endregion
-
     }
 }

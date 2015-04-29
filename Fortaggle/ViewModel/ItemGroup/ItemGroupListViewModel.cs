@@ -8,18 +8,16 @@ namespace Fortaggle.ViewModel.ItemGroup
 {
     using Fortaggle.Model.ItemGroup;
 
-    public class ItemGroupManageViewModel : ViewModelBase
+    public class ItemGroupListViewModel : ViewModelBase
     {
-        #region 静的プロパティ
+        //--- 静的プロパティ
 
         public static string Label
         {
             get { return "アイテム一覧"; }
         }
 
-        #endregion
-
-        #region プロパティ
+        //--- プロパティ
 
         #region ItemGroupDialogViewModel ItemGroupDialog
 
@@ -78,26 +76,20 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         #endregion
 
-        #endregion
-
-        #region private 変数
+        //--- private 変数
 
         private ItemGroupList itemGroupList;
 
-        #endregion
+        //--- コンストラクタ
 
-        #region コンストラクタ
-
-        public ItemGroupManageViewModel()
+        public ItemGroupListViewModel()
         {
             itemGroupList = new ItemGroupList();
             Collections = GetItemGroupListViewModel();
             SelectedItemGroup = Collections.First();
         }
 
-        #endregion
-
-        #region private メソッド
+        //--- private メソッド
 
         private List<ItemGroupViewModel> GetItemGroupListViewModel()
         {
@@ -109,9 +101,9 @@ namespace Fortaggle.ViewModel.ItemGroup
             return collections;
         }
 
-        #endregion
+        //--- コマンド
 
-        #region コマンド
+        #region ICommand ItemGroupDialogOpenCommand
 
         private ICommand _ItemGroupDialogOpenCommand;
         public ICommand ItemGroupDialogOpenCommand

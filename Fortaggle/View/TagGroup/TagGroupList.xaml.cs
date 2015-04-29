@@ -17,9 +17,9 @@ namespace Fortaggle.View.TagGroup
     /// <summary>
     /// TagGroupManage.xaml の相互作用ロジック
     /// </summary>
-    public partial class TagGroupManage : UserControl
+    public partial class TagGroupList : UserControl
     {
-        public TagGroupManage()
+        public TagGroupList()
         {
             InitializeComponent();
         }

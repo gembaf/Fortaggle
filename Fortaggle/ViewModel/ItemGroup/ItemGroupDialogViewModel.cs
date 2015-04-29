@@ -5,19 +5,15 @@ namespace Fortaggle.ViewModel.ItemGroup
 {
     public class ItemGroupDialogViewModel : ViewModelBase
     {
-        #region private 変数
+        //--- private 変数
 
         private Action closeAction;
 
-        #endregion
-
-        #region コンストラクタ
+        //--- コンストラクタ
 
         public ItemGroupDialogViewModel(Action closeAction)
         {
             this.closeAction = closeAction;
         }
-
-        #endregion
     }
 }

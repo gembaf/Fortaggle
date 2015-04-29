@@ -7,7 +7,7 @@
         mc:Ignorable="d ignore"
         Height="768"
         Width="1024"
-        Title="MVVM Light Application"
+        Title="Fortaggle"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <DockPanel>

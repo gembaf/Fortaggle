@@ -2,18 +2,16 @@
 
 namespace Fortaggle.ViewModel.TagGroup
 {
-    public class TagGroupManageViewModel : ViewModelBase
+    public class TagGroupListViewModel : ViewModelBase
     {
-        #region 静的プロパティ
+        //--- 静的プロパティ
 
         public static string Label
         {
             get { return "タグ一覧"; }
         }
 
-        #endregion
-
-        public TagGroupManageViewModel()
+        public TagGroupListViewModel()
         {
         }
     }
