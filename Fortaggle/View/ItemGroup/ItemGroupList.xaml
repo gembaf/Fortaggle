@@ -18,16 +18,16 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
-        <ListView ItemsSource="{Binding Collections}"
-                  SelectedItem="{Binding SelectedItemGroup}"
-                  Grid.Column="0">
+        <ListBox ItemsSource="{Binding Collections}"
+                 SelectedItem="{Binding SelectedItemGroup}"
+                 Grid.Column="0">
 
-            <ListView.ItemTemplate>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <DockPanel Grid.Column="1">
 

@@ -12,25 +12,25 @@
 
     <DockPanel>
 
-        <ListView ItemsSource="{Binding Pages}"
-                  SelectedItem="{Binding SelectedPage}"
-                  Height="32"
-                  HorizontalContentAlignment="Stretch"
-                  DockPanel.Dock="Top">
+        <ListBox ItemsSource="{Binding Pages}"
+                 SelectedItem="{Binding SelectedPage}"
+                 Height="32"
+                 HorizontalContentAlignment="Stretch"
+                 DockPanel.Dock="Top">
 
-            <ListView.ItemsPanel>
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="3" />
                 </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+            </ListBox.ItemsPanel>
 
-            <ListView.ItemTemplate>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Label}"
                                TextAlignment="Center"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <ContentControl Content="{Binding SelectedPage}"/>
 

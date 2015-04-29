@@ -41,13 +41,17 @@
                 <view_ranking:Ranking />
             </DataTemplate>
 
-            <!--Skinの適用-->
+            <!--ThemeとSkinの適用-->
             <ResourceDictionary.MergedDictionaries>
+                <!--Office2010Blue-->
+                <ResourceDictionary Source="Themes/Office2010Blue/Office2010Blue.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Office2010Blue/Office2010Blue.MSControls.Toolkit.Implicit.xaml" />
+
+                <!--Skinの適用-->
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
-
     </Application.Resources>
     
 </Application>
