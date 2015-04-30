@@ -9,7 +9,7 @@ namespace Fortaggle.ViewModel.ItemGroup
     {
         //--- プロパティ
 
-        public ItemGroupViewModel ItemGroup { get; private set; }
+        public ItemGroupViewModel ItemGroupVM { get; private set; }
 
         //--- private 変数
 
@@ -17,10 +17,10 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         //--- コンストラクタ
 
-        public ItemGroupDialogViewModel(Action closeAction, ItemGroupViewModel itemGroup)
+        public ItemGroupDialogViewModel(Action closeAction, ItemGroupViewModel itemGroupVM)
         {
             this.closeAction = closeAction;
-            ItemGroup = itemGroup;
+            ItemGroupVM = itemGroupVM;
         }
 
         public ItemGroupDialogViewModel(Action closeAction)
@@ -47,7 +47,7 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         private void CloseAction()
         {
-            ItemGroup.CreateModel();
+            ItemGroupVM.CreateModel();
             closeAction();
         }
 

@@ -35,7 +35,7 @@
                    Style="{StaticResource HeaderStyle}"
                    Grid.Column="0"
                    Grid.Row="0"/>
-        <TextBox Text="{Binding ItemGroup.Name}"
+        <TextBox Text="{Binding ItemGroupVM.Name}"
                  Grid.Column="1"
                  Grid.Row="0"/>
 

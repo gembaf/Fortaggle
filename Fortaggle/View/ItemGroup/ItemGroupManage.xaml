@@ -9,7 +9,7 @@
              d:DesignHeight="700" d:DesignWidth="1024">
 
     <i:Interaction.Behaviors>
-        <behavior:DialogBehavior Content="{Binding ItemGroupDialog}" />
+        <behavior:DialogBehavior Content="{Binding ItemGroupDialogVM}" />
     </i:Interaction.Behaviors>
 
     <Grid>
@@ -18,8 +18,8 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding Collections}"
-                 SelectedItem="{Binding SelectedItemGroup}"
+        <ListBox ItemsSource="{Binding ItemGroupVMList}"
+                 SelectedItem="{Binding SelectedItemGroupVM}"
                  IsSynchronizedWithCurrentItem="True"
                  Grid.Column="0">
 
@@ -42,7 +42,7 @@
 
             </UniformGrid>
 
-            <ContentControl Content="{Binding SelectedItemGroup}"
+            <ContentControl Content="{Binding SelectedItemGroupVM}"
                             Margin="5"/>
             
         </DockPanel>

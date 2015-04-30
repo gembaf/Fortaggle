@@ -17,38 +17,38 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         //--- プロパティ
 
-        #region ItemGroupDialogViewModel ItemGroupDialog
+        #region ItemGroupDialogViewModel ItemGroupDialogVM
 
-        private ItemGroupDialogViewModel _ItemGroupDialog;
-        public ItemGroupDialogViewModel ItemGroupDialog
+        private ItemGroupDialogViewModel _ItemGroupDialogVM;
+        public ItemGroupDialogViewModel ItemGroupDialogVM
         {
-            get { return _ItemGroupDialog; }
+            get { return _ItemGroupDialogVM; }
             set
             {
-                if (_ItemGroupDialog != value)
+                if (_ItemGroupDialogVM != value)
                 {
-                    _ItemGroupDialog = value;
-                    RaisePropertyChanged("ItemGroupDialog");
+                    _ItemGroupDialogVM = value;
+                    RaisePropertyChanged("ItemGroupDialogVM");
                 }
             }
         }
 
         #endregion
 
-        public ObservableCollection<ItemGroupViewModel> Collections { get; private set; }
+        public ObservableCollection<ItemGroupViewModel> ItemGroupVMList { get; private set; }
 
-        #region ItemGroupViewModel SelectedItemGroup
+        #region ItemGroupViewModel SelectedItemGroupVM
 
-        private ItemGroupViewModel _SelectedItemGroup;
-        public ItemGroupViewModel SelectedItemGroup
+        private ItemGroupViewModel _SelectedItemGroupVM;
+        public ItemGroupViewModel SelectedItemGroupVM
         {
-            get { return _SelectedItemGroup; }
+            get { return _SelectedItemGroupVM; }
             set
             {
-                if (_SelectedItemGroup != value)
+                if (_SelectedItemGroupVM != value)
                 {
-                    _SelectedItemGroup = value;
-                    RaisePropertyChanged("SelectedItemGroup");
+                    _SelectedItemGroupVM = value;
+                    RaisePropertyChanged("SelectedItemGroupVM");
                 }
             }
         }
@@ -59,10 +59,10 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         public ItemGroupManageViewModel()
         {
-            Collections = ItemGroupViewModel.Create();
-            if (Collections.Count > 0)
+            ItemGroupVMList = ItemGroupViewModel.Create();
+            if (ItemGroupVMList.Count > 0)
             {
-                SelectedItemGroup = Collections.First();
+                SelectedItemGroupVM = ItemGroupVMList.First();
             }
         }
 
@@ -77,7 +77,7 @@ namespace Fortaggle.ViewModel.ItemGroup
             {
                 if (_ItemGroupDialogOpenCommand == null)
                 {
-                    _ItemGroupDialogOpenCommand = new RelayCommand(() => ItemGroupDialog = new ItemGroupDialogViewModel(CloseAction));
+                    _ItemGroupDialogOpenCommand = new RelayCommand(() => ItemGroupDialogVM = new ItemGroupDialogViewModel(CloseAction));
                 }
                 return _ItemGroupDialogOpenCommand;
             }
@@ -85,8 +85,8 @@ namespace Fortaggle.ViewModel.ItemGroup
 
         private void CloseAction()
         {
-            Collections.Add(ItemGroupDialog.ItemGroup);
-            ItemGroupDialog = null;
+            ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
+            ItemGroupDialogVM = null;
         }
 
         #endregion
