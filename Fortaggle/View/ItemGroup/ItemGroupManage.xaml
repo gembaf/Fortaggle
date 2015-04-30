@@ -20,6 +20,7 @@
 
         <ListBox ItemsSource="{Binding Collections}"
                  SelectedItem="{Binding SelectedItemGroup}"
+                 IsSynchronizedWithCurrentItem="True"
                  Grid.Column="0">
 
             <ListBox.ItemTemplate>
@@ -41,7 +42,7 @@
 
             </UniformGrid>
 
-            <ContentControl Content="{Binding ItemGroupDetail}"
+            <ContentControl Content="{Binding SelectedItemGroup}"
                             Margin="5"/>
             
         </DockPanel>

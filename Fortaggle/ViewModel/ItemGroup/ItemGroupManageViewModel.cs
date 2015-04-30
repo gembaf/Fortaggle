@@ -48,26 +48,7 @@ namespace Fortaggle.ViewModel.ItemGroup
                 if (_SelectedItemGroup != value)
                 {
                     _SelectedItemGroup = value;
-                    ItemGroupDetail = new ItemGroupDetailViewModel(value);
                     RaisePropertyChanged("SelectedItemGroup");
-                }
-            }
-        }
-
-        #endregion
-
-        #region ItemGroupDetailViewModel ItemGroupDetail
-
-        private ItemGroupDetailViewModel _ItemGroupDetail;
-        public ItemGroupDetailViewModel ItemGroupDetail
-        {
-            get { return _ItemGroupDetail; }
-            set
-            {
-                if (_ItemGroupDetail != value)
-                {
-                    _ItemGroupDetail = value;
-                    RaisePropertyChanged("ItemGroupDetail");
                 }
             }
         }
