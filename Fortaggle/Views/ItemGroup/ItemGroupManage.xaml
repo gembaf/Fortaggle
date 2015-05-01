@@ -20,30 +20,30 @@
 
         <ListBox ItemsSource="{Binding ItemGroupVMList}"
                  SelectedItem="{Binding SelectedItemGroupVM}"
-                 IsSynchronizedWithCurrentItem="True"
                  Grid.Column="0">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Name}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
         <DockPanel Grid.Column="1">
 
-            <UniformGrid Columns="4"
-                         Height="40"
-                         Margin="3"
-                         DockPanel.Dock="Top">
-                
-                <Button Content="アイテムグループ追加"
-                        Command="{Binding ItemGroupDialogOpenCommand}"/>
+            <Border Style="{StaticResource BlackBorder}"
+                    DockPanel.Dock="Top">
+                <UniformGrid Columns="4"
+                             Height="40"
+                             Background="AliceBlue">
 
-            </UniformGrid>
+                    <Button Content="アイテムグループ追加"
+                            Command="{Binding ItemGroupDialogOpenCommand}"/>
 
-            <ContentControl Content="{Binding SelectedItemGroupVM}"
-                            Margin="5"/>
+                </UniformGrid>
+            </Border>
+
+            <ContentControl Content="{Binding SelectedItemGroupVM}"/>
             
         </DockPanel>
     </Grid>
