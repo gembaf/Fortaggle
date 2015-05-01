@@ -85,6 +85,7 @@
     <Compile Include="ViewModel\TagGroup\TagGroupListViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Behavior\DialogBehavior.cs" />
+    <Compile Include="View\Behavior\ValidationErrorBehavior.cs" />
     <Compile Include="View\ItemGroup\ItemGroup.xaml.cs">
       <DependentUpon>ItemGroup.xaml</DependentUpon>
     </Compile>

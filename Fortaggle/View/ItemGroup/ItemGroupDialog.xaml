@@ -19,6 +19,8 @@
                 </Style>
             </behavior:WindowStyleBehavior.Style>
         </behavior:WindowStyleBehavior>
+        
+        <behavior:ValidationErrorBehavior HasViewError="{Binding ItemGroupVM.HasViewError, Mode=OneWayToSource}" />
     </i:Interaction.Behaviors>
 
     <Grid Margin="5">
@@ -41,20 +43,19 @@
             <TextBox.Text>
                 <Binding Path="ItemGroupVM.Name"
                          UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnDataErrors="True">
+                         ValidatesOnExceptions="True"
+                         NotifyOnValidationError="True">
                     <Binding.ValidationRules>
-                        <rules:TextBoxValidationRule CanEmpty="False"></rules:TextBoxValidationRule>
+                        <rules:TextBoxValidationRule CanEmpty="False" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
 
         </TextBox>
-        <!--<TextBox Text="{Binding ItemGroupVM.Name}"
-                 Grid.Column="1"
-                 Grid.Row="0"/>-->
 
         <Button Content="保存"
                 Command="{Binding SaveItemGroupCommand}"
+                IsEnabled="{Binding ItemGroupVM.IsAccept, FallbackValue='False'}"
                 Grid.Column="1"
                 Grid.Row="1"/>
     </Grid>
