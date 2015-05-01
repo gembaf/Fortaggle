@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Fortaggle.Views.ItemGroup.ItemGroupDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:behaviors="clr-namespace:Fortaggle.Views.Behaviors"
+             xmlns:rules="clr-namespace:Fortaggle.Views.ValidationRules"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300"
+             MinHeight="100" MinWidth="400">
+
+    <i:Interaction.Behaviors>
+        <behaviors:WindowStyleBehavior>
+            <behaviors:WindowStyleBehavior.Style>
+                <Style TargetType="Window">
+                    <Setter Property="Title" Value="アイテムグループ" />
+                    <Setter Property="SizeToContent" Value="WidthAndHeight" />
+                </Style>
+            </behaviors:WindowStyleBehavior.Style>
+        </behaviors:WindowStyleBehavior>
+
+        <behaviors:ValidationErrorBehavior HasViewError="{Binding ItemGroupVM.HasViewError, Mode=OneWayToSource}" />
+    </i:Interaction.Behaviors>
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="アイテムグループ名"
+                   Style="{StaticResource HeaderStyle}"
+                   Grid.Column="0"
+                   Grid.Row="0"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="0">
+            <TextBox.Text>
+                <Binding Path="ItemGroupVM.Name"
+                         UpdateSourceTrigger="PropertyChanged"
+                         ValidatesOnExceptions="True"
+                         NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <rules:TextBoxValidationRule CanEmpty="False" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+
+        </TextBox>
+
+        <Button Content="保存"
+                Command="{Binding SaveItemGroupCommand}"
+                IsEnabled="{Binding ItemGroupVM.IsAccept, FallbackValue='False'}"
+                Grid.Column="1"
+                Grid.Row="1"/>
+    </Grid>
+</UserControl>

@@ -75,33 +75,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Item\ItemGroup.cs" />
-    <Compile Include="Model\XML\XMLFileManager.cs" />
-    <Compile Include="ViewModel\ItemGroup\ItemGroupDialogViewModel.cs" />
-    <Compile Include="ViewModel\ItemGroup\ItemGroupManageViewModel.cs" />
-    <Compile Include="ViewModel\ItemGroup\ItemGroupViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\Ranking\RankingViewModel.cs" />
-    <Compile Include="ViewModel\TagGroup\TagGroupListViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\Behavior\DialogBehavior.cs" />
-    <Compile Include="View\Behavior\ValidationErrorBehavior.cs" />
-    <Compile Include="View\ItemGroup\ItemGroup.xaml.cs">
+    <Compile Include="Models\Item\ItemGroup.cs" />
+    <Compile Include="Models\XML\XMLFileManager.cs" />
+    <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
+    <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
+    <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Ranking\RankingViewModel.cs" />
+    <Compile Include="ViewModels\TagGroup\TagGroupListViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\Behaviors\DialogBehavior.cs" />
+    <Compile Include="Views\Behaviors\ValidationErrorBehavior.cs" />
+    <Compile Include="Views\ItemGroup\ItemGroup.xaml.cs">
       <DependentUpon>ItemGroup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ItemGroup\ItemGroupDialog.xaml.cs">
+    <Compile Include="Views\ItemGroup\ItemGroupDialog.xaml.cs">
       <DependentUpon>ItemGroupDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ItemGroup\ItemGroupManage.xaml.cs">
+    <Compile Include="Views\ItemGroup\ItemGroupManage.xaml.cs">
       <DependentUpon>ItemGroupManage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Ranking\Ranking.xaml.cs">
+    <Compile Include="Views\Ranking\Ranking.xaml.cs">
       <DependentUpon>Ranking.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TagGroup\TagGroupList.xaml.cs">
+    <Compile Include="Views\TagGroup\TagGroupList.xaml.cs">
       <DependentUpon>TagGroupList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ValidationRules\TextBoxValidationRule.cs" />
+    <Compile Include="Views\ValidationRules\TextBoxValidationRule.cs" />
     <Page Include="Skins\Common.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,7 +126,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -134,7 +134,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -142,23 +142,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ItemGroup\ItemGroup.xaml">
+    <Page Include="Views\ItemGroup\ItemGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ItemGroup\ItemGroupDialog.xaml">
+    <Page Include="Views\ItemGroup\ItemGroupDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ItemGroup\ItemGroupManage.xaml">
+    <Page Include="Views\ItemGroup\ItemGroupManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Ranking\Ranking.xaml">
+    <Page Include="Views\Ranking\Ranking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TagGroup\TagGroupList.xaml">
+    <Page Include="Views\TagGroup\TagGroupList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
