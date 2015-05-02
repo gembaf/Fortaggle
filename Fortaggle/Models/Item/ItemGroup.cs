@@ -1,44 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fortaggle.Models.Item
+﻿namespace Fortaggle.Models.Item
 {
+    using System.Collections.Generic;
+
     public class ItemGroup
     {
         //--- 定数
 
         private const string FileName = "ItemGroupData.xml";
 
-        //--- private static 変数
+        //--- フィールド
 
         private static List<ItemGroup> itemGroupList;
 
-        //--- プロパティ
-
-        public string Name { get; set; }
-
-        //--- コンストラクタ
-
-        public ItemGroup(string name)
-        {
-            Name = name;
-        }
-
-        public ItemGroup() : this(null)
-        {
-        }
-
-        //--- static コンストラクタ
+        //--- 静的コンストラクタ
 
         static ItemGroup()
         {
             itemGroupList = XML.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
         }
 
-        //--- public static メソッド
+        //--- コンストラクタ (+2)
+
+        public ItemGroup(string name)
+        {
+            Name = name;
+        }
+
+        public ItemGroup()
+            : this(null)
+        {
+        }
+
+        //--- プロパティ
+
+        #region string Name プロパティ
+
+        public string Name { get; set; }
+
+        #endregion
+
+        //--- public メソッド
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
 
         public static List<ItemGroup> All()
         {

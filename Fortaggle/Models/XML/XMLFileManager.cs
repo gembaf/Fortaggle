@@ -1,14 +1,17 @@
-﻿using System;
-using System.IO;
-using System.Xml.Serialization;
-
-namespace Fortaggle.Models.XML
+﻿namespace Fortaggle.Models.XML
 {
+    using System.IO;
+    using System.Xml.Serialization;
+
     public static class XMLFileManager
     {
+        //--- 定数
+
         private static readonly string DataPath = Directory.GetCurrentDirectory() + @"\Data\";
 
-        //--- static コンストラクタ
+        //--- フィールド
+
+        //--- 静的コンストラクタ
 
         static XMLFileManager()
         {
@@ -18,7 +21,9 @@ namespace Fortaggle.Models.XML
             }
         }
 
-        //--- public static 関数
+        //--- private メソッド
+
+        //--- static メソッド
 
         public static T ReadXml<T>(string fileName) where T : new()
         {

@@ -1,23 +1,42 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Input;
-
-namespace Fortaggle.ViewModels.ItemGroup
+﻿namespace Fortaggle.ViewModels.ItemGroup
 {
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Windows.Input;
+
     public class ItemGroupManageViewModel : ViewModelBase
     {
-        //--- 静的プロパティ
+        //--- 定数
+
+        //--- フィールド
+
+        //--- 静的コンストラクタ
+
+        //--- コンストラクタ
+
+        public ItemGroupManageViewModel()
+        {
+            ItemGroupVMList = ItemGroupViewModel.All();
+            if (ItemGroupVMList.Count > 0)
+            {
+                SelectedItemGroupVM = ItemGroupVMList.First();
+            }
+        }
+
+        //--- プロパティ
+
+        #region string Label 静的プロパティ
 
         public static string Label
         {
             get { return "アイテム一覧"; }
         }
 
-        //--- プロパティ
+        #endregion
 
-        #region ItemGroupDialogViewModel ItemGroupDialogVM
+        #region ItemGroupDialogViewModel ItemGroupDialogVM 変更通知プロパティ
 
         private ItemGroupDialogViewModel _ItemGroupDialogVM;
         public ItemGroupDialogViewModel ItemGroupDialogVM
@@ -35,9 +54,13 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         #endregion
 
+        #region ObservableCollection<ItemGroupViewModel> ItemGroupVMList 変更通知プロパティ
+
         public ObservableCollection<ItemGroupViewModel> ItemGroupVMList { get; private set; }
 
-        #region ItemGroupViewModel SelectedItemGroupVM
+        #endregion
+
+        #region ItemGroupViewModel SelectedItemGroupVM  変更通知プロパティ
 
         private ItemGroupViewModel _SelectedItemGroupVM;
         public ItemGroupViewModel SelectedItemGroupVM
@@ -55,20 +78,7 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         #endregion
 
-        //--- コンストラクタ
-
-        public ItemGroupManageViewModel()
-        {
-            ItemGroupVMList = ItemGroupViewModel.All();
-            if (ItemGroupVMList.Count > 0)
-            {
-                SelectedItemGroupVM = ItemGroupVMList.First();
-            }
-        }
-
-        //--- コマンド
-
-        #region ICommand ItemGroupDialogOpenCommand
+        #region ICommand ItemGroupDialogOpenCommand コマンド
 
         private ICommand _ItemGroupDialogOpenCommand;
         public ICommand ItemGroupDialogOpenCommand
@@ -90,5 +100,13 @@ namespace Fortaggle.ViewModels.ItemGroup
         }
 
         #endregion
+
+        //--- public メソッド
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
     }
 }

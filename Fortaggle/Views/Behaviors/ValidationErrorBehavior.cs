@@ -1,10 +1,14 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Interactivity;
-using System.Windows.Input;
+﻿/// <summary>
+/// http://okazuki.hatenablog.com/entry/20110118/1295338167
+/// </summary>
 
 namespace Fortaggle.Views.Behaviors
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Interactivity;
+    using System.Windows.Input;
+
     public class ValidationErrorBehavior : Behavior<DependencyObject>
     {
         // View内でのエラーの数

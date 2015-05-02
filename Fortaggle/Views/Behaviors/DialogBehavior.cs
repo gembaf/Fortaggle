@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// <summary>
+/// http://torokonbu.blogspot.jp/2011/12/mvvmmvvm-dialog-behavior.html
+/// http://mvvmdialogbehavior.codeplex.com/
+/// </summary>
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,7 +13,6 @@ namespace Fortaggle.Views.Behaviors
 {
     public class DialogBehavior : Behavior<UIElement>
     {
-
         public Object Content
         {
             get { return (Object)GetValue(ContentProperty); }

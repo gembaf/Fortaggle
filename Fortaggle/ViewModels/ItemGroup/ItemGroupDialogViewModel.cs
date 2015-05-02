@@ -1,21 +1,21 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Windows.Input;
-
-namespace Fortaggle.ViewModels.ItemGroup
+﻿namespace Fortaggle.ViewModels.ItemGroup
 {
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using System;
+    using System.Windows.Input;
+
     public class ItemGroupDialogViewModel : ViewModelBase
     {
-        //--- プロパティ
+        //--- 定数
 
-        public ItemGroupViewModel ItemGroupVM { get; private set; }
-
-        //--- private 変数
+        //--- フィールド
 
         private Action closeAction;
 
-        //--- コンストラクタ
+        //--- 静的コンストラクタ
+
+        //--- コンストラクタ (+2)
 
         public ItemGroupDialogViewModel(Action closeAction, ItemGroupViewModel itemGroupVM)
         {
@@ -28,9 +28,15 @@ namespace Fortaggle.ViewModels.ItemGroup
         {
         }
 
-        //--- コマンド
+        //--- プロパティ
 
-        #region ICommand SaveItemGroupCommand
+        #region ItemGroupViewModel ItemGroupVM プロパティ
+
+        public ItemGroupViewModel ItemGroupVM { get; private set; }
+
+        #endregion
+
+        #region ICommand SaveItemGroupCommand コマンド
 
         private ICommand _SaveItemGroupCommand;
         public ICommand SaveItemGroupCommand
@@ -52,5 +58,13 @@ namespace Fortaggle.ViewModels.ItemGroup
         }
 
         #endregion
+
+        //--- public メソッド
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
     }
 }

@@ -1,7 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-
-namespace Fortaggle.ViewModels.TagGroup
+﻿namespace Fortaggle.ViewModels.TagGroup
 {
+    using GalaSoft.MvvmLight;
+
     public class TagGroupListViewModel : ViewModelBase
     {
         //--- 静的プロパティ

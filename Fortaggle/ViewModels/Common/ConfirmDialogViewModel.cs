@@ -1,20 +1,20 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Windows.Input;
-
-namespace Fortaggle.ViewModels.Common
+﻿namespace Fortaggle.ViewModels.Common
 {
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using System;
+    using System.Windows.Input;
+
     public class ConfirmDialogViewModel : ViewModelBase
     {
-        //--- プロパティ
+        //--- 定数
 
-        public string Message { get; private set; }
-
-        //--- private 変数
+        //--- フィールド
 
         private Action acceptAction;
         private Action cancelAction;
+
+        //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
@@ -25,9 +25,15 @@ namespace Fortaggle.ViewModels.Common
             this.cancelAction = cancelAction;
         }
 
-        //--- コマンド
+        //--- プロパティ
 
-        #region ICommand AcceptCommand
+        #region string Message プロパティ
+
+        public string Message { get; private set; }
+
+    	#endregion
+
+        #region ICommand AcceptCommand コマンド
 
         private ICommand _AcceptCommand;
         public ICommand AcceptCommand
@@ -44,7 +50,7 @@ namespace Fortaggle.ViewModels.Common
 
         #endregion
 
-        #region ICommand CancelCommand
+        #region ICommand CancelCommand コマンド
 
         private ICommand _CancelCommand;
         public ICommand CancelCommand
@@ -60,5 +66,13 @@ namespace Fortaggle.ViewModels.Common
         }
 
         #endregion
+
+        //--- public メソッド
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
     }
 }

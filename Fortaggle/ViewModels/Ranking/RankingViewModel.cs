@@ -1,7 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-
-namespace Fortaggle.ViewModels.Ranking
+﻿namespace Fortaggle.ViewModels.Ranking
 {
+    using GalaSoft.MvvmLight;
+
     public class RankingViewModel : ViewModelBase
     {
         //--- 静的プロパティ

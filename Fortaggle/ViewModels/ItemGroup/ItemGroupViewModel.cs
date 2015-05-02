@@ -1,27 +1,54 @@
-﻿using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
-using System;
-using Fortaggle.Views.ValidationRules;
-using System.Windows.Input;
-using Fortaggle.ViewModels.Common;
-using GalaSoft.MvvmLight.Command;
-
-namespace Fortaggle.ViewModels.ItemGroup
+﻿namespace Fortaggle.ViewModels.ItemGroup
 {
     using Fortaggle.Models.Item;
+    using Fortaggle.ViewModels.Common;
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
 
     public class ItemGroupViewModel : ViewModelBase
     {
-        //--- private static 変数
+        //--- 定数
+
+        //--- フィールド
 
         private static ObservableCollection<ItemGroupViewModel> itemGroupVMList;
 
+        private ItemGroup itemGroup;
+
+        //--- 静的コンストラクタ
+
+        static ItemGroupViewModel()
+        {
+            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
+            foreach (ItemGroup e in ItemGroup.All())
+            {
+                itemGroupVMList.Add(new ItemGroupViewModel(e));
+            }
+        }
+
+        //--- コンストラクタ (+2)
+
+        public ItemGroupViewModel(ItemGroup itemGroup)
+        {
+            this.itemGroup = itemGroup;
+        }
+
+        public ItemGroupViewModel()
+            : this(new ItemGroup())
+        {
+        }
+
         //--- プロパティ
+
+        #region string Name 変更通知プロパティ
 
         public string Name
         {
             get { return itemGroup.Name; }
-            set {
+            set
+            {
                 if (itemGroup.Name != value)
                 {
                     itemGroup.Name = value;
@@ -31,7 +58,9 @@ namespace Fortaggle.ViewModels.ItemGroup
             }
         }
 
-        #region ConfirmDialogViewModel ConfirmDialogVM
+        #endregion
+
+        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
 
         private ConfirmDialogViewModel _ConfirmDialogVM;
         public ConfirmDialogViewModel ConfirmDialogVM
@@ -49,7 +78,7 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         #endregion
 
-        #region bool HasViewError
+        #region bool HasViewError 変更通知プロパティ
 
         private bool _HasViewError;
         public bool HasViewError
@@ -68,7 +97,7 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         #endregion
 
-        #region bool IsAccept
+        #region bool IsAccept 変更通知プロパティ
 
         private bool _IsAccept;
         public bool IsAccept
@@ -87,56 +116,7 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         #endregion
 
-        //--- private 変数
-
-        private ItemGroup itemGroup;
-
-        //--- static コンストラクタ
-
-        static ItemGroupViewModel()
-        {
-            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroup.All())
-            {
-                itemGroupVMList.Add(new ItemGroupViewModel(e));
-            }
-        }
-
-        //--- コンストラクタ
-
-        public ItemGroupViewModel(ItemGroup itemGroup)
-        {
-            this.itemGroup = itemGroup;
-        }
-
-        public ItemGroupViewModel()
-            : this(new ItemGroup())
-        {
-        }
-
-        //--- public static メソッド
-
-        public static ObservableCollection<ItemGroupViewModel> All()
-        {
-            return itemGroupVMList;
-        }
-
-        //--- public メソッド
-
-        public void CreateModel()
-        {
-            ItemGroup.Add(itemGroup);
-        }
-
-        public void RemoveSelf()
-        {
-            ItemGroup.Remove(itemGroup);
-            itemGroupVMList.Remove(this);
-        }
-
-        //--- コマンド
-
-        #region ICommand ConfirmDialogOpenCommand
+        #region ICommand ConfirmDialogOpenCommand コマンド
 
         private ICommand _ConfirmDialogOpenCommand;
         public ICommand ConfirmDialogOpenCommand
@@ -169,5 +149,29 @@ namespace Fortaggle.ViewModels.ItemGroup
         }
 
         #endregion
+
+        //--- public メソッド
+
+        public void CreateModel()
+        {
+            ItemGroup.Add(itemGroup);
+        }
+
+        public void RemoveSelf()
+        {
+            ItemGroup.Remove(itemGroup);
+            itemGroupVMList.Remove(this);
+        }
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
+
+        public static ObservableCollection<ItemGroupViewModel> All()
+        {
+            return itemGroupVMList;
+        }
     }
 }

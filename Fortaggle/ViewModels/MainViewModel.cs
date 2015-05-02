@@ -1,37 +1,19 @@
-﻿using Fortaggle.ViewModels.ItemGroup;
-using Fortaggle.ViewModels.Ranking;
-using Fortaggle.ViewModels.TagGroup;
-using GalaSoft.MvvmLight;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Fortaggle.ViewModels
+﻿namespace Fortaggle.ViewModels
 {
+    using Fortaggle.ViewModels.ItemGroup;
+    using Fortaggle.ViewModels.Ranking;
+    using Fortaggle.ViewModels.TagGroup;
+    using GalaSoft.MvvmLight;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class MainViewModel : ViewModelBase
     {
-        //--- 変更通知プロパティ
+        //--- 定数
 
-        #region ViewModelBase SelectedPage
+        //--- フィールド
 
-        private ViewModelBase _SelectedPage;
-        public ViewModelBase SelectedPage
-        {
-            get { return _SelectedPage; }
-            set
-            {
-                if (_SelectedPage != value)
-                {
-                    _SelectedPage = value;
-                    RaisePropertyChanged("SelectedPage");
-                }
-            }
-        }
-
-        #endregion
-
-        //--- プロパティ
-
-        public List<ViewModelBase> Pages { get; private set; }
+        //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
@@ -51,5 +33,39 @@ namespace Fortaggle.ViewModels
         {
             Fortaggle.Models.Item.ItemGroup.Save();
         }
+
+        //--- プロパティ
+
+        #region List<ViewModelBase> Pages プロパティ
+
+        public List<ViewModelBase> Pages { get; private set; }
+
+        #endregion
+
+        #region ViewModelBase SelectedPage 変更通知プロパティ
+
+        private ViewModelBase _SelectedPage;
+        public ViewModelBase SelectedPage
+        {
+            get { return _SelectedPage; }
+            set
+            {
+                if (_SelectedPage != value)
+                {
+                    _SelectedPage = value;
+                    RaisePropertyChanged("SelectedPage");
+                }
+            }
+        }
+
+        #endregion
+
+        //--- public メソッド
+
+        //--- protected メソッド
+
+        //--- private メソッド
+
+        //--- static メソッド
     }
 }
