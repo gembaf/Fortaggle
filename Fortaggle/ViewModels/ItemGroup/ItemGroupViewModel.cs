@@ -78,6 +78,24 @@
 
         #endregion
 
+        #region ItemGroupDialogViewModel ItemGroupDialogVM 変更通知プロパティ
+
+        private ItemGroupDialogViewModel _ItemGroupDialogVM;
+        public ItemGroupDialogViewModel ItemGroupDialogVM
+        {
+            get { return _ItemGroupDialogVM; }
+            set
+            {
+                if (_ItemGroupDialogVM != value)
+                {
+                    _ItemGroupDialogVM = value;
+                    RaisePropertyChanged("ItemGroupDialogVM");
+                }
+            }
+        }
+
+        #endregion
+
         #region bool HasViewError 変更通知プロパティ
 
         private bool _HasViewError;
@@ -150,11 +168,38 @@
 
         #endregion
 
+        #region ICommand EditItemGroupDialogOpenCommand コマンド
+
+        private ICommand _EditItemGroupDialogOpenCommand;
+        public ICommand EditItemGroupDialogOpenCommand
+        {
+            get
+            {
+                if (_EditItemGroupDialogOpenCommand == null)
+                {
+                    _EditItemGroupDialogOpenCommand = new RelayCommand(
+                        () =>
+                        {
+                            ItemGroupDialogVM = new ItemGroupDialogViewModel(
+                                () =>
+                                {
+                                    ItemGroupDialogVM = null;
+                                },
+                                this);
+                        });
+                }
+                return _EditItemGroupDialogOpenCommand;
+            }
+        }
+
+        #endregion
+
         //--- public メソッド
 
-        public void CreateModel()
+        public void AddSelf()
         {
             ItemGroup.Add(itemGroup);
+            itemGroupVMList.Add(this);
         }
 
         public void RemoveSelf()

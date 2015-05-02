@@ -87,16 +87,19 @@
             {
                 if (_ItemGroupDialogOpenCommand == null)
                 {
-                    _ItemGroupDialogOpenCommand = new RelayCommand(() => ItemGroupDialogVM = new ItemGroupDialogViewModel(CloseAction));
+                    _ItemGroupDialogOpenCommand = new RelayCommand(
+                        () =>
+                        {
+                            ItemGroupDialogVM = new ItemGroupDialogViewModel(
+                                () =>
+                                {
+                                    ItemGroupDialogVM.ItemGroupVM.AddSelf();
+                                    ItemGroupDialogVM = null;
+                                });
+                        });
                 }
                 return _ItemGroupDialogOpenCommand;
             }
-        }
-
-        private void CloseAction()
-        {
-            ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
-            ItemGroupDialogVM = null;
         }
 
         #endregion

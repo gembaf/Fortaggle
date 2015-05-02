@@ -10,6 +10,7 @@
 
     <i:Interaction.Behaviors>
         <behaviors:DialogBehavior Content="{Binding ConfirmDialogVM}" />
+        <behaviors:DialogBehavior Content="{Binding ItemGroupDialogVM}" />
     </i:Interaction.Behaviors>
 
     <DockPanel>
@@ -38,7 +39,8 @@
                         Command="{Binding ConfirmDialogOpenCommand}"
                         Grid.Row="1"
                         Grid.Column="2" />
-                <Button Content="hoge"
+                <Button Content="編集"
+                        Command="{Binding EditItemGroupDialogOpenCommand}"
                         Grid.Row="1"
                         Grid.Column="3" />
             </Grid>

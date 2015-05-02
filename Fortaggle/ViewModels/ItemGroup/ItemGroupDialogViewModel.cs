@@ -45,16 +45,10 @@
             {
                 if (_SaveItemGroupCommand == null)
                 {
-                    _SaveItemGroupCommand = new RelayCommand(CloseAction);
+                    _SaveItemGroupCommand = new RelayCommand(closeAction);
                 }
                 return _SaveItemGroupCommand;
             }
-        }
-
-        private void CloseAction()
-        {
-            ItemGroupVM.CreateModel();
-            closeAction();
         }
 
         #endregion
