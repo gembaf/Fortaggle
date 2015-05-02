@@ -183,9 +183,10 @@
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
+                                    this.Update(ItemGroupDialogVM.ItemGroupVM);
                                     ItemGroupDialogVM = null;
                                 },
-                                this);
+                                this.Clone());
                         });
                 }
                 return _EditItemGroupDialogOpenCommand;
@@ -206,6 +207,19 @@
         {
             ItemGroup.Remove(itemGroup);
             itemGroupVMList.Remove(this);
+        }
+
+        public void Update(ItemGroupViewModel itemGroupVM)
+        {
+            this.Name = itemGroupVM.Name;
+        }
+
+        public ItemGroupViewModel Clone()
+        {
+            return new ItemGroupViewModel()
+            { 
+                Name = this.Name
+            };
         }
 
         //--- protected メソッド
