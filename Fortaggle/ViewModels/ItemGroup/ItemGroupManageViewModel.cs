@@ -59,7 +59,7 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         public ItemGroupManageViewModel()
         {
-            ItemGroupVMList = ItemGroupViewModel.Create();
+            ItemGroupVMList = ItemGroupViewModel.All();
             if (ItemGroupVMList.Count > 0)
             {
                 SelectedItemGroupVM = ItemGroupVMList.First();

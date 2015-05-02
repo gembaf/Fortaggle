@@ -77,6 +77,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Item\ItemGroup.cs" />
     <Compile Include="Models\XML\XMLFileManager.cs" />
+    <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
@@ -86,6 +87,9 @@
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Behaviors\DialogBehavior.cs" />
     <Compile Include="Views\Behaviors\ValidationErrorBehavior.cs" />
+    <Compile Include="Views\Common\ConfirmDialog.xaml.cs">
+      <DependentUpon>ConfirmDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ItemGroup\ItemGroup.xaml.cs">
       <DependentUpon>ItemGroup.xaml</DependentUpon>
     </Compile>
@@ -125,6 +129,10 @@
     <Page Include="Themes\Office2010Blue\Theme.Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Common\ConfirmDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

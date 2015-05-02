@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System;
 using Fortaggle.Views.ValidationRules;
+using System.Windows.Input;
+using Fortaggle.ViewModels.Common;
+using GalaSoft.MvvmLight.Command;
 
 namespace Fortaggle.ViewModels.ItemGroup
 {
@@ -9,6 +12,10 @@ namespace Fortaggle.ViewModels.ItemGroup
 
     public class ItemGroupViewModel : ViewModelBase
     {
+        //--- private static 変数
+
+        private static ObservableCollection<ItemGroupViewModel> itemGroupVMList;
+
         //--- プロパティ
 
         public string Name
@@ -23,6 +30,24 @@ namespace Fortaggle.ViewModels.ItemGroup
                 }
             }
         }
+
+        #region ConfirmDialogViewModel ConfirmDialogVM
+
+        private ConfirmDialogViewModel _ConfirmDialogVM;
+        public ConfirmDialogViewModel ConfirmDialogVM
+        {
+            get { return _ConfirmDialogVM; }
+            set
+            {
+                if (_ConfirmDialogVM != value)
+                {
+                    _ConfirmDialogVM = value;
+                    RaisePropertyChanged("ConfirmDialogVM");
+                }
+            }
+        }
+
+        #endregion
 
         #region bool HasViewError
 
@@ -66,6 +91,17 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         private ItemGroup itemGroup;
 
+        //--- static コンストラクタ
+
+        static ItemGroupViewModel()
+        {
+            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
+            foreach (ItemGroup e in ItemGroup.All())
+            {
+                itemGroupVMList.Add(new ItemGroupViewModel(e));
+            }
+        }
+
         //--- コンストラクタ
 
         public ItemGroupViewModel(ItemGroup itemGroup)
@@ -80,14 +116,9 @@ namespace Fortaggle.ViewModels.ItemGroup
 
         //--- public static メソッド
 
-        public static ObservableCollection<ItemGroupViewModel> Create()
+        public static ObservableCollection<ItemGroupViewModel> All()
         {
-            var collections = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroup.All())
-            {
-                collections.Add(new ItemGroupViewModel(e));
-            }
-            return collections;
+            return itemGroupVMList;
         }
 
         //--- public メソッド
@@ -96,5 +127,47 @@ namespace Fortaggle.ViewModels.ItemGroup
         {
             ItemGroup.Add(itemGroup);
         }
+
+        public void RemoveSelf()
+        {
+            ItemGroup.Remove(itemGroup);
+            itemGroupVMList.Remove(this);
+        }
+
+        //--- コマンド
+
+        #region ICommand ConfirmDialogOpenCommand
+
+        private ICommand _ConfirmDialogOpenCommand;
+        public ICommand ConfirmDialogOpenCommand
+        {
+            get
+            {
+                if (_ConfirmDialogOpenCommand == null)
+                {
+                    _ConfirmDialogOpenCommand = new RelayCommand(
+                        () =>
+                        {
+                            ConfirmDialogVM = new ConfirmDialogViewModel(
+                                // Message
+                                itemGroup.Name + " を削除しますか？",
+                                // AcceptAction
+                                () =>
+                                {
+                                    RemoveSelf();
+                                    ConfirmDialogVM = null;
+                                },
+                                // CancelAction
+                                () =>
+                                {
+                                    ConfirmDialogVM = null;
+                                });
+                        });
+                }
+                return _ConfirmDialogOpenCommand;
+            }
+        }
+
+        #endregion
     }
 }

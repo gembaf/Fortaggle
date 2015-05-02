@@ -7,9 +7,11 @@
              xmlns:vm_itemgroup="clr-namespace:Fortaggle.ViewModels.ItemGroup"
              xmlns:vm_taggroup="clr-namespace:Fortaggle.ViewModels.TagGroup"
              xmlns:vm_ranking="clr-namespace:Fortaggle.ViewModels.Ranking"
+             xmlns:vm_common="clr-namespace:Fortaggle.ViewModels.Common"
              xmlns:view_itemgroup="clr-namespace:Fortaggle.Views.ItemGroup"
              xmlns:view_taggroup="clr-namespace:Fortaggle.Views.TagGroup"
              xmlns:view_ranking="clr-namespace:Fortaggle.Views.Ranking"
+             xmlns:view_common="clr-namespace:Fortaggle.Views.Common"
              StartupUri="Views/MainWindow.xaml"
              mc:Ignorable="d">
     
@@ -39,6 +41,11 @@
             <!--Ranking-->
             <DataTemplate DataType="{x:Type vm_ranking:RankingViewModel}">
                 <view_ranking:Ranking />
+            </DataTemplate>
+
+            <!--Common-->
+            <DataTemplate DataType="{x:Type vm_common:ConfirmDialogViewModel}">
+                <view_common:ConfirmDialog />
             </DataTemplate>
 
             <!--ThemeとSkinの適用-->

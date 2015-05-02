@@ -50,6 +50,11 @@ namespace Fortaggle.Models.Item
             itemGroupList.Add(itemGroup);
         }
 
+        public static void Remove(ItemGroup itemGroup)
+        {
+            itemGroupList.Remove(itemGroup);
+        }
+
         public static void Save()
         {
             XML.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
