@@ -41,6 +41,16 @@
 
         //--- public メソッド
 
+        public void Save()
+        {
+            itemGroupList.Add(this);
+        }
+
+        public void Remove()
+        {
+            itemGroupList.Remove(this);
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
@@ -52,17 +62,7 @@
             return itemGroupList;
         }
 
-        public static void Add(ItemGroup itemGroup)
-        {
-            itemGroupList.Add(itemGroup);
-        }
-
-        public static void Remove(ItemGroup itemGroup)
-        {
-            itemGroupList.Remove(itemGroup);
-        }
-
-        public static void Save()
+        public static void WriteXml()
         {
             XML.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
         }

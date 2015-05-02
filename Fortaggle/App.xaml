@@ -29,9 +29,6 @@
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupViewModel}">
-                <view_itemgroup:ItemGroup />
-            </DataTemplate>
 
             <!--TagGroup-->
             <DataTemplate DataType="{x:Type vm_taggroup:TagGroupListViewModel}">

@@ -90,9 +90,6 @@
     <Compile Include="Views\Common\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemGroup\ItemGroup.xaml.cs">
-      <DependentUpon>ItemGroup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ItemGroup\ItemGroupDialog.xaml.cs">
       <DependentUpon>ItemGroupDialog.xaml</DependentUpon>
     </Compile>
@@ -149,10 +146,6 @@
     <Page Include="Skins\OverrideTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ItemGroup\ItemGroup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemGroup\ItemGroupDialog.xaml">
       <SubType>Designer</SubType>

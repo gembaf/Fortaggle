@@ -1,5 +1,6 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
+    using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
@@ -39,6 +40,7 @@
         #region ItemGroupDialogViewModel ItemGroupDialogVM 変更通知プロパティ
 
         private ItemGroupDialogViewModel _ItemGroupDialogVM;
+
         public ItemGroupDialogViewModel ItemGroupDialogVM
         {
             get { return _ItemGroupDialogVM; }
@@ -54,6 +56,25 @@
 
         #endregion
 
+        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
+
+        private ConfirmDialogViewModel _ConfirmDialogVM;
+
+        public ConfirmDialogViewModel ConfirmDialogVM
+        {
+            get { return _ConfirmDialogVM; }
+            set
+            {
+                if (_ConfirmDialogVM != value)
+                {
+                    _ConfirmDialogVM = value;
+                    RaisePropertyChanged("ConfirmDialogVM");
+                }
+            }
+        }
+
+        #endregion
+
         #region ObservableCollection<ItemGroupViewModel> ItemGroupVMList 変更通知プロパティ
 
         public ObservableCollection<ItemGroupViewModel> ItemGroupVMList { get; private set; }
@@ -63,6 +84,7 @@
         #region ItemGroupViewModel SelectedItemGroupVM  変更通知プロパティ
 
         private ItemGroupViewModel _SelectedItemGroupVM;
+
         public ItemGroupViewModel SelectedItemGroupVM
         {
             get { return _SelectedItemGroupVM; }
@@ -71,6 +93,7 @@
                 if (_SelectedItemGroupVM != value)
                 {
                     _SelectedItemGroupVM = value;
+                    IsSelect = (value != null);
                     RaisePropertyChanged("SelectedItemGroupVM");
                 }
             }
@@ -78,27 +101,109 @@
 
         #endregion
 
-        #region ICommand ItemGroupDialogOpenCommand コマンド
+        #region bool IsSelect 変更通知プロパティ
 
-        private ICommand _ItemGroupDialogOpenCommand;
-        public ICommand ItemGroupDialogOpenCommand
+        private bool _IsSelect;
+
+        public bool IsSelect
+        {
+            get { return _IsSelect; }
+            set
+            {
+                if (_IsSelect != value)
+                {
+                    _IsSelect = value;
+                    RaisePropertyChanged("IsSelect");
+                }
+            }
+        }
+
+        #endregion
+
+        //--- コマンド
+
+        #region ICommand NewItemGroupDialogCommand コマンド
+
+        private ICommand _NewItemGroupDialogCommand;
+        public ICommand NewItemGroupDialogCommand
         {
             get
             {
-                if (_ItemGroupDialogOpenCommand == null)
+                if (_NewItemGroupDialogCommand == null)
                 {
-                    _ItemGroupDialogOpenCommand = new RelayCommand(
+                    _NewItemGroupDialogCommand = new RelayCommand(
                         () =>
                         {
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
-                                    ItemGroupDialogVM.ItemGroupVM.AddSelf();
+                                    ItemGroupDialogVM.ItemGroupVM.Save();
                                     ItemGroupDialogVM = null;
                                 });
                         });
                 }
-                return _ItemGroupDialogOpenCommand;
+                return _NewItemGroupDialogCommand;
+            }
+        }
+
+        #endregion
+
+        #region ICommand EditItemGroupDialogOpenCommand コマンド
+
+        private ICommand _EditItemGroupDialogCommand;
+        public ICommand EditItemGroupDialogCommand
+        {
+            get
+            {
+                if (_EditItemGroupDialogCommand == null)
+                {
+                    _EditItemGroupDialogCommand = new RelayCommand(
+                        () =>
+                        {
+                            ItemGroupDialogVM = new ItemGroupDialogViewModel(
+                                () =>
+                                {
+                                    SelectedItemGroupVM.Update(ItemGroupDialogVM.ItemGroupVM);
+                                    ItemGroupDialogVM = null;
+                                },
+                                SelectedItemGroupVM.Clone());
+                        });
+                }
+                return _EditItemGroupDialogCommand;
+            }
+        }
+
+        #endregion
+
+        #region ICommand DeleteItemGroupCommand コマンド
+
+        private ICommand _DeleteItemGroupCommand;
+        public ICommand DeleteItemGroupCommand
+        {
+            get
+            {
+                if (_DeleteItemGroupCommand == null)
+                {
+                    _DeleteItemGroupCommand = new RelayCommand(
+                        () =>
+                        {
+                            ConfirmDialogVM = new ConfirmDialogViewModel(
+                                // Message
+                                SelectedItemGroupVM.Name + " を削除しますか？",
+                                // AcceptAction
+                                () =>
+                                {
+                                    SelectedItemGroupVM.Remove();
+                                    ConfirmDialogVM = null;
+                                },
+                                // CancelAction
+                                () =>
+                                {
+                                    ConfirmDialogVM = null;
+                                });
+                        });
+                }
+                return _DeleteItemGroupCommand;
             }
         }
 

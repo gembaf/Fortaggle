@@ -1,11 +1,8 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
     using Fortaggle.Models.Item;
-    using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
-    using System.Windows.Input;
 
     public class ItemGroupViewModel : ViewModelBase
     {
@@ -60,42 +57,6 @@
 
         #endregion
 
-        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
-
-        private ConfirmDialogViewModel _ConfirmDialogVM;
-        public ConfirmDialogViewModel ConfirmDialogVM
-        {
-            get { return _ConfirmDialogVM; }
-            set
-            {
-                if (_ConfirmDialogVM != value)
-                {
-                    _ConfirmDialogVM = value;
-                    RaisePropertyChanged("ConfirmDialogVM");
-                }
-            }
-        }
-
-        #endregion
-
-        #region ItemGroupDialogViewModel ItemGroupDialogVM 変更通知プロパティ
-
-        private ItemGroupDialogViewModel _ItemGroupDialogVM;
-        public ItemGroupDialogViewModel ItemGroupDialogVM
-        {
-            get { return _ItemGroupDialogVM; }
-            set
-            {
-                if (_ItemGroupDialogVM != value)
-                {
-                    _ItemGroupDialogVM = value;
-                    RaisePropertyChanged("ItemGroupDialogVM");
-                }
-            }
-        }
-
-        #endregion
-
         #region bool HasViewError 変更通知プロパティ
 
         private bool _HasViewError;
@@ -134,78 +95,17 @@
 
         #endregion
 
-        #region ICommand ConfirmDialogOpenCommand コマンド
-
-        private ICommand _ConfirmDialogOpenCommand;
-        public ICommand ConfirmDialogOpenCommand
-        {
-            get
-            {
-                if (_ConfirmDialogOpenCommand == null)
-                {
-                    _ConfirmDialogOpenCommand = new RelayCommand(
-                        () =>
-                        {
-                            ConfirmDialogVM = new ConfirmDialogViewModel(
-                                // Message
-                                itemGroup.Name + " を削除しますか？",
-                                // AcceptAction
-                                () =>
-                                {
-                                    RemoveSelf();
-                                    ConfirmDialogVM = null;
-                                },
-                                // CancelAction
-                                () =>
-                                {
-                                    ConfirmDialogVM = null;
-                                });
-                        });
-                }
-                return _ConfirmDialogOpenCommand;
-            }
-        }
-
-        #endregion
-
-        #region ICommand EditItemGroupDialogOpenCommand コマンド
-
-        private ICommand _EditItemGroupDialogOpenCommand;
-        public ICommand EditItemGroupDialogOpenCommand
-        {
-            get
-            {
-                if (_EditItemGroupDialogOpenCommand == null)
-                {
-                    _EditItemGroupDialogOpenCommand = new RelayCommand(
-                        () =>
-                        {
-                            ItemGroupDialogVM = new ItemGroupDialogViewModel(
-                                () =>
-                                {
-                                    this.Update(ItemGroupDialogVM.ItemGroupVM);
-                                    ItemGroupDialogVM = null;
-                                },
-                                this.Clone());
-                        });
-                }
-                return _EditItemGroupDialogOpenCommand;
-            }
-        }
-
-        #endregion
-
         //--- public メソッド
 
-        public void AddSelf()
+        public void Save()
         {
-            ItemGroup.Add(itemGroup);
+            itemGroup.Save();
             itemGroupVMList.Add(this);
         }
 
-        public void RemoveSelf()
+        public void Remove()
         {
-            ItemGroup.Remove(itemGroup);
+            itemGroup.Remove();
             itemGroupVMList.Remove(this);
         }
 

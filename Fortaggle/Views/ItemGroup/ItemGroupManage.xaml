@@ -10,6 +10,7 @@
 
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemGroupDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ConfirmDialogVM}" />
     </i:Interaction.Behaviors>
 
     <Grid>
@@ -38,12 +39,45 @@
                              Background="AliceBlue">
 
                     <Button Content="アイテムグループ追加"
-                            Command="{Binding ItemGroupDialogOpenCommand}"/>
+                            Command="{Binding NewItemGroupDialogCommand}"/>
 
                 </UniformGrid>
             </Border>
 
-            <ContentControl Content="{Binding SelectedItemGroupVM}"/>
+            <Border DockPanel.Dock="Top"
+                    Style="{StaticResource BlackBorder}">
+                <Grid Background="AliceBlue"
+                      IsEnabled="{Binding IsSelect}">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
+                               FontSize="20"
+                               Padding="10,0,10,0"
+                               Grid.ColumnSpan="4"
+                               Grid.Row="0"/>
+                    <Button Content="削除"
+                            Command="{Binding DeleteItemGroupCommand}"
+                            Grid.Row="1"
+                            Grid.Column="2" />
+                    <Button Content="編集"
+                            Command="{Binding EditItemGroupDialogCommand}"
+                            Grid.Row="1"
+                            Grid.Column="3" />
+                </Grid>
+            </Border>
+
+            <TextBlock>hoge</TextBlock>
             
         </DockPanel>
     </Grid>
