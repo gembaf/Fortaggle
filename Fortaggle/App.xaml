@@ -4,10 +4,12 @@
              xmlns:vm="clr-namespace:Fortaggle.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm_item="clr-namespace:Fortaggle.ViewModels.Item"
              xmlns:vm_itemgroup="clr-namespace:Fortaggle.ViewModels.ItemGroup"
              xmlns:vm_taggroup="clr-namespace:Fortaggle.ViewModels.TagGroup"
              xmlns:vm_ranking="clr-namespace:Fortaggle.ViewModels.Ranking"
              xmlns:vm_common="clr-namespace:Fortaggle.ViewModels.Common"
+             xmlns:view_item="clr-namespace:Fortaggle.Views.Item"
              xmlns:view_itemgroup="clr-namespace:Fortaggle.Views.ItemGroup"
              xmlns:view_taggroup="clr-namespace:Fortaggle.Views.TagGroup"
              xmlns:view_ranking="clr-namespace:Fortaggle.Views.Ranking"
@@ -22,9 +24,14 @@
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
 
+            <!--Item-->
+            <DataTemplate DataType="{x:Type vm_item:ItemManageViewModel}">
+                <view_item:ItemManage />
+            </DataTemplate>
+
             <!--ItemGroup-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
-                <view_itemgroup:ItemGrouManage />
+                <view_itemgroup:ItemGroupManage />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />

@@ -81,6 +81,7 @@
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemManageViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranking\RankingViewModel.cs" />
     <Compile Include="ViewModels\TagGroup\TagGroupListViewModel.cs" />
@@ -95,6 +96,9 @@
     </Compile>
     <Compile Include="Views\ItemGroup\ItemGroupManage.xaml.cs">
       <DependentUpon>ItemGroupManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Item\ItemManage.xaml.cs">
+      <DependentUpon>ItemManage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Ranking\Ranking.xaml.cs">
       <DependentUpon>Ranking.xaml</DependentUpon>
@@ -128,6 +132,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Common\ConfirmDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Item\ItemManage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

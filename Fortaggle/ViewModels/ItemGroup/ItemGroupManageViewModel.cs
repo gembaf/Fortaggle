@@ -1,6 +1,7 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
     using Fortaggle.ViewModels.Common;
+    using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
@@ -94,6 +95,7 @@
                 {
                     _SelectedItemGroupVM = value;
                     IsSelect = (value != null);
+                    ItemManageVM = new ItemManageViewModel(value);
                     RaisePropertyChanged("SelectedItemGroupVM");
                 }
             }
@@ -114,6 +116,25 @@
                 {
                     _IsSelect = value;
                     RaisePropertyChanged("IsSelect");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ItemManageViewModel ItemManageVM 変更通知プロパティ
+
+        private ItemManageViewModel _ItemManageVM;
+
+        public ItemManageViewModel ItemManageVM
+        {
+            get { return _ItemManageVM; }
+            set
+            {
+                if (_ItemManageVM != value)
+                {
+                    _ItemManageVM = value;
+                    RaisePropertyChanged("ItemManageVM");
                 }
             }
         }

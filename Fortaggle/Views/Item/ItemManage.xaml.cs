@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fortaggle.Views.ItemGroup
+namespace Fortaggle.Views.Item
 {
     /// <summary>
-    /// ItemGroupManage.xaml の相互作用ロジック
+    /// ItemManage.xaml の相互作用ロジック
     /// </summary>
-    public partial class ItemGroupManage : UserControl
+    public partial class ItemManage : UserControl
     {
-        public ItemGroupManage()
+        public ItemManage()
         {
             InitializeComponent();
         }
