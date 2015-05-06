@@ -21,6 +21,7 @@
 
         <ListBox ItemsSource="{Binding ItemGroupVMList}"
                  SelectedItem="{Binding SelectedItemGroupVM}"
+                 Style="{StaticResource WhiteListBox}"
                  Grid.Column="0">
 
             <ListBox.ItemTemplate>
@@ -36,7 +37,7 @@
                     DockPanel.Dock="Top">
                 <UniformGrid Columns="4"
                              Height="40"
-                             Background="AliceBlue">
+                             Background="White">
 
                     <Button Content="アイテムグループ追加"
                             Command="{Binding NewItemGroupDialogCommand}"/>
@@ -46,7 +47,7 @@
 
             <Border DockPanel.Dock="Top"
                     Style="{StaticResource BlackBorder}">
-                <Grid Background="AliceBlue"
+                <Grid Background="White"
                       IsEnabled="{Binding IsSelect}">
 
                     <Grid.RowDefinitions>
@@ -63,15 +64,18 @@
 
                     <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
                                FontSize="20"
+                               Foreground="Green"
                                Padding="10,0,10,0"
                                Grid.ColumnSpan="4"
                                Grid.Row="0"/>
                     <Button Content="削除"
                             Command="{Binding DeleteItemGroupCommand}"
+                            Style="{StaticResource DeleteButton}"
                             Grid.Row="1"
                             Grid.Column="2" />
                     <Button Content="編集"
                             Command="{Binding EditItemGroupDialogCommand}"
+                            Style="{StaticResource EditButton}"
                             Grid.Row="1"
                             Grid.Column="3" />
                 </Grid>
