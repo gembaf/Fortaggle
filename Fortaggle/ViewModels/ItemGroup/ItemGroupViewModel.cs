@@ -1,6 +1,6 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
-    using Fortaggle.Models.Item;
+    using Fortaggle.Models.ItemGroup;
     using GalaSoft.MvvmLight;
     using System.Collections.ObjectModel;
 
@@ -19,7 +19,7 @@
         static ItemGroupViewModel()
         {
             itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroup.All())
+            foreach (ItemGroup e in ItemGroupService.All())
             {
                 itemGroupVMList.Add(new ItemGroupViewModel(e));
             }
@@ -99,13 +99,13 @@
 
         public void Save()
         {
-            itemGroup.Save();
+            ItemGroupService.Add(itemGroup);
             itemGroupVMList.Add(this);
         }
 
         public void Remove()
         {
-            itemGroup.Remove();
+            ItemGroupService.Remove(itemGroup);
             itemGroupVMList.Remove(this);
         }
 

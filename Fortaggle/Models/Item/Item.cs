@@ -1,4 +1,4 @@
-﻿namespace Fortaggle.Models.Item
+﻿namespace Fortaggle.Models.ItemGroup
 {
     using System;
     using System.Collections.Generic;

@@ -75,8 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ItemGroup\ItemGroupService.cs" />
     <Compile Include="Models\Item\Item.cs" />
-    <Compile Include="Models\Item\ItemGroup.cs" />
+    <Compile Include="Models\ItemGroup\ItemGroup.cs" />
+    <Compile Include="Models\Item\ItemService.cs" />
     <Compile Include="Models\XML\XMLFileManager.cs" />
     <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />

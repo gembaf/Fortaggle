@@ -31,7 +31,7 @@
 
         ~MainViewModel()
         {
-            Fortaggle.Models.Item.ItemGroup.WriteXml();
+            Fortaggle.Models.ItemGroup.ItemGroupService.WriteXml();
         }
 
         //--- プロパティ
