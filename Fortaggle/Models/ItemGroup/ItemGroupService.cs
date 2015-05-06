@@ -10,6 +10,7 @@
 
         //--- フィールド
 
+        [System.Xml.Serialization.XmlElement("ItemGroup")]
         private static List<ItemGroup> itemGroupList;
 
         //--- 静的コンストラクタ

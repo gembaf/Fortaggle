@@ -1,6 +1,7 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
     using Fortaggle.Models.ItemGroup;
+    using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using System.Collections.ObjectModel;
 
@@ -53,6 +54,15 @@
                     RaisePropertyChanged("Name");
                 }
             }
+        }
+
+        #endregion
+
+        #region ObservableCollection<ItemViewModel> ItemVMList 変更通知プロパティ
+
+        public ObservableCollection<ItemViewModel> ItemVMList
+        {
+            get { return ItemViewModel.Create(itemGroup.ItemList); }
         }
 
         #endregion

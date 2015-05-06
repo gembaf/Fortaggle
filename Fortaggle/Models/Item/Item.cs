@@ -22,6 +22,7 @@
 
         //--- プロパティ
 
+        [System.Xml.Serialization.XmlElement("Name")]
         public string Name { get; set; }
 
         //--- public メソッド
@@ -31,20 +32,5 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static List<Item> All()
-        {
-            return new List<Item>()
-            {
-                new Item("hoge"),
-                new Item("foo"),
-                new Item("bar"),
-                new Item("piyo"),
-                new Item("hoge"),
-                new Item("foo"),
-                new Item("bar"),
-                new Item("piyo"),
-            };
-        }
     }
 }

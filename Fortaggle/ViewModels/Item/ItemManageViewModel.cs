@@ -19,7 +19,7 @@
         public ItemManageViewModel(ItemGroupViewModel itemGroupVM)
         {
             this.itemGroupVM = itemGroupVM;
-            ItemVMList = ItemViewModel.All();
+            ItemVMList = itemGroupVM.ItemVMList;
         }
 
         //--- プロパティ

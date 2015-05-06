@@ -2,6 +2,7 @@
 {
     using Fortaggle.Models.ItemGroup;
     using GalaSoft.MvvmLight;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
     public class ItemViewModel : ViewModelBase
@@ -10,20 +11,9 @@
 
         //--- フィールド
 
-        private static ObservableCollection<ItemViewModel> itemVMList;
-
         private Item item;
 
         //--- 静的コンストラクタ
-
-        static ItemViewModel()
-        {
-            itemVMList = new ObservableCollection<ItemViewModel>();
-            foreach (Item e in Item.All())
-            {
-                itemVMList.Add(new ItemViewModel(e));
-            }
-        }
 
         //--- コンストラクタ
 
@@ -59,8 +49,13 @@
 
         //--- static メソッド
 
-        public static ObservableCollection<ItemViewModel> All()
+        public static ObservableCollection<ItemViewModel> Create(List<Item> itemList)
         {
+            var itemVMList = new ObservableCollection<ItemViewModel>();
+            foreach (Item e in itemList)
+            {
+                itemVMList.Add(new ItemViewModel(e));
+            }
             return itemVMList;
         }
     }
