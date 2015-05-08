@@ -94,8 +94,15 @@
                 if (_SelectedItemGroupVM != value)
                 {
                     _SelectedItemGroupVM = value;
-                    IsSelect = (value != null);
-                    ItemManageVM = new ItemManageViewModel(value);
+                    if (value != null)
+                    {
+                        IsSelect = true;
+                        ItemManageVM = new ItemManageViewModel(value);
+                    }
+                    else
+                    {
+                        IsSelect = false;
+                    }
                     RaisePropertyChanged("SelectedItemGroupVM");
                 }
             }

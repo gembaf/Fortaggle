@@ -20,9 +20,13 @@
             Name = name;
         }
 
+        public Item()
+            : this(null)
+        {
+        }
+
         //--- プロパティ
 
-        [System.Xml.Serialization.XmlElement("Name")]
         public string Name { get; set; }
 
         //--- public メソッド
