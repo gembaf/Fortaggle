@@ -69,6 +69,7 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
+                                    itemGroupVM.AddItemVM(ItemDialogVM.ItemVM);
                                     ItemDialogVM = null;
                                 });
                         });

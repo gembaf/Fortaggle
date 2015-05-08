@@ -7,7 +7,8 @@
              xmlns:rules="clr-namespace:Fortaggle.Views.ValidationRules"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="100" d:DesignWidth="400"
+             MinHeight="100" MinWidth="400">
     
     <i:Interaction.Behaviors>
         <behaviors:WindowStyleBehavior>
@@ -53,7 +54,7 @@
         </TextBox>
 
         <Button Content="保存"
-                Command="{Binding SaveItemGroupCommand}"
+                Command="{Binding SaveItemCommand}"
                 Grid.Column="1"
                 Grid.Row="1"/>
         <!--<Button Content="保存"

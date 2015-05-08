@@ -48,6 +48,11 @@
 
         //--- public メソッド
 
+        public void Save(ItemGroup itemGroup)
+        {
+            itemGroup.AddItem(item);
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

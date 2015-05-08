@@ -31,6 +31,7 @@
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
+            ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
         }
 
         public ItemGroupViewModel()
@@ -60,10 +61,7 @@
 
         #region ObservableCollection<ItemViewModel> ItemVMList 変更通知プロパティ
 
-        public ObservableCollection<ItemViewModel> ItemVMList
-        {
-            get { return ItemViewModel.Create(itemGroup.ItemList); }
-        }
+        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
 
         #endregion
 
@@ -130,6 +128,12 @@
             { 
                 Name = this.Name
             };
+        }
+
+        public void AddItemVM(ItemViewModel itemVM)
+        {
+            itemVM.Save(itemGroup);
+            ItemVMList.Add(itemVM);
         }
 
         //--- protected メソッド
