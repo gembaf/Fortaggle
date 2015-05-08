@@ -10,7 +10,7 @@
 
         //--- 静的コンストラクタ
 
-        //--- コンストラクタ (+2)
+        //--- コンストラクタ (+1)
 
         public ItemGroup(string name)
         {
@@ -31,10 +31,10 @@
 
         //--- public メソッド
 
-        //public void AddItem(Item item)
-        //{
-        //    ItemList.Add(item);
-        //}
+        public void AddItem(Item item)
+        {
+            ItemList.Add(item);
+        }
 
         //--- protected メソッド
 

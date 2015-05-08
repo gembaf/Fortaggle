@@ -15,11 +15,16 @@
 
         //--- 静的コンストラクタ
 
-        //--- コンストラクタ
+        //--- コンストラクタ (+1)
 
         public ItemViewModel(Item item)
         {
             this.item = item;
+        }
+
+        public ItemViewModel()
+            : this(new Item())
+        {
         }
 
         //--- プロパティ

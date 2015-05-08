@@ -153,6 +153,7 @@
         #region ICommand NewItemGroupDialogCommand コマンド
 
         private ICommand _NewItemGroupDialogCommand;
+
         public ICommand NewItemGroupDialogCommand
         {
             get
@@ -179,6 +180,7 @@
         #region ICommand EditItemGroupDialogOpenCommand コマンド
 
         private ICommand _EditItemGroupDialogCommand;
+
         public ICommand EditItemGroupDialogCommand
         {
             get
@@ -206,6 +208,7 @@
         #region ICommand DeleteItemGroupCommand コマンド
 
         private ICommand _DeleteItemGroupCommand;
+
         public ICommand DeleteItemGroupCommand
         {
             get

@@ -3,15 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:behavior="clr-namespace:Fortaggle.Views.Behaviors"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="700">
-    
+
+    <i:Interaction.Behaviors>
+        <behavior:DialogBehavior Content="{Binding ItemDialogVM}" />
+    </i:Interaction.Behaviors>
+
     <Border Style="{StaticResource BlackBorder}">
         <DockPanel>
             <UniformGrid Columns="4"
                          Height="40"
                          DockPanel.Dock="Top">
-                <Button Content="アイテム追加"></Button>
+                <Button Content="アイテム追加"
+                        Command="{Binding NewItemDialogCommand}"/>
             </UniformGrid>
 
             <ListBox ItemsSource="{Binding ItemVMList}"

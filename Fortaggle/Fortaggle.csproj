@@ -83,6 +83,7 @@
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemDialogViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemManageViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -99,6 +100,9 @@
     </Compile>
     <Compile Include="Views\ItemGroup\ItemGroupManage.xaml.cs">
       <DependentUpon>ItemGroupManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Item\ItemDialog.xaml.cs">
+      <DependentUpon>ItemDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Item\ItemManage.xaml.cs">
       <DependentUpon>ItemManage.xaml</DependentUpon>
@@ -135,6 +139,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Common\ConfirmDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Item\ItemDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
