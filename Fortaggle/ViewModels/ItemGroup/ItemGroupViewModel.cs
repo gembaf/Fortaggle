@@ -26,7 +26,7 @@
             }
         }
 
-        //--- コンストラクタ (+2)
+        //--- コンストラクタ (+1)
 
         public ItemGroupViewModel(ItemGroup itemGroup)
         {

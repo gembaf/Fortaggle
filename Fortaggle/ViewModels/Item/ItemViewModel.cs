@@ -39,9 +39,48 @@
                 if (item.Name != value)
                 {
                     item.Name = value;
+                    IsAccept = !HasViewError;
                     RaisePropertyChanged("Name");
                 }
             }
+        }
+
+        #endregion
+
+        #region bool HasViewError 変更通知プロパティ
+
+        private bool _HasViewError;
+        public bool HasViewError
+        {
+            get { return _HasViewError; }
+            set
+            {
+                if (_HasViewError != value)
+                {
+                    _HasViewError = value;
+                    IsAccept = !value;
+                    RaisePropertyChanged("HasViewError");
+                }
+            }
+        }
+
+        #endregion
+
+        #region bool IsAccept 変更通知プロパティ
+
+        private bool _IsAccept;
+        public bool IsAccept
+        {
+            get { return _IsAccept; }
+            set
+            {
+                if (_IsAccept != value)
+                {
+                    _IsAccept = value;
+                    RaisePropertyChanged("IsAccept");
+                }
+            }
+
         }
 
         #endregion

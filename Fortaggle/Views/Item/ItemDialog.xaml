@@ -14,13 +14,13 @@
         <behaviors:WindowStyleBehavior>
             <behaviors:WindowStyleBehavior.Style>
                 <Style TargetType="Window">
-                    <Setter Property="Title" Value="アイテムグループ" />
+                    <Setter Property="Title" Value="アイテム" />
                     <Setter Property="SizeToContent" Value="WidthAndHeight" />
                 </Style>
             </behaviors:WindowStyleBehavior.Style>
         </behaviors:WindowStyleBehavior>
 
-        <!--<behaviors:ValidationErrorBehavior HasViewError="{Binding ItemGroupVM.HasViewError, Mode=OneWayToSource}" />-->
+        <behaviors:ValidationErrorBehavior HasViewError="{Binding ItemVM.HasViewError, Mode=OneWayToSource}" />
     </i:Interaction.Behaviors>
 
     <Grid Margin="5">
@@ -45,9 +45,9 @@
                          UpdateSourceTrigger="PropertyChanged"
                          ValidatesOnExceptions="True"
                          NotifyOnValidationError="True">
-                    <!--<Binding.ValidationRules>
+                    <Binding.ValidationRules>
                         <rules:TextBoxValidationRule CanEmpty="False" />
-                    </Binding.ValidationRules>-->
+                    </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
 
@@ -55,12 +55,8 @@
 
         <Button Content="保存"
                 Command="{Binding SaveItemCommand}"
+                IsEnabled="{Binding ItemVM.IsAccept, FallbackValue='False'}"
                 Grid.Column="1"
                 Grid.Row="1"/>
-        <!--<Button Content="保存"
-                Command="{Binding SaveItemGroupCommand}"
-                IsEnabled="{Binding ItemGroupVM.IsAccept, FallbackValue='False'}"
-                Grid.Column="1"
-                Grid.Row="1"/>-->
     </Grid>
 </UserControl>
