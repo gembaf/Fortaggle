@@ -26,6 +26,8 @@
 
     <!--ListBox-->
     <Style x:Key="WhiteListBox" TargetType="ListBox" BasedOn="{StaticResource {x:Type ListBox}}">
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="0.3" />
         <Setter Property="Background" Value="White" />
     </Style>
 
