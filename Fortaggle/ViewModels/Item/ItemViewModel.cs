@@ -47,6 +47,23 @@
 
         #endregion
 
+        #region string FolderPath 変更通知プロパティ
+
+        public string FolderPath
+        {
+            get { return item.FolderPath; }
+            set
+            {
+                if (item.FolderPath != value)
+                {
+                    item.FolderPath = value;
+                    RaisePropertyChanged("FolderPath");
+                }
+            }
+        }
+
+        #endregion
+
         #region bool HasViewError 変更通知プロパティ
 
         private bool _HasViewError;

@@ -29,6 +29,8 @@
 
         public string Name { get; set; }
 
+        public string FolderPath { get; set; }
+
         //--- public メソッド
 
         //--- protected メソッド

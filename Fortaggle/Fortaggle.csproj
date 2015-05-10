@@ -52,6 +52,7 @@
     <Reference Include="System.Windows.Controls.Layout.Toolkit">
       <HintPath>..\packages\Infragistics.Themes.Office2010Blue.Wpf.1.0.0\lib\net40\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.0.2.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -80,6 +81,7 @@
     <Compile Include="Models\ItemGroup\ItemGroup.cs" />
     <Compile Include="Models\XML\XMLFileManager.cs" />
     <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
+    <Compile Include="ViewModels\Common\FolderBrowserDialog.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
