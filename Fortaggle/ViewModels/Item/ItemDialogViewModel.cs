@@ -115,9 +115,9 @@
         {
             get
             {
-                if (_SetExecuteFilePathCommand == null)
+                if (_SetFolderPathCommand == null)
                 {
-                    _SetExecuteFilePathCommand = new RelayCommand<object>(
+                    _SetFolderPathCommand = new RelayCommand<object>(
                         (parameter) =>
                         {
                             // var files = parameter as FileInfo[];
@@ -125,7 +125,7 @@
                             ItemVM.FolderPath = files[0];
                         });
                 }
-                return _SetExecuteFilePathCommand;
+                return _SetFolderPathCommand;
             }
         }
 
