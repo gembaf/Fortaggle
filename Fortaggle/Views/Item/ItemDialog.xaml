@@ -31,7 +31,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -59,27 +59,36 @@
                    Style="{StaticResource HeaderStyle}"
                    Grid.Column="0"
                    Grid.Row="1"/>
-        <UniformGrid Rows="2"
-                     Grid.Column="1"
-                     Grid.Row="1">
+        <Border AllowDrop="True"
+                Grid.Column="1"
+                Grid.Row="1">
 
-            <TextBox Grid.Column="1"
-                     Grid.Row="0">
-                <TextBox.Text>
-                    <Binding Path="ItemVM.FolderPath"
-                             UpdateSourceTrigger="PropertyChanged"
-                             NotifyOnValidationError="True">
-                        <Binding.ValidationRules>
-                            <rules:TextBoxValidationRule CanEmpty="False"
-                                                         ValidatesOnTargetUpdated="True"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-            <Button Content="フォルダの選択"
-                    Command="{Binding FolderBrowserDialogCommand}" />
+            <i:Interaction.Behaviors>
+                <behaviors:FileDropBehavior TargetCommand="{Binding SetFolderPathCommand}"
+                                            HighlightBackground="AliceBlue"
+                                            HighlightForeground="White"/>
+            </i:Interaction.Behaviors>
 
-        </UniformGrid>
+            <StackPanel VerticalAlignment="Center">
+
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="ItemVM.FolderPath"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <rules:TextBoxValidationRule CanEmpty="False"
+                                                             ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button Content="フォルダの選択"
+                        Command="{Binding FolderBrowserDialogCommand}" />
+
+            </StackPanel>
+
+        </Border>
 
         <!--保存ボタン-->
         <Button Content="保存"

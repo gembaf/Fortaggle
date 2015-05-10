@@ -81,6 +81,30 @@
 
         #endregion
 
+        #region ICommand SetFolderPathCommand コマンド
+
+        private ICommand _SetFolderPathCommand;
+
+        public ICommand SetFolderPathCommand
+        {
+            get
+            {
+                if (_SetFolderPathCommand == null)
+                {
+                    _SetFolderPathCommand = new RelayCommand<object>(
+                        (parameter) =>
+                        {
+                            // var files = parameter as FileInfo[];
+                            var files = parameter as string[];
+                            ItemVM.FolderPath = files[0];
+                        });
+                }
+                return _SetFolderPathCommand;
+            }
+        }
+
+        #endregion
+
         //--- public メソッド
 
         //--- protected メソッド

@@ -93,6 +93,7 @@
     <Compile Include="ViewModels\TagGroup\TagGroupListViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Behaviors\DialogBehavior.cs" />
+    <Compile Include="Views\Behaviors\FileDropBehavior.cs" />
     <Compile Include="Views\Behaviors\ValidationErrorBehavior.cs" />
     <Compile Include="Views\Common\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
