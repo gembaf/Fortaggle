@@ -81,6 +81,32 @@
 
         #endregion
 
+        #region ICommand OpenFileDialogCommand コマンド
+
+        private ICommand _OpenFileDialogCommand;
+
+        public ICommand OpenFileDialogCommand
+        {
+            get
+            {
+                if (_OpenFileDialogCommand == null)
+                {
+                    _OpenFileDialogCommand = new RelayCommand(
+                        () =>
+                        {
+                            var dialog = new System.Windows.Forms.OpenFileDialog();
+                            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            {
+                                ItemVM.ExecuteFilePath = dialog.FileName;
+                            }
+                        });
+                }
+                return _OpenFileDialogCommand;
+            }
+        }
+
+        #endregion
+
         #region ICommand SetFolderPathCommand コマンド
 
         private ICommand _SetFolderPathCommand;
@@ -89,9 +115,9 @@
         {
             get
             {
-                if (_SetFolderPathCommand == null)
+                if (_SetExecuteFilePathCommand == null)
                 {
-                    _SetFolderPathCommand = new RelayCommand<object>(
+                    _SetExecuteFilePathCommand = new RelayCommand<object>(
                         (parameter) =>
                         {
                             // var files = parameter as FileInfo[];
@@ -99,7 +125,31 @@
                             ItemVM.FolderPath = files[0];
                         });
                 }
-                return _SetFolderPathCommand;
+                return _SetExecuteFilePathCommand;
+            }
+        }
+
+        #endregion
+
+        #region ICommand SetExecuteFilePathCommand コマンド
+
+        private ICommand _SetExecuteFilePathCommand;
+
+        public ICommand SetExecuteFilePathCommand
+        {
+            get
+            {
+                if (_SetExecuteFilePathCommand == null)
+                {
+                    _SetExecuteFilePathCommand = new RelayCommand<object>(
+                        (parameter) =>
+                        {
+                            // var files = parameter as FileInfo[];
+                            var files = parameter as string[];
+                            ItemVM.ExecuteFilePath = files[0];
+                        });
+                }
+                return _SetExecuteFilePathCommand;
             }
         }
 

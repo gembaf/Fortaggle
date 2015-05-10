@@ -8,7 +8,8 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="400"
-             MinHeight="300" MinWidth="400">
+             MinHeight="300" MinWidth="400"
+             Background="White">
     
     <i:Interaction.Behaviors>
         <behaviors:WindowStyleBehavior>
@@ -30,6 +31,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -62,15 +64,12 @@
         <Border AllowDrop="True"
                 Grid.Column="1"
                 Grid.Row="1">
-
             <i:Interaction.Behaviors>
                 <behaviors:FileDropBehavior TargetCommand="{Binding SetFolderPathCommand}"
                                             HighlightBackground="AliceBlue"
                                             HighlightForeground="White"/>
             </i:Interaction.Behaviors>
-
             <StackPanel VerticalAlignment="Center">
-
                 <TextBox>
                     <TextBox.Text>
                         <Binding Path="ItemVM.FolderPath"
@@ -85,15 +84,44 @@
                 </TextBox>
                 <Button Content="フォルダの選択"
                         Command="{Binding FolderBrowserDialogCommand}" />
-
             </StackPanel>
+        </Border>
 
+        <!--ExecuteFilePath-->
+        <TextBlock Text="実行ファイルパス"
+                   Style="{StaticResource HeaderStyle}"
+                   Grid.Column="0"
+                   Grid.Row="2"/>
+        <Border AllowDrop="True"
+                Grid.Column="1"
+                Grid.Row="2">
+            <i:Interaction.Behaviors>
+                <behaviors:FileDropBehavior TargetCommand="{Binding SetExecuteFilePathCommand}"
+                                            HighlightBackground="AliceBlue"
+                                            HighlightForeground="White"/>
+            </i:Interaction.Behaviors>
+            <StackPanel VerticalAlignment="Center">
+                <TextBox>
+                    <TextBox.Text>
+                        <Binding Path="ItemVM.ExecuteFilePath"
+                                 UpdateSourceTrigger="PropertyChanged"
+                                 NotifyOnValidationError="True">
+                            <Binding.ValidationRules>
+                                <rules:TextBoxValidationRule CanEmpty="False"
+                                                             ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button Content="実行ファイルの選択"
+                        Command="{Binding OpenFileDialogCommand}" />
+            </StackPanel>
         </Border>
 
         <!--保存ボタン-->
         <Button Content="保存"
                 Command="{Binding SaveItemCommand}"
                 Grid.Column="1"
-                Grid.Row="2"/>
+                Grid.Row="3"/>
     </Grid>
 </UserControl>

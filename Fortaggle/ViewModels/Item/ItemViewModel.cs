@@ -63,6 +63,23 @@
 
         #endregion
 
+        #region string FolderPath 変更通知プロパティ
+
+        public string ExecuteFilePath
+        {
+            get { return item.ExecuteFilePath; }
+            set
+            {
+                if (item.ExecuteFilePath != value)
+                {
+                    item.ExecuteFilePath = value;
+                    RaisePropertyChanged("ExecuteFilePath");
+                }
+            }
+        }
+
+        #endregion
+
         #region bool HasViewError 変更通知プロパティ
 
         private bool _HasViewError;

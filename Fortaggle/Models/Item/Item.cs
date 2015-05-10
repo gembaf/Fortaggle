@@ -31,6 +31,8 @@
 
         public string FolderPath { get; set; }
 
+        public string ExecuteFilePath { get; set; }
+
         //--- public メソッド
 
         //--- protected メソッド
