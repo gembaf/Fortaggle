@@ -45,10 +45,10 @@
             <TextBox.Text>
                 <Binding Path="ItemVM.Name"
                          UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnExceptions="True"
                          NotifyOnValidationError="True">
                     <Binding.ValidationRules>
-                        <rules:TextBoxValidationRule CanEmpty="False" />
+                        <rules:TextBoxValidationRule CanEmpty="False"
+                                                     ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -68,10 +68,10 @@
                 <TextBox.Text>
                     <Binding Path="ItemVM.FolderPath"
                              UpdateSourceTrigger="PropertyChanged"
-                             ValidatesOnExceptions="True"
                              NotifyOnValidationError="True">
                         <Binding.ValidationRules>
-                            <rules:TextBoxValidationRule CanEmpty="False" />
+                            <rules:TextBoxValidationRule CanEmpty="False"
+                                                         ValidatesOnTargetUpdated="True"/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -84,7 +84,6 @@
         <!--保存ボタン-->
         <Button Content="保存"
                 Command="{Binding SaveItemCommand}"
-                IsEnabled="{Binding ItemVM.IsAccept, FallbackValue='False'}"
                 Grid.Column="1"
                 Grid.Row="2"/>
     </Grid>

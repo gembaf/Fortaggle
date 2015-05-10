@@ -47,13 +47,15 @@
             {
                 if (_SaveItemCommand == null)
                 {
-                    _SaveItemCommand = new RelayCommand(closeAction);
+                    _SaveItemCommand = new RelayCommand(closeAction, () => !ItemVM.HasViewError);
                 }
                 return _SaveItemCommand;
             }
         }
 
         #endregion
+
+        #region ICommand FolderBrowserDialogCommand コマンド
 
         private ICommand _FolderBrowserDialogCommand;
 
@@ -76,6 +78,8 @@
                 return _FolderBrowserDialogCommand;
             }
         }
+
+        #endregion
 
         //--- public メソッド
 

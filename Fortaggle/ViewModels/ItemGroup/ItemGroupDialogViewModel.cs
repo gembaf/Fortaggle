@@ -45,7 +45,7 @@
             {
                 if (_SaveItemGroupCommand == null)
                 {
-                    _SaveItemGroupCommand = new RelayCommand(closeAction);
+                    _SaveItemGroupCommand = new RelayCommand(closeAction, () => !ItemGroupVM.HasViewError);
                 }
                 return _SaveItemGroupCommand;
             }

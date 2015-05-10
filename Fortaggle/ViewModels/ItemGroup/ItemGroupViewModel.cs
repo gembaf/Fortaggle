@@ -51,7 +51,6 @@
                 if (itemGroup.Name != value)
                 {
                     itemGroup.Name = value;
-                    IsAccept = !HasViewError;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -76,29 +75,9 @@
                 if (_HasViewError != value)
                 {
                     _HasViewError = value;
-                    IsAccept = !value;
                     RaisePropertyChanged("HasViewError");
                 }
             }
-        }
-
-        #endregion
-
-        #region bool IsAccept 変更通知プロパティ
-
-        private bool _IsAccept;
-        public bool IsAccept
-        {
-            get { return _IsAccept; }
-            set
-            {
-                if (_IsAccept != value)
-                {
-                    _IsAccept = value;
-                    RaisePropertyChanged("IsAccept");
-                }
-            }
-
         }
 
         #endregion

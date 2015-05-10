@@ -25,7 +25,7 @@ namespace Fortaggle.Views.ValidationRules
         {
             var v = value as String;
 
-            if (CanEmpty == false && v == "")
+            if (CanEmpty == false && String.IsNullOrWhiteSpace(v))
             {
                 return new ValidationResult(false, "必須入力です");
             }

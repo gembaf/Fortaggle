@@ -43,10 +43,10 @@
             <TextBox.Text>
                 <Binding Path="ItemGroupVM.Name"
                          UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnExceptions="True"
                          NotifyOnValidationError="True">
                     <Binding.ValidationRules>
-                        <rules:TextBoxValidationRule CanEmpty="False" />
+                        <rules:TextBoxValidationRule CanEmpty="False"
+                                                     ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -55,7 +55,6 @@
 
         <Button Content="保存"
                 Command="{Binding SaveItemGroupCommand}"
-                IsEnabled="{Binding ItemGroupVM.IsAccept, FallbackValue='False'}"
                 Grid.Column="1"
                 Grid.Row="1"/>
     </Grid>
