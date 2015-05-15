@@ -142,9 +142,8 @@ namespace Fortaggle.Views.Behaviors
         private void NotifyDrop(IDataObject data)
         {
             if (TargetCommand == null) throw new InvalidOperationException("TargetCommand is null.");
-            // var files = data.GetData(DataFormats.FileDrop) as FileInfo[];
-            var files = data.GetData(DataFormats.FileDrop) as string[];
-            if (files != null) TargetCommand.Execute(files);
+            var fileNames = data.GetData(DataFormats.FileDrop) as string[];
+            if (fileNames != null) TargetCommand.Execute(fileNames);
         }
         #endregion
     }

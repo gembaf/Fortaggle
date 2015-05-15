@@ -120,9 +120,13 @@
                     _SetFolderPathCommand = new RelayCommand<object>(
                         (parameter) =>
                         {
-                            // var files = parameter as FileInfo[];
-                            var files = parameter as string[];
-                            ItemVM.FolderPath = files[0];
+                            var filePath = (parameter as string[])[0];
+                            if (!IsDirectory(filePath))
+                            {
+                                System.Windows.Forms.MessageBox.Show("フォルダを選択してください");
+                                return;
+                            }
+                            ItemVM.FolderPath = filePath;
                         });
                 }
                 return _SetFolderPathCommand;
@@ -144,9 +148,13 @@
                     _SetExecuteFilePathCommand = new RelayCommand<object>(
                         (parameter) =>
                         {
-                            // var files = parameter as FileInfo[];
-                            var files = parameter as string[];
-                            ItemVM.ExecuteFilePath = files[0];
+                            var filePath = (parameter as string[])[0];
+                            if (IsDirectory(filePath))
+                            {
+                                System.Windows.Forms.MessageBox.Show("実行可能なファイルを選択してください");
+                                return;
+                            }
+                            ItemVM.ExecuteFilePath = filePath;
                         });
                 }
                 return _SetExecuteFilePathCommand;
@@ -160,6 +168,11 @@
         //--- protected メソッド
 
         //--- private メソッド
+        
+        private bool IsDirectory(string filePath)
+        {
+            return System.IO.Directory.Exists(filePath);
+        }
 
         //--- static メソッド
     }
