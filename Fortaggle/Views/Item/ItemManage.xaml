@@ -22,14 +22,30 @@
             </UniformGrid>
 
             <ListBox ItemsSource="{Binding ItemVMList}"
-                     Style="{StaticResource WhiteListBox}">
+                     Style="{StaticResource WhiteListBox}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <UniformGrid Columns="2">
-                            <Image Source="{Binding ExecuteFileImage}"
-                                   Height="42" Width="42"/>
-                            <TextBlock Text="{Binding Name}" />
-                        </UniformGrid>
+                        <Border Style="{StaticResource UnderLineBorder}"
+                                MinWidth="350">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ExecuteFileImage}"
+                                       Height="42" Width="42"
+                                       Grid.Column="0"/>
+                                <TextBlock Text="{Binding Name}"
+                                           Grid.Column="1"/>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
