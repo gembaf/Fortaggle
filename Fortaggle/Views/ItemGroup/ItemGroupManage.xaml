@@ -26,13 +26,23 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding ExecuteFileImage}"
+                               Height="32" Width="32"
+                               Grid.Column="0"/>
+                        <TextBlock Text="{Binding Name}"
+                                   Grid.Column="1"/>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
         <DockPanel Grid.Column="1">
-
             <Border Style="{StaticResource BlackBorder}"
                     DockPanel.Dock="Top">
                 <UniformGrid Columns="4"
@@ -41,7 +51,6 @@
 
                     <Button Content="アイテムグループ追加"
                             Command="{Binding NewItemGroupDialogCommand}"/>
-
                 </UniformGrid>
             </Border>
 
@@ -49,7 +58,6 @@
                     Style="{StaticResource BlackBorder}">
                 <Grid Background="White"
                       IsEnabled="{Binding IsSelect}">
-
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />

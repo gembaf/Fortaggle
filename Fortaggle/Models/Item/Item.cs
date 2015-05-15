@@ -42,7 +42,7 @@
             {
                 if (string.IsNullOrEmpty(ExecuteFilePath))
                 {
-                    return new BitmapImage();
+                    return null;
                 }
                 var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
                 var bmpSrc = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(

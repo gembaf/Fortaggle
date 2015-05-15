@@ -4,6 +4,8 @@
     using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using System.Collections.ObjectModel;
+    using System.Windows.Media;
+    using System.Linq;
 
     public class ItemGroupViewModel : ViewModelBase
     {
@@ -54,6 +56,27 @@
                     RaisePropertyChanged("Name");
                 }
             }
+        }
+
+        #endregion
+
+        #region ImageSource ExecuteFileImage
+
+        public ImageSource ExecuteFileImage
+        {
+            get { return SelectExecuteFileImage(); }
+        }
+
+        private ImageSource SelectExecuteFileImage()
+        {
+            if (ItemVMList.Count == 0)
+            {
+                return null;
+            }
+            return ItemVMList
+                .Where((itemVM) => !string.IsNullOrEmpty(itemVM.ExecuteFilePath))
+                .DefaultIfEmpty(ItemVMList.First())
+                .First().ExecuteFileImage;
         }
 
         #endregion

@@ -81,7 +81,7 @@
 
         #endregion
 
-        #region Icon ExecuteFileImage 変更通知プロパティ
+        #region ImageSource ExecuteFileImage 変更通知プロパティ
 
         public ImageSource ExecuteFileImage
         {
