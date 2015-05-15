@@ -4,6 +4,7 @@
     using GalaSoft.MvvmLight;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Media;
 
     public class ItemViewModel : ViewModelBase
     {
@@ -63,7 +64,7 @@
 
         #endregion
 
-        #region string FolderPath 変更通知プロパティ
+        #region string ExecuteFilePath 変更通知プロパティ
 
         public string ExecuteFilePath
         {
@@ -76,6 +77,15 @@
                     RaisePropertyChanged("ExecuteFilePath");
                 }
             }
+        }
+
+        #endregion
+
+        #region Icon ExecuteFileImage 変更通知プロパティ
+
+        public ImageSource ExecuteFileImage
+        {
+            get { return item.ExecuteFileImage; }
         }
 
         #endregion

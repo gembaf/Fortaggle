@@ -25,7 +25,11 @@
                      Style="{StaticResource WhiteListBox}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
+                        <UniformGrid Columns="2">
+                            <Image Source="{Binding ExecuteFileImage}"
+                                   Height="42" Width="42"/>
+                            <TextBlock Text="{Binding Name}" />
+                        </UniformGrid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
