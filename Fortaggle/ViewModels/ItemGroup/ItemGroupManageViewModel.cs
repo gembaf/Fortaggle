@@ -178,7 +178,7 @@
 
         #endregion
 
-        #region ICommand EditItemGroupDialogOpenCommand コマンド
+        #region ICommand EditItemGroupDialogCommand コマンド
 
         private ICommand _EditItemGroupDialogCommand;
 
@@ -206,17 +206,17 @@
 
         #endregion
 
-        #region ICommand DeleteItemGroupCommand コマンド
+        #region ICommand DeleteItemGroupDialogCommand コマンド
 
-        private ICommand _DeleteItemGroupCommand;
+        private ICommand _DeleteItemGroupDialogCommand;
 
-        public ICommand DeleteItemGroupCommand
+        public ICommand DeleteItemGroupDialogCommand
         {
             get
             {
-                if (_DeleteItemGroupCommand == null)
+                if (_DeleteItemGroupDialogCommand == null)
                 {
-                    _DeleteItemGroupCommand = new RelayCommand(
+                    _DeleteItemGroupDialogCommand = new RelayCommand(
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -235,7 +235,7 @@
                                 });
                         });
                 }
-                return _DeleteItemGroupCommand;
+                return _DeleteItemGroupDialogCommand;
             }
         }
 

@@ -34,7 +34,10 @@
                             <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ExecuteFileImage}"
+                        <!--<Image Source="{Binding ExecuteFileImage}"
+                               Height="32" Width="32"
+                               Grid.Column="0"/>-->
+                        <Image Source="{Binding ItemVMList[0].ExecuteFileImage}"
                                Height="32" Width="32"
                                Grid.Column="0"/>
                         <TextBlock Text="{Binding Name}"
@@ -82,7 +85,7 @@
                                Grid.Row="0"/>
                     <!--ボタン一覧-->
                     <Button Content="削除"
-                            Command="{Binding DeleteItemGroupCommand}"
+                            Command="{Binding DeleteItemGroupDialogCommand}"
                             Style="{StaticResource DeleteButton}"
                             Grid.Row="1"
                             Grid.Column="2" />

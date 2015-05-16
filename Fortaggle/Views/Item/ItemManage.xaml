@@ -11,6 +11,7 @@
 
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ConfirmDialogVM}" />
     </i:Interaction.Behaviors>
 
     <Border Style="{StaticResource BlackBorder}">
@@ -85,7 +86,12 @@
                 <!--ボタン一覧-->
                 <UniformGrid Columns="4"
                              Grid.Row="1">
-                    <Button Content="hoge" />
+                    <Button Content="削除"
+                            Style="{StaticResource DeleteButton}"
+                            Command="{Binding DeleteItemDialogCommand}"/>
+                    <Button Content="編集"
+                            Style="{StaticResource EditButton}"
+                            Command="{Binding EditItemDialogCommand}"/>
                 </UniformGrid>
             </Grid>
         </Grid>

@@ -21,6 +21,7 @@
         public ItemViewModel(Item item)
         {
             this.item = item;
+            ExecuteFileImage = item.ExecuteFileImage;
         }
 
         public ItemViewModel()
@@ -74,6 +75,7 @@
                 if (item.ExecuteFilePath != value)
                 {
                     item.ExecuteFilePath = value;
+                    ExecuteFileImage = item.ExecuteFileImage;
                     RaisePropertyChanged("ExecuteFilePath");
                 }
             }
@@ -83,9 +85,19 @@
 
         #region ImageSource ExecuteFileImage 変更通知プロパティ
 
+        private ImageSource _ExecuteFileImage;
+
         public ImageSource ExecuteFileImage
         {
-            get { return item.ExecuteFileImage; }
+            get { return _ExecuteFileImage; }
+            private set
+            {
+                if (_ExecuteFileImage != value)
+                {
+                    _ExecuteFileImage = value;
+                    RaisePropertyChanged("ExecuteFileImage");
+                }
+            }
         }
 
         #endregion
@@ -114,6 +126,28 @@
         public void Save(ItemGroup itemGroup)
         {
             itemGroup.AddItem(item);
+        }
+
+        public void Remove(ItemGroup itemGroup)
+        {
+            itemGroup.RemoveItem(item);
+        }
+
+        public void Update(ItemViewModel itemVM)
+        {
+            this.Name = itemVM.Name;
+            this.FolderPath = itemVM.FolderPath;
+            this.ExecuteFilePath = itemVM.ExecuteFilePath;
+        }
+
+        public ItemViewModel Clone()
+        {
+            return new ItemViewModel()
+            {
+                Name = this.Name,
+                FolderPath = this.FolderPath,
+                ExecuteFilePath = this.ExecuteFilePath
+            };
         }
 
         //--- protected メソッド

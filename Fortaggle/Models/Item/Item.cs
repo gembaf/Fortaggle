@@ -32,10 +32,6 @@
 
         public string ExecuteFilePath { get; set; }
 
-        #region ImageSource ExecuteFileImage
-
-        private ImageSource _ExecuteFileImage;
-
         public ImageSource ExecuteFileImage
         {
             get
@@ -44,19 +40,13 @@
                 {
                     return null;
                 }
-                if (_ExecuteFileImage == null)
-                {
-                    var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
-                    _ExecuteFileImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
-                        icon.Handle,
-                        System.Windows.Int32Rect.Empty,
-                        BitmapSizeOptions.FromEmptyOptions());
-                }
-                return _ExecuteFileImage;
+                var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
+                return System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
+                    icon.Handle,
+                    System.Windows.Int32Rect.Empty,
+                    BitmapSizeOptions.FromEmptyOptions());
             }
         }
-
-        #endregion
 
         //--- public メソッド
 

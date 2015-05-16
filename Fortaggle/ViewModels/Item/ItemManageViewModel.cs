@@ -1,5 +1,6 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
+    using Fortaggle.ViewModels.Common;
     using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
@@ -71,6 +72,25 @@
 
         #endregion
 
+        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
+
+        private ConfirmDialogViewModel _ConfirmDialogVM;
+
+        public ConfirmDialogViewModel ConfirmDialogVM
+        {
+            get { return _ConfirmDialogVM; }
+            set
+            {
+                if (_ConfirmDialogVM != value)
+                {
+                    _ConfirmDialogVM = value;
+                    RaisePropertyChanged("ConfirmDialogVM");
+                }
+            }
+        }
+
+        #endregion
+
         #region bool IsSelect 変更通知プロパティ
 
         private bool _IsSelect;
@@ -114,6 +134,69 @@
                         });
                 }
                 return _NewItemDialogCommand;
+            }
+        }
+
+        #endregion
+
+        #region ICommand EditItemDialogCommand コマンド
+
+        private ICommand _EditItemDialogCommand;
+
+        public ICommand EditItemDialogCommand
+        {
+            get
+            {
+                if (_EditItemDialogCommand == null)
+                {
+                    _EditItemDialogCommand = new RelayCommand(
+                        () =>
+                        {
+                            ItemDialogVM = new ItemDialogViewModel(
+                                () =>
+                                {
+                                    SelectedItemVM.Update(ItemDialogVM.ItemVM);
+                                    ItemDialogVM = null;
+                                },
+                                SelectedItemVM.Clone());
+                        });
+                }
+                return _EditItemDialogCommand;
+            }
+        }
+
+        #endregion
+
+        #region ICommand DeleteItemDialogCommand コマンド
+
+        private ICommand _DeleteItemDialogCommand;
+
+        public ICommand DeleteItemDialogCommand
+        {
+            get
+            {
+                if (_DeleteItemDialogCommand == null)
+                {
+                    _DeleteItemDialogCommand = new RelayCommand(
+                        () =>
+                        {
+                            ConfirmDialogVM = new ConfirmDialogViewModel(
+                                // Message
+                                SelectedItemVM.Name + " を削除しますか？",
+                                // AcceptAction
+                                () =>
+                                {
+                                    itemGroupVM.RemoveItemVM(SelectedItemVM);
+                                    ConfirmDialogVM = null;
+                                },
+                                // CancelAction
+                                () =>
+                                {
+                                    ConfirmDialogVM = null;
+                                });
+                        });
+                }
+                return _DeleteItemDialogCommand;
             }
         }
 

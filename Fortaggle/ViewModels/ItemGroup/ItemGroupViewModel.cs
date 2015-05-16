@@ -60,27 +60,6 @@
 
         #endregion
 
-        #region ImageSource ExecuteFileImage
-
-        public ImageSource ExecuteFileImage
-        {
-            get { return SelectExecuteFileImage(); }
-        }
-
-        private ImageSource SelectExecuteFileImage()
-        {
-            if (ItemVMList.Count == 0)
-            {
-                return null;
-            }
-            return ItemVMList
-                .Where((itemVM) => !string.IsNullOrEmpty(itemVM.ExecuteFilePath))
-                .DefaultIfEmpty(ItemVMList.First())
-                .First().ExecuteFileImage;
-        }
-
-        #endregion
-
         #region ObservableCollection<ItemViewModel> ItemVMList 変更通知プロパティ
 
         public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
@@ -127,7 +106,7 @@
         public ItemGroupViewModel Clone()
         {
             return new ItemGroupViewModel()
-            { 
+            {
                 Name = this.Name
             };
         }
@@ -136,6 +115,12 @@
         {
             itemVM.Save(itemGroup);
             ItemVMList.Add(itemVM);
+        }
+
+        public void RemoveItemVM(ItemViewModel itemVM)
+        {
+            itemVM.Remove(itemGroup);
+            ItemVMList.Remove(itemVM);
         }
 
         //--- protected メソッド
