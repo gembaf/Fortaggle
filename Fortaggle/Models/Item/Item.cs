@@ -1,10 +1,6 @@
-﻿namespace Fortaggle.Models.ItemGroup
+﻿namespace Fortaggle.Models.Item
 {
-    using System;
-    using System.Collections.Generic;
     using System.Drawing;
-    using System.Linq;
-    using System.Text;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
@@ -36,6 +32,10 @@
 
         public string ExecuteFilePath { get; set; }
 
+        #region ImageSource ExecuteFileImage
+
+        private ImageSource _ExecuteFileImage;
+
         public ImageSource ExecuteFileImage
         {
             get
@@ -44,14 +44,19 @@
                 {
                     return null;
                 }
-                var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
-                var bmpSrc = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
-                    icon.Handle,
-                    System.Windows.Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions());
-                return bmpSrc;
+                if (_ExecuteFileImage == null)
+                {
+                    var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
+                    _ExecuteFileImage = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
+                        icon.Handle,
+                        System.Windows.Int32Rect.Empty,
+                        BitmapSizeOptions.FromEmptyOptions());
+                }
+                return _ExecuteFileImage;
             }
         }
+
+        #endregion
 
         //--- public メソッド
 

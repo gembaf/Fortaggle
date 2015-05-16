@@ -14,16 +14,24 @@
     </i:Interaction.Behaviors>
 
     <Border Style="{StaticResource BlackBorder}">
-        <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <!--ボタン-->
             <UniformGrid Columns="4"
-                         Height="40"
-                         DockPanel.Dock="Top">
+                         Grid.Row="0">
                 <Button Content="アイテム追加"
                         Command="{Binding NewItemDialogCommand}"/>
             </UniformGrid>
 
+            <!--アイテム一覧-->
             <ListBox ItemsSource="{Binding ItemVMList}"
+                     SelectedItem="{Binding SelectedItemVM}"
                      Style="{StaticResource WhiteListBox}"
+                     Grid.Row="1"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -34,7 +42,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Style="{StaticResource UnderLineBorder}"
-                                Width="360">
+                                Width="370">
                             <Grid Margin="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -50,6 +58,36 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </DockPanel>
+
+            <!--アイテム詳細画面-->
+            <Grid Grid.Row="2"
+                  IsEnabled="{Binding IsSelect}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+
+                <!--アイテム詳細-->
+                <Grid Grid.Row="0"
+                      DataContext="{Binding SelectedItemVM}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="{Binding ExecuteFileImage}"
+                           Height="42" Width="42"
+                           Grid.Column="0"/>
+                    <TextBlock Text="{Binding Name}"
+                               Grid.Column="1"/>
+                </Grid>
+
+                <!--ボタン一覧-->
+                <UniformGrid Columns="4"
+                             Grid.Row="1">
+                    <Button Content="hoge" />
+                </UniformGrid>
+            </Grid>
+        </Grid>
     </Border>
 </UserControl>

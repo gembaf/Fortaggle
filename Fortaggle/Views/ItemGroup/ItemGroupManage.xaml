@@ -6,7 +6,8 @@
              xmlns:behavior="clr-namespace:Fortaggle.Views.Behaviors"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="1024">
+             d:DesignHeight="700" d:DesignWidth="1024"
+             Background="White">
 
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemGroupDialogVM}" />
@@ -19,12 +20,12 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
+        <!--アイテムグループ一覧-->
         <ListBox ItemsSource="{Binding ItemGroupVMList}"
                  SelectedItem="{Binding SelectedItemGroupVM}"
                  Style="{StaticResource WhiteListBox}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Grid.Column="0">
-
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -45,21 +46,21 @@
         </ListBox>
 
         <DockPanel Grid.Column="1">
+            <!--ボタン一覧-->
             <Border Style="{StaticResource BlackBorder}"
                     DockPanel.Dock="Top">
                 <UniformGrid Columns="4"
-                             Height="40"
-                             Background="White">
+                             Height="40">
 
                     <Button Content="アイテムグループ追加"
                             Command="{Binding NewItemGroupDialogCommand}"/>
                 </UniformGrid>
             </Border>
 
+            <!--アイテムグループ詳細-->
             <Border DockPanel.Dock="Top"
                     Style="{StaticResource BlackBorder}">
-                <Grid Background="White"
-                      IsEnabled="{Binding IsSelect}">
+                <Grid IsEnabled="{Binding IsSelect}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -72,12 +73,14 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
+                    <!--アイテムグループ名-->
                     <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
                                FontSize="20"
                                Foreground="Green"
                                Padding="10,0,10,0"
                                Grid.ColumnSpan="4"
                                Grid.Row="0"/>
+                    <!--ボタン一覧-->
                     <Button Content="削除"
                             Command="{Binding DeleteItemGroupCommand}"
                             Style="{StaticResource DeleteButton}"
@@ -91,8 +94,8 @@
                 </Grid>
             </Border>
 
+            <!--アイテム一覧-->
             <ContentControl Content="{Binding ItemManageVM}" />
-
         </DockPanel>
     </Grid>
 </UserControl>

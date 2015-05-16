@@ -102,6 +102,7 @@
                     else
                     {
                         IsSelect = false;
+                        ItemManageVM = null;
                     }
                     RaisePropertyChanged("SelectedItemGroupVM");
                 }

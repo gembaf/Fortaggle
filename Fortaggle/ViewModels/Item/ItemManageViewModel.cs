@@ -32,6 +32,26 @@
 
         #endregion
 
+        #region ItemViewModel SelectedItemVM  変更通知プロパティ
+
+        private ItemViewModel _SelectedItemVM;
+
+        public ItemViewModel SelectedItemVM
+        {
+            get { return _SelectedItemVM; }
+            set
+            {
+                if (_SelectedItemVM != value)
+                {
+                    _SelectedItemVM = value;
+                    IsSelect = value != null;
+                    RaisePropertyChanged("SelectedItemVM");
+                }
+            }
+        }
+
+        #endregion
+
         #region ItemDialogViewModel ItemDialogVM 変更通知プロパティ
 
         private ItemDialogViewModel _ItemDialogVM;
@@ -45,6 +65,25 @@
                 {
                     _ItemDialogVM = value;
                     RaisePropertyChanged("ItemDialogVM");
+                }
+            }
+        }
+
+        #endregion
+
+        #region bool IsSelect 変更通知プロパティ
+
+        private bool _IsSelect;
+
+        public bool IsSelect
+        {
+            get { return _IsSelect; }
+            set
+            {
+                if (_IsSelect != value)
+                {
+                    _IsSelect = value;
+                    RaisePropertyChanged("IsSelect");
                 }
             }
         }

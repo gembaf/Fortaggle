@@ -1,6 +1,6 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
-    using Fortaggle.Models.ItemGroup;
+    using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
