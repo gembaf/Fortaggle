@@ -92,6 +92,8 @@
                     <Button Content="編集"
                             Style="{StaticResource EditButton}"
                             Command="{Binding EditItemDialogCommand}"/>
+                    <Button Content="フォルダを開く"
+                            Command="{Binding OpenFolderCommand}"/>
                 </UniformGrid>
             </Grid>
         </Grid>

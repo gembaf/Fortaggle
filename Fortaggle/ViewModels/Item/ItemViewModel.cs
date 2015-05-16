@@ -150,6 +150,11 @@
             };
         }
 
+        public void OpenFolder()
+        {
+            item.OpenFolder();
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

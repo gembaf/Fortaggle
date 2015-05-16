@@ -202,6 +202,24 @@
 
         #endregion
 
+        #region ICommand OpenFolderCommand コマンド
+
+        private ICommand _OpenFolderCommand;
+        
+        public ICommand OpenFolderCommand
+        {
+            get
+            {
+                if (_OpenFolderCommand == null)
+                {
+                    _OpenFolderCommand = new RelayCommand(() => SelectedItemVM.OpenFolder());
+                }
+                return _OpenFolderCommand;
+            }
+        }
+
+        #endregion
+
         //--- public メソッド
 
         //--- protected メソッド

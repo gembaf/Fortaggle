@@ -50,6 +50,11 @@
 
         //--- public メソッド
 
+        public void OpenFolder()
+        {
+            System.Diagnostics.Process.Start(FolderPath);
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
