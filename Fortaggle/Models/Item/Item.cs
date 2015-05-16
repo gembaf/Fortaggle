@@ -55,6 +55,11 @@
             System.Diagnostics.Process.Start(FolderPath);
         }
 
+        public void ExecuteFile()
+        {
+            System.Diagnostics.Process.Start(ExecuteFilePath);
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

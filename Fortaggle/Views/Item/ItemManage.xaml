@@ -94,6 +94,8 @@
                             Command="{Binding EditItemDialogCommand}"/>
                     <Button Content="フォルダを開く"
                             Command="{Binding OpenFolderCommand}"/>
+                    <Button Content="ファイルの実行"
+                            Command="{Binding ExecuteFileCommand}"/>
                 </UniformGrid>
             </Grid>
         </Grid>

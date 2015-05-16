@@ -155,6 +155,11 @@
             item.OpenFolder();
         }
 
+        public void ExecuteFile()
+        {
+            item.ExecuteFile();
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

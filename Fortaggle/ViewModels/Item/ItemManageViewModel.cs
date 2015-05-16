@@ -220,6 +220,24 @@
 
         #endregion
 
+        #region ICommand ExecuteFileCommand コマンド
+
+        private ICommand _ExecuteFileCommand;
+        
+        public ICommand ExecuteFileCommand
+        {
+            get
+            {
+                if (_ExecuteFileCommand == null)
+                {
+                    _ExecuteFileCommand = new RelayCommand(() => SelectedItemVM.ExecuteFile());
+                }
+                return _ExecuteFileCommand;
+            }
+        }
+
+        #endregion
+
         //--- public メソッド
 
         //--- protected メソッド
