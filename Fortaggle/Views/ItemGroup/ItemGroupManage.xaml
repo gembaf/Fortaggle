@@ -22,6 +22,7 @@
         <ListBox ItemsSource="{Binding ItemGroupVMList}"
                  SelectedItem="{Binding SelectedItemGroupVM}"
                  Style="{StaticResource WhiteListBox}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Grid.Column="0">
 
             <ListBox.ItemTemplate>
@@ -29,13 +30,14 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
 
                         <Image Source="{Binding ExecuteFileImage}"
                                Height="32" Width="32"
                                Grid.Column="0"/>
                         <TextBlock Text="{Binding Name}"
+                                   VerticalAlignment="Center"
                                    Grid.Column="1"/>
                     </Grid>
                 </DataTemplate>

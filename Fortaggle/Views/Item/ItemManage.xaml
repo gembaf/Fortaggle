@@ -6,7 +6,8 @@
              xmlns:behavior="clr-namespace:Fortaggle.Views.Behaviors"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="700">
+             d:DesignHeight="500" d:DesignWidth="700"
+             Background="White">
 
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemDialogVM}" />
@@ -33,7 +34,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Style="{StaticResource UnderLineBorder}"
-                                MinWidth="350">
+                                Width="360">
                             <Grid Margin="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
