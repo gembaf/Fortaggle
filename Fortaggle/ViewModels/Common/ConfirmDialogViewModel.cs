@@ -12,6 +12,7 @@
         //--- フィールド
 
         private Action acceptAction;
+
         private Action cancelAction;
 
         //--- 静的コンストラクタ
@@ -27,15 +28,18 @@
 
         //--- プロパティ
 
-        #region string Message プロパティ
+        #region string Message
 
         public string Message { get; private set; }
 
     	#endregion
 
-        #region ICommand AcceptCommand コマンド
+        //--- コマンド
+
+        #region AcceptCommand
 
         private ICommand _AcceptCommand;
+
         public ICommand AcceptCommand
         {
             get
@@ -50,9 +54,10 @@
 
         #endregion
 
-        #region ICommand CancelCommand コマンド
+        #region CancelCommand
 
         private ICommand _CancelCommand;
+
         public ICommand CancelCommand
         {
             get

@@ -33,9 +33,9 @@
         {
         }
 
-        //--- プロパティ
+        //--- 変更通知プロパティ(モデル)
 
-        #region string Name 変更通知プロパティ
+        #region string Name
 
         public string Name
         {
@@ -52,7 +52,7 @@
 
         #endregion
 
-        #region string FolderPath 変更通知プロパティ
+        #region string FolderPath
 
         public string FolderPath
         {
@@ -70,7 +70,7 @@
 
         #endregion
 
-        #region string ExecuteFilePath 変更通知プロパティ
+        #region string ExecuteFilePath
 
         public string ExecuteFilePath
         {
@@ -89,7 +89,9 @@
 
         #endregion
 
-        #region ItemStatusServiceViewModel ItemStatusServiceVM 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ItemStatusServiceViewModel ItemStatusServiceVM
 
         private ItemStatusServiceViewModel _ItemStatusServiceVM;
 
@@ -108,7 +110,7 @@
 
         #endregion
 
-        #region ImageSource ExecuteFileImage 変更通知プロパティ
+        #region ImageSource ExecuteFileImage
 
         private ImageSource _ExecuteFileImage;
 
@@ -127,7 +129,7 @@
 
         #endregion
 
-        #region bool IsExistsFolder 変更通知プロパティ
+        #region bool IsExistsFolder
 
         private bool _IsExistsFolder;
 
@@ -146,7 +148,7 @@
 
         #endregion
 
-        #region bool IsExistsExecuteFile 変更通知プロパティ
+        #region bool IsExistsExecuteFile
 
         private bool _IsExistsExecuteFile;
 
@@ -165,7 +167,7 @@
 
         #endregion
 
-        #region bool HasViewError 変更通知プロパティ
+        #region bool HasViewError
 
         private bool _HasViewError;
 

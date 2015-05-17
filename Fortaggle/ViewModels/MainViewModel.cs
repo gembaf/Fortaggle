@@ -36,15 +36,18 @@
 
         //--- プロパティ
 
-        #region List<ViewModelBase> Pages プロパティ
+        #region List<ViewModelBase> Pages
 
         public List<ViewModelBase> Pages { get; private set; }
 
         #endregion
 
-        #region ViewModelBase SelectedPage 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ViewModelBase SelectedPage
 
         private ViewModelBase _SelectedPage;
+
         public ViewModelBase SelectedPage
         {
             get { return _SelectedPage; }

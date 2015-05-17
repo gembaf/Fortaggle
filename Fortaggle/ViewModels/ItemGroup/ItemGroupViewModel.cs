@@ -41,9 +41,9 @@
         {
         }
 
-        //--- プロパティ
+        //--- 変更通知プロパティ(モデル)
 
-        #region string Name 変更通知プロパティ
+        #region string Name
 
         public string Name
         {
@@ -60,15 +60,18 @@
 
         #endregion
 
-        #region ObservableCollection<ItemViewModel> ItemVMList 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ObservableCollection<ItemViewModel> ItemVMList
 
         public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
 
         #endregion
 
-        #region bool HasViewError 変更通知プロパティ
+        #region bool HasViewError
 
         private bool _HasViewError;
+
         public bool HasViewError
         {
             get { return _HasViewError; }

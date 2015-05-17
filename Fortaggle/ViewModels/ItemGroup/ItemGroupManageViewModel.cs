@@ -38,7 +38,9 @@
 
         #endregion
 
-        #region ItemGroupDialogViewModel ItemGroupDialogVM 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ItemGroupDialogViewModel ItemGroupDialogVM
 
         private ItemGroupDialogViewModel _ItemGroupDialogVM;
 
@@ -57,7 +59,7 @@
 
         #endregion
 
-        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
+        #region ConfirmDialogViewModel ConfirmDialogVM
 
         private ConfirmDialogViewModel _ConfirmDialogVM;
 
@@ -76,13 +78,13 @@
 
         #endregion
 
-        #region ObservableCollection<ItemGroupViewModel> ItemGroupVMList 変更通知プロパティ
+        #region ObservableCollection<ItemGroupViewModel> ItemGroupVMList
 
         public ObservableCollection<ItemGroupViewModel> ItemGroupVMList { get; private set; }
 
         #endregion
 
-        #region ItemGroupViewModel SelectedItemGroupVM  変更通知プロパティ
+        #region ItemGroupViewModel SelectedItemGroupVM 
 
         private ItemGroupViewModel _SelectedItemGroupVM;
 
@@ -111,7 +113,7 @@
 
         #endregion
 
-        #region bool IsSelect 変更通知プロパティ
+        #region bool IsSelect
 
         private bool _IsSelect;
 
@@ -130,7 +132,7 @@
 
         #endregion
 
-        #region ItemManageViewModel ItemManageVM 変更通知プロパティ
+        #region ItemManageViewModel ItemManageVM
 
         private ItemManageViewModel _ItemManageVM;
 
@@ -151,7 +153,7 @@
 
         //--- コマンド
 
-        #region ICommand NewItemGroupDialogCommand コマンド
+        #region NewItemGroupDialogCommand
 
         private ICommand _NewItemGroupDialogCommand;
 
@@ -178,7 +180,7 @@
 
         #endregion
 
-        #region ICommand EditItemGroupDialogCommand コマンド
+        #region EditItemGroupDialogCommand
 
         private ICommand _EditItemGroupDialogCommand;
 
@@ -206,7 +208,7 @@
 
         #endregion
 
-        #region ICommand DeleteItemGroupDialogCommand コマンド
+        #region DeleteItemGroupDialogCommand
 
         private ICommand _DeleteItemGroupDialogCommand;
 

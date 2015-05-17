@@ -27,13 +27,15 @@
 
         //--- プロパティ
 
-        #region ObservableCollection<ItemViewModel> ItemVMList 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ObservableCollection<ItemViewModel> ItemVMList
 
         public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
 
         #endregion
 
-        #region ItemViewModel SelectedItemVM  変更通知プロパティ
+        #region ItemViewModel SelectedItemVM
 
         private ItemViewModel _SelectedItemVM;
 
@@ -53,7 +55,7 @@
 
         #endregion
 
-        #region ItemDialogViewModel ItemDialogVM 変更通知プロパティ
+        #region ItemDialogViewModel ItemDialogVM
 
         private ItemDialogViewModel _ItemDialogVM;
 
@@ -72,7 +74,7 @@
 
         #endregion
 
-        #region ConfirmDialogViewModel ConfirmDialogVM 変更通知プロパティ
+        #region ConfirmDialogViewModel ConfirmDialogVM
 
         private ConfirmDialogViewModel _ConfirmDialogVM;
 
@@ -91,7 +93,7 @@
 
         #endregion
 
-        #region bool IsSelect 変更通知プロパティ
+        #region bool IsSelect
 
         private bool _IsSelect;
 
@@ -112,7 +114,7 @@
 
         //--- コマンド
 
-        #region ICommand NewItemDialogCommand コマンド
+        #region NewItemDialogCommand
 
         private ICommand _NewItemDialogCommand;
 
@@ -139,7 +141,7 @@
 
         #endregion
 
-        #region ICommand EditItemDialogCommand コマンド
+        #region EditItemDialogCommand
 
         private ICommand _EditItemDialogCommand;
 
@@ -167,7 +169,7 @@
 
         #endregion
 
-        #region ICommand DeleteItemDialogCommand コマンド
+        #region DeleteItemDialogCommand
 
         private ICommand _DeleteItemDialogCommand;
 
@@ -202,7 +204,7 @@
 
         #endregion
 
-        #region ICommand OpenFolderCommand コマンド
+        #region OpenFolderCommand
 
         private ICommand _OpenFolderCommand;
         
@@ -220,7 +222,7 @@
 
         #endregion
 
-        #region ICommand ExecuteFileCommand コマンド
+        #region ExecuteFileCommand
 
         private ICommand _ExecuteFileCommand;
         

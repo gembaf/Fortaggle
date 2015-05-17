@@ -15,7 +15,7 @@
 
         //--- 静的コンストラクタ
 
-        //--- コンストラクタ (+2)
+        //--- コンストラクタ (+1)
 
         public ItemGroupDialogViewModel(Action closeAction, ItemGroupViewModel itemGroupVM)
         {
@@ -36,9 +36,12 @@
 
         #endregion
 
-        #region ICommand SaveItemGroupCommand コマンド
+        //--- コマンド
+
+        #region SaveItemGroupCommand
 
         private ICommand _SaveItemGroupCommand;
+
         public ICommand SaveItemGroupCommand
         {
             get

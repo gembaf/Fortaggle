@@ -26,13 +26,15 @@
 
         //--- プロパティ
 
-        #region IEnumerable<ItemStatusViewModel> ItemStatusVMList プロパティ
+        #region IEnumerable<ItemStatusViewModel> ItemStatusVMList
 
         public IEnumerable<ItemStatusViewModel> ItemStatusVMList { get; private set; }
 
         #endregion
 
-        #region ItemStatusViewModel SelectedItemStatusVM 変更通知プロパティ
+        //--- 変更通知プロパティ
+
+        #region ItemStatusViewModel SelectedItemStatusVM
 
         private ItemStatusViewModel _SelectedItemStatusVM;
 

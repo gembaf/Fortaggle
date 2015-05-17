@@ -32,15 +32,18 @@
 
         //--- プロパティ
 
-        #region ItemViewModel ItemVM プロパティ
+        #region ItemViewModel ItemVM
 
         public ItemViewModel ItemVM { get; private set; }
 
         #endregion
 
-        #region ICommand SaveItemCommand コマンド
+        //--- コマンド
+
+        #region SaveItemCommand
 
         private ICommand _SaveItemCommand;
+
         public ICommand SaveItemCommand
         {
             get
@@ -55,7 +58,7 @@
 
         #endregion
 
-        #region ICommand FolderBrowserDialogCommand コマンド
+        #region FolderBrowserDialogCommand
 
         private ICommand _FolderBrowserDialogCommand;
 
@@ -81,7 +84,7 @@
 
         #endregion
 
-        #region ICommand OpenFileDialogCommand コマンド
+        #region OpenFileDialogCommand
 
         private ICommand _OpenFileDialogCommand;
 
@@ -107,7 +110,7 @@
 
         #endregion
 
-        #region ICommand SetFolderPathCommand コマンド
+        #region SetFolderPathCommand
 
         private ICommand _SetFolderPathCommand;
 
@@ -135,7 +138,7 @@
 
         #endregion
 
-        #region ICommand SetExecuteFilePathCommand コマンド
+        #region SetExecuteFilePathCommand
 
         private ICommand _SetExecuteFilePathCommand;
 
