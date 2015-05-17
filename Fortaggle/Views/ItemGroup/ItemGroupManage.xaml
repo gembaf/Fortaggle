@@ -34,9 +34,6 @@
                             <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
 
-                        <!--<Image Source="{Binding ExecuteFileImage}"
-                               Height="32" Width="32"
-                               Grid.Column="0"/>-->
                         <Image Source="{Binding ItemVMList[0].ExecuteFileImage}"
                                Height="32" Width="32"
                                Grid.Column="0"/>

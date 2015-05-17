@@ -1,7 +1,7 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
     using Fortaggle.Models.Item;
-    using Fortaggle.Models.XML;
+    using Fortaggle.Models.Common;
     using GalaSoft.MvvmLight;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

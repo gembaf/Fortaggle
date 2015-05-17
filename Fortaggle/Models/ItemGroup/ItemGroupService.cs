@@ -16,7 +16,7 @@
 
         static ItemGroupService()
         {
-            itemGroupList = XML.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
+            itemGroupList = Common.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
         }
 
         //--- static メソッド
@@ -38,7 +38,7 @@
 
         public static void WriteXml()
         {
-            XML.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
+            Common.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
         }
     }
 }

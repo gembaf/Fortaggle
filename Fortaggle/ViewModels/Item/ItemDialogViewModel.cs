@@ -1,10 +1,10 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
+    using Fortaggle.Models.Common;
+    using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
-    using Fortaggle.ViewModels.Common;
     using System;
-    using System.IO;
     using System.Windows.Input;
 
     public class ItemDialogViewModel : ViewModelBase
@@ -121,7 +121,7 @@
                         (parameter) =>
                         {
                             var filePath = (parameter as string[])[0];
-                            if (!IsDirectory(filePath))
+                            if (!ExplorerManager.IsExistsDirectory(filePath))
                             {
                                 System.Windows.Forms.MessageBox.Show("フォルダを選択してください");
                                 return;
@@ -149,7 +149,7 @@
                         (parameter) =>
                         {
                             var filePath = (parameter as string[])[0];
-                            if (IsDirectory(filePath))
+                            if (!ExplorerManager.IsExistsFile(filePath))
                             {
                                 System.Windows.Forms.MessageBox.Show("実行可能なファイルを選択してください");
                                 return;
@@ -169,11 +169,6 @@
 
         //--- private メソッド
         
-        private bool IsDirectory(string filePath)
-        {
-            return System.IO.Directory.Exists(filePath);
-        }
-
         //--- static メソッド
     }
 }

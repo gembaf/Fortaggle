@@ -1,4 +1,4 @@
-﻿namespace Fortaggle.Models.XML
+﻿namespace Fortaggle.Models.Common
 {
     using System.IO;
     using System.Xml.Serialization;

@@ -1,4 +1,4 @@
-﻿namespace Fortaggle.Models.XML
+﻿namespace Fortaggle.Models.Common
 {
     using System.IO;
 
@@ -22,6 +22,11 @@
         public static bool IsExistsFile(string filePath)
         {
             return File.Exists(filePath);
+        }
+
+        public static void StartProcess(string path)
+        {
+            System.Diagnostics.Process.Start(path);
         }
     }
 }

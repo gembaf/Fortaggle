@@ -1,5 +1,6 @@
 ﻿namespace Fortaggle.Models.Item
 {
+    using Fortaggle.Models.Common;
     using System.Drawing;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
@@ -55,12 +56,12 @@
 
         public void OpenFolder()
         {
-            System.Diagnostics.Process.Start(FolderPath);
+            ExplorerManager.StartProcess(FolderPath);
         }
 
         public void ExecuteFile()
         {
-            System.Diagnostics.Process.Start(ExecuteFilePath);
+            ExplorerManager.StartProcess(ExecuteFilePath);
         }
 
         //--- protected メソッド
