@@ -1,11 +1,11 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
     using Fortaggle.Models.Item;
+    using Fortaggle.Models.XML;
     using GalaSoft.MvvmLight;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Media;
-    using System.Linq;
 
     public class ItemViewModel : ViewModelBase
     {
@@ -24,6 +24,8 @@
             this.item = item;
             ExecuteFileImage = item.ExecuteFileImage;
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
+            IsExistsFolder = ExplorerManager.IsExistsDirectory(FolderPath);
+            IsExistsExecuteFile = ExplorerManager.IsExistsFile(ExecuteFilePath);
         }
 
         public ItemViewModel()
@@ -60,6 +62,7 @@
                 if (item.FolderPath != value)
                 {
                     item.FolderPath = value;
+                    IsExistsFolder = ExplorerManager.IsExistsDirectory(value);
                     RaisePropertyChanged("FolderPath");
                 }
             }
@@ -78,6 +81,7 @@
                 {
                     item.ExecuteFilePath = value;
                     ExecuteFileImage = item.ExecuteFileImage;
+                    IsExistsExecuteFile = ExplorerManager.IsExistsFile(value);
                     RaisePropertyChanged("ExecuteFilePath");
                 }
             }
@@ -117,6 +121,44 @@
                 {
                     _ExecuteFileImage = value;
                     RaisePropertyChanged("ExecuteFileImage");
+                }
+            }
+        }
+
+        #endregion
+
+        #region bool IsExistsFolder 変更通知プロパティ
+
+        private bool _IsExistsFolder;
+
+        public bool IsExistsFolder
+        {
+            get { return _IsExistsFolder; }
+            set
+            {
+                if (_IsExistsFolder != value)
+                {
+                    _IsExistsFolder = value;
+                    RaisePropertyChanged("IsExistsFolder");
+                }
+            }
+        }
+
+        #endregion
+
+        #region bool IsExistsExecuteFile 変更通知プロパティ
+
+        private bool _IsExistsExecuteFile;
+
+        public bool IsExistsExecuteFile
+        {
+            get { return _IsExistsExecuteFile; }
+            set
+            {
+                if (_IsExistsExecuteFile != value)
+                {
+                    _IsExistsExecuteFile = value;
+                    RaisePropertyChanged("IsExistsExecuteFile");
                 }
             }
         }

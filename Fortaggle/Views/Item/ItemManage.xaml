@@ -102,8 +102,10 @@
                             Style="{StaticResource EditButton}"
                             Command="{Binding EditItemDialogCommand}"/>
                     <Button Content="フォルダを開く"
+                            IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"
                             Command="{Binding OpenFolderCommand}"/>
                     <Button Content="ファイルの実行"
+                            IsEnabled="{Binding SelectedItemVM.IsExistsExecuteFile}"
                             Command="{Binding ExecuteFileCommand}"/>
                 </UniformGrid>
             </Grid>

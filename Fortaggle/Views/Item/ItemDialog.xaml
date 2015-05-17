@@ -83,18 +83,7 @@
                                             HighlightForeground="White"/>
             </i:Interaction.Behaviors>
             <StackPanel VerticalAlignment="Center">
-                <TextBox>
-                    <TextBox.Text>
-                        <Binding Path="ItemVM.FolderPath"
-                                 UpdateSourceTrigger="PropertyChanged"
-                                 NotifyOnValidationError="True">
-                            <Binding.ValidationRules>
-                                <rules:TextBoxValidationRule CanEmpty="False"
-                                                             ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <TextBox Text="{Binding ItemVM.FolderPath}"/>
                 <Button Content="フォルダの選択"
                         Command="{Binding FolderBrowserDialogCommand}" />
             </StackPanel>
@@ -114,18 +103,7 @@
                                             HighlightForeground="White"/>
             </i:Interaction.Behaviors>
             <StackPanel VerticalAlignment="Center">
-                <TextBox>
-                    <TextBox.Text>
-                        <Binding Path="ItemVM.ExecuteFilePath"
-                                 UpdateSourceTrigger="PropertyChanged"
-                                 NotifyOnValidationError="True">
-                            <Binding.ValidationRules>
-                                <rules:TextBoxValidationRule CanEmpty="False"
-                                                             ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <TextBox Text="{Binding ItemVM.ExecuteFilePath}"/>
                 <Button Content="実行ファイルの選択"
                         Command="{Binding OpenFileDialogCommand}" />
             </StackPanel>
