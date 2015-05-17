@@ -1,9 +1,6 @@
 ﻿namespace Fortaggle.Models.Item
 {
     using Fortaggle.Models.Common;
-    using System.Drawing;
-    using System.Windows.Media;
-    using System.Windows.Media.Imaging;
 
     public class Item
     {
@@ -35,22 +32,6 @@
         public string ExecuteFilePath { get; set; }
 
         public ItemStatus Status { get; set; }
-
-        public ImageSource ExecuteFileImage
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(ExecuteFilePath))
-                {
-                    return null;
-                }
-                var icon = Icon.ExtractAssociatedIcon(ExecuteFilePath);
-                return System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
-                    icon.Handle,
-                    System.Windows.Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions());
-            }
-        }
 
         //--- public メソッド
 

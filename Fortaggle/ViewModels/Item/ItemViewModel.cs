@@ -1,7 +1,7 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
-    using Fortaggle.Models.Item;
     using Fortaggle.Models.Common;
+    using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -22,7 +22,7 @@
         public ItemViewModel(Item item)
         {
             this.item = item;
-            ExecuteFileImage = item.ExecuteFileImage;
+            ExecuteFileImage = ExplorerManager.GetIconImage(ExecuteFilePath);
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
             IsExistsFolder = ExplorerManager.IsExistsDirectory(FolderPath);
             IsExistsExecuteFile = ExplorerManager.IsExistsFile(ExecuteFilePath);
@@ -80,7 +80,7 @@
                 if (item.ExecuteFilePath != value)
                 {
                     item.ExecuteFilePath = value;
-                    ExecuteFileImage = item.ExecuteFileImage;
+                    ExecuteFileImage = ExplorerManager.GetIconImage(value);
                     IsExistsExecuteFile = ExplorerManager.IsExistsFile(value);
                     RaisePropertyChanged("ExecuteFilePath");
                 }
