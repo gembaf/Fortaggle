@@ -14,13 +14,14 @@
 
         //--- コンストラクタ
 
-        public Item(string name)
+        public Item(string name, ItemStatus status)
         {
             Name = name;
+            Status = status;
         }
 
         public Item()
-            : this(null)
+            : this(null, ItemStatus.None)
         {
         }
 

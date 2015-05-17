@@ -31,9 +31,9 @@
 
         //--- プロパティ
 
-        public ItemStatus Status { get; private set; }
+        public ItemStatus Status { get; set; }
 
-        public string Label { get; private set; }
+        public string Label { get; set; }
 
         //--- public メソッド
 

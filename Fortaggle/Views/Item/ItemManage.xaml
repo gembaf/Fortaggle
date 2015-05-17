@@ -87,7 +87,7 @@
 
                         <TextBlock Text="{Binding Name}"
                                    Grid.Row="0"/>
-                        <TextBlock Text="{Binding SelectedStatus.Label}"
+                        <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.Label}"
                                    Grid.Row="1"/>
                     </Grid>
                 </Grid>

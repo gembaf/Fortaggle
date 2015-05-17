@@ -23,8 +23,7 @@
         {
             this.item = item;
             ExecuteFileImage = item.ExecuteFileImage;
-            ItemStatusList = ItemStatusViewModel.Create();
-            SelectedStatus = ItemStatusList.First();
+            ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
         }
 
         public ItemViewModel()
@@ -33,12 +32,6 @@
         }
 
         //--- プロパティ
-
-        #region IEnumerable<ItemStatusViewModel> ItemStatusList プロパティ
-
-        public IEnumerable<ItemStatusViewModel> ItemStatusList { get; private set; }
-
-        #endregion
 
         #region string Name 変更通知プロパティ
 
@@ -92,20 +85,19 @@
 
         #endregion
 
-        #region ItemStatusViewModel Status 変更通知プロパティ
+        #region ItemStatusServiceViewModel ItemStatusServiceVM 変更通知プロパティ
 
-        private ItemStatusViewModel _SelectedStatus;
+        private ItemStatusServiceViewModel _ItemStatusServiceVM;
 
-        public ItemStatusViewModel SelectedStatus
+        public ItemStatusServiceViewModel ItemStatusServiceVM
         {
-            get { return _SelectedStatus; }
+            get { return _ItemStatusServiceVM; }
             set
             {
-                if (_SelectedStatus != value)
+                if (_ItemStatusServiceVM != value)
                 {
-                    _SelectedStatus = value;
-                    item.Status = value.Status;
-                    RaisePropertyChanged("SelectedStatus");
+                    _ItemStatusServiceVM = value;
+                    RaisePropertyChanged("ItemStatusServiceVM");
                 }
             }
         }
@@ -167,6 +159,8 @@
             this.Name = itemVM.Name;
             this.FolderPath = itemVM.FolderPath;
             this.ExecuteFilePath = itemVM.ExecuteFilePath;
+            this.ItemStatusServiceVM = itemVM.ItemStatusServiceVM;
+            this.item.Status = itemVM.ItemStatusServiceVM.SelectedItemStatusVM.Status;
         }
 
         public ItemViewModel Clone()
@@ -175,7 +169,8 @@
             {
                 Name = this.Name,
                 FolderPath = this.FolderPath,
-                ExecuteFilePath = this.ExecuteFilePath
+                ExecuteFilePath = this.ExecuteFilePath,
+                ItemStatusServiceVM = this.ItemStatusServiceVM.Clone()
             };
         }
 

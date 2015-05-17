@@ -89,6 +89,7 @@
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemDialogViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemManageViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemStatusServiceViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemStatusViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
