@@ -32,6 +32,8 @@
 
         public string ExecuteFilePath { get; set; }
 
+        public ItemStatus Status { get; set; }
+
         public ImageSource ExecuteFileImage
         {
             get

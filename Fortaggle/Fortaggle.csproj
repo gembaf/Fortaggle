@@ -80,6 +80,7 @@
     <Compile Include="Models\ItemGroup\ItemGroupService.cs" />
     <Compile Include="Models\Item\Item.cs" />
     <Compile Include="Models\ItemGroup\ItemGroup.cs" />
+    <Compile Include="Models\Item\ItemStatus.cs" />
     <Compile Include="Models\XML\XMLFileManager.cs" />
     <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
     <Compile Include="ViewModels\Common\FolderBrowserDialog.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemDialogViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemManageViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemStatusViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranking\RankingViewModel.cs" />

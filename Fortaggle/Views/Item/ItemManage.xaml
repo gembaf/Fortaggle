@@ -79,8 +79,17 @@
                     <Image Source="{Binding ExecuteFileImage}"
                            Height="42" Width="42"
                            Grid.Column="0"/>
-                    <TextBlock Text="{Binding Name}"
-                               Grid.Column="1"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="{Binding Name}"
+                                   Grid.Row="0"/>
+                        <TextBlock Text="{Binding SelectedStatus.Label}"
+                                   Grid.Row="1"/>
+                    </Grid>
                 </Grid>
 
                 <!--ボタン一覧-->

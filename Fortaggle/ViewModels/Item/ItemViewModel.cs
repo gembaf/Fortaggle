@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Media;
+    using System.Linq;
 
     public class ItemViewModel : ViewModelBase
     {
@@ -22,6 +23,8 @@
         {
             this.item = item;
             ExecuteFileImage = item.ExecuteFileImage;
+            ItemStatusList = ItemStatusViewModel.Create();
+            SelectedStatus = ItemStatusList.First();
         }
 
         public ItemViewModel()
@@ -30,6 +33,12 @@
         }
 
         //--- プロパティ
+
+        #region IEnumerable<ItemStatusViewModel> ItemStatusList プロパティ
+
+        public IEnumerable<ItemStatusViewModel> ItemStatusList { get; private set; }
+
+        #endregion
 
         #region string Name 変更通知プロパティ
 
@@ -77,6 +86,26 @@
                     item.ExecuteFilePath = value;
                     ExecuteFileImage = item.ExecuteFileImage;
                     RaisePropertyChanged("ExecuteFilePath");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ItemStatusViewModel Status 変更通知プロパティ
+
+        private ItemStatusViewModel _SelectedStatus;
+
+        public ItemStatusViewModel SelectedStatus
+        {
+            get { return _SelectedStatus; }
+            set
+            {
+                if (_SelectedStatus != value)
+                {
+                    _SelectedStatus = value;
+                    item.Status = value.Status;
+                    RaisePropertyChanged("SelectedStatus");
                 }
             }
         }
