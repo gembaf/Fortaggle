@@ -12,6 +12,8 @@
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemGroupDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ConfirmDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ItemManageVM.ItemDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ItemManageVM.ConfirmDialogVM}" />
     </i:Interaction.Behaviors>
 
     <Grid>

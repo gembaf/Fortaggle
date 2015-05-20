@@ -9,11 +9,6 @@
              d:DesignHeight="500" d:DesignWidth="700"
              Background="White">
 
-    <i:Interaction.Behaviors>
-        <behavior:DialogBehavior Content="{Binding ItemDialogVM}" />
-        <behavior:DialogBehavior Content="{Binding ConfirmDialogVM}" />
-    </i:Interaction.Behaviors>
-
     <Border Style="{StaticResource BlackBorder}">
         <Grid>
             <Grid.RowDefinitions>
