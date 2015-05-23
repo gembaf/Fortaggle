@@ -37,7 +37,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="{Binding ItemVMList[0].ExecuteFileImage}"
-                               Height="32" Width="32"
+                               Height="40" Width="40"
                                Grid.Column="0"/>
                         <TextBlock Text="{Binding Name}"
                                    VerticalAlignment="Center"

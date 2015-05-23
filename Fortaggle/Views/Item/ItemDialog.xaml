@@ -37,7 +37,7 @@
 
             <!--ExecuteFileImage-->
             <Image Source="{Binding ItemVM.ExecuteFileImage}"
-                   Height="60" Width="60"
+                   Height="92" Width="92"
                    Grid.Column="0"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>

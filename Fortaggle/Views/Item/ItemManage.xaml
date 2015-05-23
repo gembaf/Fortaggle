@@ -39,13 +39,13 @@
                     <DataTemplate>
                         <Border Style="{StaticResource UnderLineBorder}"
                                 Width="370">
-                            <Grid Margin="10">
+                            <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="3*" />
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ExecuteFileImage}"
-                                       Height="42" Width="42"
+                                       Height="56" Width="56"
                                        Grid.Column="0"/>
                                 <TextBlock Text="{Binding Name}"
                                            Grid.Column="1"/>
@@ -72,7 +72,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Image Source="{Binding ExecuteFileImage}"
-                           Height="42" Width="42"
+                           Height="56" Width="56"
                            Grid.Column="0"/>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
