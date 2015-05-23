@@ -97,8 +97,8 @@
                     _OpenFileDialogCommand = new RelayCommand(
                         () =>
                         {
-                            var dialog = new System.Windows.Forms.OpenFileDialog();
-                            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            var dialog = new OpenFileDialog();
+                            if (dialog.ShowDialog() == true)
                             {
                                 ItemVM.ExecuteFilePath = dialog.FileName;
                             }

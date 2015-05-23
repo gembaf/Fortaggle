@@ -84,6 +84,7 @@
     <Compile Include="Models\Common\ExplorerManager.cs" />
     <Compile Include="Models\Common\XMLFileManager.cs" />
     <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
+    <Compile Include="ViewModels\Common\OpenFileDialog.cs" />
     <Compile Include="ViewModels\Common\FolderBrowserDialog.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupDialogViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupManageViewModel.cs" />
