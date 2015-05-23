@@ -49,7 +49,7 @@
                 <StackPanel Grid.Row="0">
                     <TextBlock Text="アイテム名"
                                Style="{StaticResource HeaderStyle}"/>
-                    <TextBox>
+                    <TextBox Width="250">
                         <TextBox.Text>
         			        <Binding Path="ItemVM.Name"
         			                 UpdateSourceTrigger="PropertyChanged"
@@ -62,7 +62,6 @@
         			    </TextBox.Text>
         			</TextBox>
                 </StackPanel>
-
             </Grid>
         </Grid>
 
