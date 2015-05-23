@@ -57,7 +57,8 @@
 
             <!--アイテム詳細画面-->
             <Grid Grid.Row="2"
-                  IsEnabled="{Binding IsSelect}">
+                  IsEnabled="{Binding IsSelect}"
+                  Background="AliceBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="40" />
