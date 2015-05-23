@@ -83,12 +83,12 @@
                                Grid.ColumnSpan="4"
                                Grid.Row="0"/>
                     <!--ボタン一覧-->
-                    <Button Content="削除"
+                    <Button Content="アイテムグループ削除"
                             Command="{Binding DeleteItemGroupDialogCommand}"
                             Style="{StaticResource DeleteButton}"
                             Grid.Row="1"
                             Grid.Column="2" />
-                    <Button Content="編集"
+                    <Button Content="アイテムグループ編集"
                             Command="{Binding EditItemGroupDialogCommand}"
                             Style="{StaticResource EditButton}"
                             Grid.Row="1"
