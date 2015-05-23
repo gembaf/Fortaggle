@@ -77,6 +77,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Common\ShellEx\ShellEx.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\IImageList.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\IMAGEINFO.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\IMAGELISTDRAWPARAMS.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\POINT.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\RECT.cs" />
+    <Compile Include="Models\Common\ShellEx\Shell\SHFILEINFO.cs" />
     <Compile Include="Models\ItemGroup\ItemGroupService.cs" />
     <Compile Include="Models\Item\Item.cs" />
     <Compile Include="Models\ItemGroup\ItemGroup.cs" />
