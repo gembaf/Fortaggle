@@ -38,11 +38,13 @@
             {
                 return null;
             }
-            var icon = Icon.ExtractAssociatedIcon(FilePath);
-            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(
-            icon.Handle,
-            System.Windows.Int32Rect.Empty,
-            BitmapSizeOptions.FromEmptyOptions());
+
+            Bitmap bmp = ShellEx.ShellEx.GetBitmapFromFilePath(FilePath, ShellEx.ShellEx.IconSizeEnum.LargeIcon48);
+            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                bmp.GetHbitmap(),
+                System.IntPtr.Zero,
+                System.Windows.Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
         }
     }
 }
