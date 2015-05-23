@@ -7,8 +7,8 @@
              xmlns:rules="clr-namespace:Fortaggle.Views.ValidationRules"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="400"
-             MinHeight="100" MinWidth="400">
+             MinHeight="100" MinWidth="400"
+             Background="White">
 
     <i:Interaction.Behaviors>
         <behaviors:WindowStyleBehavior>

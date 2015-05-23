@@ -6,7 +6,8 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:Fortaggle.Views.Behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
+             MinHeight="100" MinWidth="350"
+             Background="White">
 
     <i:Interaction.Behaviors>
         <behaviors:WindowStyleBehavior>
@@ -31,10 +32,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="{Binding Message}"
-                   Style="{StaticResource HeaderStyle}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Padding="5"
                    Grid.ColumnSpan="2"
                    Grid.Row="0"/>
-
         <Button Content="はい"
                 Command="{Binding AcceptCommand}"
                 Grid.Column="0"
@@ -43,6 +45,5 @@
                 Command="{Binding CancelCommand}"
                 Grid.Column="1"
                 Grid.Row="1"/>
-
     </Grid>
 </UserControl>
