@@ -72,7 +72,7 @@
                         () =>
                         {
                             FolderBrowserDialog dialog = new FolderBrowserDialog();
-                            if (dialog.ShowDialog() != null)
+                            if (dialog.ShowDialog() == true)
                             {
                                 ItemVM.FolderPath = dialog.SelectedPath;
                             }
