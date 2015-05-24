@@ -55,11 +55,9 @@
                         <MenuItem Header="アイテム削除"
                                   Command="{Binding DeleteItemDialogCommand}"/>
                         <MenuItem Header="フォルダを開く"
-                                  Command="{Binding OpenFolderCommand}"
-                                  IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"/>
+                                  Command="{Binding OpenFolderCommand}"/>
                         <MenuItem Header="ファイルの実行"
-                                  Command="{Binding ExecuteFileCommand}"
-                                  IsEnabled="{Binding SelectedItemVM.IsExistsExecuteFile}"/>
+                                  Command="{Binding ExecuteFileCommand}"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>

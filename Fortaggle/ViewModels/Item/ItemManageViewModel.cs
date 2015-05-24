@@ -152,6 +152,7 @@
                 if (_EditItemDialogCommand == null)
                 {
                     _EditItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ItemDialogVM = new ItemDialogViewModel(
@@ -161,6 +162,11 @@
                                     ItemDialogVM = null;
                                 },
                                 SelectedItemVM.Clone());
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _EditItemDialogCommand;
@@ -180,6 +186,7 @@
                 if (_DeleteItemDialogCommand == null)
                 {
                     _DeleteItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -196,6 +203,11 @@
                                 {
                                     ConfirmDialogVM = null;
                                 });
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _DeleteItemDialogCommand;
@@ -214,7 +226,17 @@
             {
                 if (_OpenFolderCommand == null)
                 {
-                    _OpenFolderCommand = new RelayCommand(() => SelectedItemVM.OpenFolder());
+                    _OpenFolderCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            SelectedItemVM.OpenFolder();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect && SelectedItemVM.IsExistsFolder;
+                        });
                 }
                 return _OpenFolderCommand;
             }
@@ -232,7 +254,17 @@
             {
                 if (_ExecuteFileCommand == null)
                 {
-                    _ExecuteFileCommand = new RelayCommand(() => SelectedItemVM.ExecuteFile());
+                    _ExecuteFileCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            SelectedItemVM.ExecuteFile();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect && SelectedItemVM.IsExistsExecuteFile;
+                        });
                 }
                 return _ExecuteFileCommand;
             }
