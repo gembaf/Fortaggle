@@ -34,12 +34,17 @@
 
         public static ImageSource GetIconImage(string FilePath)
         {
+            Bitmap bmp;
+
             if (!IsExistsFile(FilePath))
             {
-                return null;
+                bmp = Properties.Resources.ResourceManager.GetObject("NoImage") as Bitmap;
+            }
+            else
+            {
+                bmp = ShellEx.ShellEx.GetBitmapFromFilePath(FilePath, ShellEx.ShellEx.IconSizeEnum.LargeIcon48);
             }
 
-            Bitmap bmp = ShellEx.ShellEx.GetBitmapFromFilePath(FilePath, ShellEx.ShellEx.IconSizeEnum.LargeIcon48);
             return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                 bmp.GetHbitmap(),
                 System.IntPtr.Zero,
