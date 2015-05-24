@@ -12,22 +12,14 @@
     <Border Style="{StaticResource BlackBorder}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
                 <RowDefinition/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <!--ボタン-->
-            <UniformGrid Columns="4"
-                         Grid.Row="0">
-                <Button Content="アイテム追加"
-                        Command="{Binding NewItemDialogCommand}"/>
-            </UniformGrid>
-
             <!--アイテム一覧-->
             <ListBox ItemsSource="{Binding ItemVMList}"
                      SelectedItem="{Binding SelectedItemVM}"
                      Style="{StaticResource WhiteListBox}"
-                     Grid.Row="1"
+                     Grid.Row="0"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -53,10 +45,27 @@
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="アイテム追加"
+                                  Command="{Binding NewItemDialogCommand}"/>
+                        <MenuItem Header="アイテム編集"
+                                  Command="{Binding EditItemDialogCommand}"/>
+                        <MenuItem Header="アイテム削除"
+                                  Command="{Binding DeleteItemDialogCommand}"/>
+                        <MenuItem Header="フォルダを開く"
+                                  Command="{Binding OpenFolderCommand}"
+                                  IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"/>
+                        <MenuItem Header="ファイルの実行"
+                                  Command="{Binding ExecuteFileCommand}"
+                                  IsEnabled="{Binding SelectedItemVM.IsExistsExecuteFile}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
             </ListBox>
 
             <!--アイテム詳細画面-->
-            <Grid Grid.Row="2"
+            <Grid Grid.Row="1"
                   IsEnabled="{Binding IsSelect}"
                   Background="AliceBlue">
                 <Grid.RowDefinitions>
@@ -91,18 +100,6 @@
                 <!--ボタン一覧-->
                 <UniformGrid Columns="4"
                              Grid.Row="1">
-                    <Button Content="アイテム削除"
-                            Style="{StaticResource DeleteButton}"
-                            Command="{Binding DeleteItemDialogCommand}"/>
-                    <Button Content="アイテム編集"
-                            Style="{StaticResource EditButton}"
-                            Command="{Binding EditItemDialogCommand}"/>
-                    <Button Content="フォルダを開く"
-                            IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"
-                            Command="{Binding OpenFolderCommand}"/>
-                    <Button Content="ファイルの実行"
-                            IsEnabled="{Binding SelectedItemVM.IsExistsExecuteFile}"
-                            Command="{Binding ExecuteFileCommand}"/>
                 </UniformGrid>
             </Grid>
         </Grid>
