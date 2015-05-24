@@ -51,11 +51,9 @@
                     <MenuItem Header="アイテムグループ追加"
                               Command="{Binding NewItemGroupDialogCommand}"/>
                     <MenuItem Header="アイテムグループ編集"
-                              Command="{Binding EditItemGroupDialogCommand}"
-                              IsEnabled="{Binding IsSelect}"/>
+                              Command="{Binding EditItemGroupDialogCommand}"/>
                     <MenuItem Header="アイテムグループ削除"
-                              Command="{Binding DeleteItemGroupDialogCommand}"
-                              IsEnabled="{Binding IsSelect}"/>
+                              Command="{Binding DeleteItemGroupDialogCommand}"/>
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>

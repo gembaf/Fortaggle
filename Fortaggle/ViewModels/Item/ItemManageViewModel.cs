@@ -152,6 +152,7 @@
                 if (_EditItemDialogCommand == null)
                 {
                     _EditItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ItemDialogVM = new ItemDialogViewModel(
@@ -161,6 +162,11 @@
                                     ItemDialogVM = null;
                                 },
                                 SelectedItemVM.Clone());
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _EditItemDialogCommand;
@@ -180,6 +186,7 @@
                 if (_DeleteItemDialogCommand == null)
                 {
                     _DeleteItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -196,6 +203,11 @@
                                 {
                                     ConfirmDialogVM = null;
                                 });
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _DeleteItemDialogCommand;
@@ -252,8 +264,7 @@
                         () =>
                         {
                             return IsSelect && SelectedItemVM.IsExistsExecuteFile;
-                        }
-                        );
+                        });
                 }
                 return _ExecuteFileCommand;
             }

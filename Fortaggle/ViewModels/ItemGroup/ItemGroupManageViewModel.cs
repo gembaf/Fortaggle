@@ -191,6 +191,7 @@
                 if (_EditItemGroupDialogCommand == null)
                 {
                     _EditItemGroupDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
@@ -200,6 +201,11 @@
                                     ItemGroupDialogVM = null;
                                 },
                                 SelectedItemGroupVM.Clone());
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _EditItemGroupDialogCommand;
@@ -219,6 +225,7 @@
                 if (_DeleteItemGroupDialogCommand == null)
                 {
                     _DeleteItemGroupDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -235,6 +242,11 @@
                                 {
                                     ConfirmDialogVM = null;
                                 });
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _DeleteItemGroupDialogCommand;
