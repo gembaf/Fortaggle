@@ -5,6 +5,7 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
+    using System.IO;
     using System.Windows.Input;
 
     public class ItemDialogViewModel : ViewModelBase
@@ -124,12 +125,17 @@
                         (parameter) =>
                         {
                             var filePath = (parameter as string[])[0];
-                            if (!ExplorerManager.IsExistsDirectory(filePath))
+                            FileInfo file = new FileInfo(filePath);
+                            if (!ExplorerManager.IsExistsDirectory(file.FullName))
                             {
                                 System.Windows.Forms.MessageBox.Show("フォルダを選択してください");
                                 return;
                             }
-                            ItemVM.FolderPath = filePath;
+                            ItemVM.FolderPath = file.FullName;
+                            if (string.IsNullOrEmpty(ItemVM.Name))
+                            {
+                                ItemVM.Name = file.Name;
+                            }
                         });
                 }
                 return _SetFolderPathCommand;

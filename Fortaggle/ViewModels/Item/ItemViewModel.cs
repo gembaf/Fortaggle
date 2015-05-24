@@ -179,6 +179,10 @@
                 if (_HasViewError != value)
                 {
                     _HasViewError = value;
+                    if (value == true)
+                    {
+                        Name = "";
+                    }
                     RaisePropertyChanged("HasViewError");
                 }
             }
