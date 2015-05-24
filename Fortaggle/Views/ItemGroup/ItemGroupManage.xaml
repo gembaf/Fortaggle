@@ -45,6 +45,14 @@
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="アイテムグループ追加" Command="{Binding NewItemGroupDialogCommand}"/>
+                    <MenuItem Header="アイテムグループ編集" Command="{Binding EditItemGroupDialogCommand}"/>
+                    <MenuItem Header="アイテムグループ削除" Command="{Binding DeleteItemGroupDialogCommand}"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
         </ListBox>
 
         <DockPanel Grid.Column="1">
