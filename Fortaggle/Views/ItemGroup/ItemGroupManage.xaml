@@ -61,49 +61,18 @@
                     DockPanel.Dock="Top">
                 <UniformGrid Columns="4"
                              Height="40">
-
-                    <Button Content="アイテムグループ追加"
-                            Command="{Binding NewItemGroupDialogCommand}"/>
                 </UniformGrid>
             </Border>
 
             <!--アイテムグループ詳細-->
             <Border DockPanel.Dock="Top"
                     Style="{StaticResource BlackBorder}">
-                <Grid IsEnabled="{Binding IsSelect}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-
-                    <!--アイテムグループ名-->
-                    <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
-                               FontSize="20"
-                               Foreground="Green"
-                               Padding="10,0,10,0"
-                               Grid.ColumnSpan="4"
-                               Grid.Row="0"/>
-                    <!--ボタン一覧-->
-                    <Button Content="アイテムグループ削除"
-                            Command="{Binding DeleteItemGroupDialogCommand}"
-                            Style="{StaticResource DeleteButton}"
-                            Grid.Row="1"
-                            Grid.Column="2" />
-                    <Button Content="アイテムグループ編集"
-                            Command="{Binding EditItemGroupDialogCommand}"
-                            Style="{StaticResource EditButton}"
-                            Grid.Row="1"
-                            Grid.Column="3" />
-                </Grid>
+                <!--アイテムグループ名-->
+                <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
+                           FontSize="20"
+                           Foreground="Green"
+                           Padding="10" />
             </Border>
-
             <!--アイテム一覧-->
             <ContentControl Content="{Binding ItemManageVM}" />
         </DockPanel>
