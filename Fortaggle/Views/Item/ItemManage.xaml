@@ -51,9 +51,11 @@
                         <MenuItem Header="アイテム追加"
                                   Command="{Binding NewItemDialogCommand}"/>
                         <MenuItem Header="アイテム編集"
-                                  Command="{Binding EditItemDialogCommand}"/>
+                                  Command="{Binding EditItemDialogCommand}"
+                                  IsEnabled="{Binding IsSelect}"/>
                         <MenuItem Header="アイテム削除"
-                                  Command="{Binding DeleteItemDialogCommand}"/>
+                                  Command="{Binding DeleteItemDialogCommand}"
+                                  IsEnabled="{Binding IsSelect}"/>
                         <MenuItem Header="フォルダを開く"
                                   Command="{Binding OpenFolderCommand}"
                                   IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"/>
