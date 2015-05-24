@@ -53,6 +53,23 @@
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="アイテム追加"
+                                  Command="{Binding NewItemDialogCommand}"/>
+                        <MenuItem Header="アイテム編集"
+                                  Command="{Binding EditItemDialogCommand}"/>
+                        <MenuItem Header="アイテム削除"
+                                  Command="{Binding DeleteItemDialogCommand}"/>
+                        <MenuItem Header="フォルダを開く"
+                                  Command="{Binding OpenFolderCommand}"
+                                  IsEnabled="{Binding SelectedItemVM.IsExistsFolder}"/>
+                        <MenuItem Header="ファイルの実行"
+                                  Command="{Binding ExecuteFileCommand}"
+                                  IsEnabled="{Binding SelectedItemVM.IsExistsExecuteFile}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
             </ListBox>
 
             <!--アイテム詳細画面-->
