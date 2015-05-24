@@ -8,6 +8,7 @@
         Height="768"
         Width="1024"
         Title="Fortaggle"
+        Icon="../Fortaggle.ico"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <DockPanel>
