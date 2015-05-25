@@ -54,6 +54,23 @@
 
         #endregion
 
+        #region string Ruby
+
+        public string Ruby
+        {
+            get { return item.Ruby; }
+            set
+            {
+                if (item.Ruby != value)
+                {
+                    item.Ruby = value;
+                    RaisePropertyChanged("Ruby");
+                }
+            }
+        }
+
+        #endregion
+
         #region string FolderPath
 
         public string FolderPath
