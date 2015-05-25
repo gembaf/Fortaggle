@@ -75,7 +75,7 @@
                            Padding="10" />
             </Border>
             <!--アイテム一覧-->
-            <!--<ContentControl Content="{Binding ItemManageVM}" />-->
+            <ContentControl Content="{Binding SelectedItemGroupVM.ItemManageVM}" />
         </DockPanel>
     </Grid>
 </UserControl>

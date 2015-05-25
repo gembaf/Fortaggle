@@ -39,6 +39,8 @@
                 {
                     return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
                 }));
+
+            ItemManageVM = new ItemManageViewModel(this);
         }
 
         public ItemGroupViewModel()
@@ -66,6 +68,12 @@
         #endregion
 
         //--- 変更通知プロパティ
+
+        #region ItemManageViewModel ItemManageVM
+
+        public ItemManageViewModel ItemManageVM { get; private set; }
+
+        #endregion
 
         #region ObservableCollection<ItemViewModel> ItemVMList
 
