@@ -27,7 +27,7 @@
                             <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ItemVMList[0].ExecuteFileImage}"
+                        <Image Source="{Binding ItemManageVM.ItemVMList[0].ExecuteFileImage}"
                                Height="40" Width="40"
                                Grid.Column="0"/>
                         <TextBlock Text="{Binding Name}"

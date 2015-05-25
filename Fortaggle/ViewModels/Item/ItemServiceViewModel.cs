@@ -1,11 +1,13 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
+    using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Common;
     using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using System.Linq;
 
     public class ItemServiceViewModel : ViewModelBase
     {
@@ -13,16 +15,21 @@
 
         //--- フィールド
 
-        private ItemGroupViewModel itemGroupVM;
+        private ItemGroup itemGroup;
 
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
-        public ItemServiceViewModel(ItemGroupViewModel itemGroupVM)
+        public ItemServiceViewModel(ItemGroup itemGroup)
         {
-            this.itemGroupVM = itemGroupVM;
-            ItemVMList = itemGroupVM.ItemVMList;
+            this.itemGroup = itemGroup;
+            ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
+            ItemVMList = new ObservableCollection<ItemViewModel>(ItemVMList.OrderBy(
+                n =>
+                {
+                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
+                }));
         }
 
         //--- プロパティ
@@ -130,7 +137,8 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    itemGroupVM.AddItemVM(ItemDialogVM.ItemVM);
+                                    ItemDialogVM.ItemVM.Save(itemGroup);
+                                    ItemVMList.Add(ItemDialogVM.ItemVM);
                                     ItemDialogVM = null;
                                 });
                         });
@@ -195,7 +203,8 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    itemGroupVM.RemoveItemVM(SelectedItemVM);
+                                    ItemDialogVM.ItemVM.Remove(itemGroup);
+                                    ItemVMList.Remove(ItemDialogVM.ItemVM);
                                     ConfirmDialogVM = null;
                                 },
                                 // CancelAction

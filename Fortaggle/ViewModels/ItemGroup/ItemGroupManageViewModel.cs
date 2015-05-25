@@ -99,7 +99,7 @@
                     if (value != null)
                     {
                         IsSelect = true;
-                        ItemManageVM = new ItemServiceViewModel(value);
+                        //ItemManageVM = new ItemServiceViewModel(value);
                     }
                     else
                     {
