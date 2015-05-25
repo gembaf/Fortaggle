@@ -64,6 +64,12 @@
                     <TextBlock Text="※ 未入力ならフォルダ名が入ります"
                                Foreground="Red"/>
                 </StackPanel>
+                <!--Ruby-->
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="ふりがな"
+                               Style="{StaticResource HeaderStyle}"/>
+                    <TextBox Width="250" Text="{Binding ItemVM.Ruby}" />
+                </StackPanel>
             </Grid>
         </Grid>
 

@@ -27,6 +27,8 @@
 
         public string Name { get; set; }
 
+        public string Ruby { get; set; }
+
         public string FolderPath { get; set; }
 
         public string ExecuteFilePath { get; set; }

@@ -54,6 +54,23 @@
 
         #endregion
 
+        #region string Ruby
+
+        public string Ruby
+        {
+            get { return item.Ruby; }
+            set
+            {
+                if (item.Ruby != value)
+                {
+                    item.Ruby = value;
+                    RaisePropertyChanged("Ruby");
+                }
+            }
+        }
+
+        #endregion
+
         #region string FolderPath
 
         public string FolderPath
@@ -265,6 +282,7 @@
         public void Update(ItemViewModel itemVM)
         {
             this.Name = itemVM.Name;
+            this.Ruby = itemVM.Ruby;
             this.FolderPath = itemVM.FolderPath;
             this.ExecuteFilePath = itemVM.ExecuteFilePath;
             this.ItemStatusServiceVM = itemVM.ItemStatusServiceVM;
@@ -276,6 +294,7 @@
             return new ItemViewModel()
             {
                 Name = this.Name,
+                Ruby = this.Ruby,
                 FolderPath = this.FolderPath,
                 ExecuteFilePath = this.ExecuteFilePath,
                 ItemStatusServiceVM = this.ItemStatusServiceVM.Clone()
