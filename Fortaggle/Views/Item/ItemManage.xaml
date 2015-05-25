@@ -31,6 +31,9 @@
                     <DataTemplate>
                         <Border Style="{StaticResource UnderLineBorder}"
                                 Width="370">
+                            <Border.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding ExecuteFileCommand}" />
+                            </Border.InputBindings>
                             <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
