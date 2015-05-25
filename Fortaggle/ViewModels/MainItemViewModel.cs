@@ -1,5 +1,6 @@
 ﻿namespace Fortaggle.ViewModels
 {
+    using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
 
     public class MainItemViewModel : ViewModelBase
@@ -14,6 +15,7 @@
 
         public MainItemViewModel()
         {
+            ItemGroupServiceVM = new ItemGroupServiceViewModel();
         }
 
         //--- プロパティ
@@ -27,11 +29,13 @@
 
         #endregion
 
+        #region ItemGroupServiceViewModel ItemGroupServiceVM
+
+        public ItemGroupServiceViewModel ItemGroupServiceVM { get; private set; }
+
+        #endregion
+
         //--- public メソッド
-
-        //--- internal protected メソッド
-
-        //--- internal メソッド
 
         //--- protected メソッド
 
