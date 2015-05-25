@@ -31,6 +31,7 @@
                     return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
                 }));
             ExecuteFileImage = SelectExecuteFileImage();
+            ItemVMList.CollectionChanged += ItemVMListCollectionChanged;
         }
 
         //--- プロパティ
@@ -255,6 +256,11 @@
         {
             var itemVM = ItemVMList.Count == 0 ? null : ItemVMList.FirstOrDefault(e => e.IsExistsExecuteFile);
             return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
+        }
+
+        private void ItemVMListCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            ExecuteFileImage = SelectExecuteFileImage();
         }
 
         //--- static メソッド
