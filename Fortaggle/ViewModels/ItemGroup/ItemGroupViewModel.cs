@@ -68,12 +68,6 @@
 
         #endregion
 
-        #region ObservableCollection<ItemViewModel> ItemVMList
-
-        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
-
-        #endregion
-
         #region bool HasViewError
 
         private bool _HasViewError;
@@ -118,18 +112,6 @@
             {
                 Name = this.Name
             };
-        }
-
-        public void AddItemVM(ItemViewModel itemVM)
-        {
-            itemVM.Save(itemGroup);
-            ItemVMList.Add(itemVM);
-        }
-
-        public void RemoveItemVM(ItemViewModel itemVM)
-        {
-            itemVM.Remove(itemGroup);
-            ItemVMList.Remove(itemVM);
         }
 
         //--- protected メソッド
