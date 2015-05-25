@@ -194,6 +194,34 @@
 
         //--- コマンド
 
+        #region OpenFolderCommand
+
+        private ICommand _OpenFolderCommand;
+        
+        public ICommand OpenFolderCommand
+        {
+            get
+            {
+                if (_OpenFolderCommand == null)
+                {
+                    _OpenFolderCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            OpenFolder();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsExistsFolder;
+                        });
+                }
+                return _OpenFolderCommand;
+            }
+        }
+
+        #endregion
+
         #region ExecuteFileCommand
 
         private ICommand _ExecuteFileCommand;
