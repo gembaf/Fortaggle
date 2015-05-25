@@ -216,62 +216,6 @@
 
         #endregion
 
-        #region OpenFolderCommand
-
-        private ICommand _OpenFolderCommand;
-        
-        public ICommand OpenFolderCommand
-        {
-            get
-            {
-                if (_OpenFolderCommand == null)
-                {
-                    _OpenFolderCommand = new RelayCommand(
-                        // Action
-                        () =>
-                        {
-                            SelectedItemVM.OpenFolder();
-                        },
-                        // CanExecute
-                        () =>
-                        {
-                            return IsSelect && SelectedItemVM.IsExistsFolder;
-                        });
-                }
-                return _OpenFolderCommand;
-            }
-        }
-
-        #endregion
-
-        #region ExecuteFileCommand
-
-        private ICommand _ExecuteFileCommand;
-        
-        public ICommand ExecuteFileCommand
-        {
-            get
-            {
-                if (_ExecuteFileCommand == null)
-                {
-                    _ExecuteFileCommand = new RelayCommand(
-                        // Action
-                        () =>
-                        {
-                            SelectedItemVM.ExecuteFile();
-                        },
-                        // CanExecute
-                        () =>
-                        {
-                            return IsSelect && SelectedItemVM.IsExistsExecuteFile;
-                        });
-                }
-                return _ExecuteFileCommand;
-            }
-        }
-
-        #endregion
-
         //--- public メソッド
 
         //--- protected メソッド

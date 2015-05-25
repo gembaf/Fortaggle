@@ -3,8 +3,10 @@
     using Fortaggle.Models.Common;
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     public class ItemViewModel : ViewModelBase
@@ -185,6 +187,64 @@
                     }
                     RaisePropertyChanged("HasViewError");
                 }
+            }
+        }
+
+        #endregion
+
+        //--- コマンド
+
+        #region OpenFolderCommand
+
+        private ICommand _OpenFolderCommand;
+        
+        public ICommand OpenFolderCommand
+        {
+            get
+            {
+                if (_OpenFolderCommand == null)
+                {
+                    _OpenFolderCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            OpenFolder();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsExistsFolder;
+                        });
+                }
+                return _OpenFolderCommand;
+            }
+        }
+
+        #endregion
+
+        #region ExecuteFileCommand
+
+        private ICommand _ExecuteFileCommand;
+        
+        public ICommand ExecuteFileCommand
+        {
+            get
+            {
+                if (_ExecuteFileCommand == null)
+                {
+                    _ExecuteFileCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            ExecuteFile();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsExistsExecuteFile;
+                        });
+                }
+                return _ExecuteFileCommand;
             }
         }
 
