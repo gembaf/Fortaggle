@@ -17,9 +17,9 @@ namespace Fortaggle.Views.Item
     /// <summary>
     /// ItemManage.xaml の相互作用ロジック
     /// </summary>
-    public partial class ItemManage : UserControl
+    public partial class ItemService : UserControl
     {
-        public ItemManage()
+        public ItemService()
         {
             InitializeComponent();
         }

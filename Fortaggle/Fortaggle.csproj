@@ -101,7 +101,7 @@
     <Compile Include="ViewModels\ItemGroup\ItemGroupServiceViewModel.cs" />
     <Compile Include="ViewModels\ItemGroup\ItemGroupViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemDialogViewModel.cs" />
-    <Compile Include="ViewModels\Item\ItemManageViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemServiceViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemStatusServiceViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemStatusViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
@@ -125,8 +125,8 @@
     <Compile Include="Views\Item\ItemDialog.xaml.cs">
       <DependentUpon>ItemDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Item\ItemManage.xaml.cs">
-      <DependentUpon>ItemManage.xaml</DependentUpon>
+    <Compile Include="Views\Item\ItemService.xaml.cs">
+      <DependentUpon>ItemService.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainItem.xaml.cs">
       <DependentUpon>MainItem.xaml</DependentUpon>
@@ -170,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Item\ItemManage.xaml">
+    <Page Include="Views\Item\ItemService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

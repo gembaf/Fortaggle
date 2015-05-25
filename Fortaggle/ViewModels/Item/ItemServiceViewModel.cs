@@ -7,7 +7,7 @@
     using System.Collections.ObjectModel;
     using System.Windows.Input;
 
-    public class ItemManageViewModel : ViewModelBase
+    public class ItemServiceViewModel : ViewModelBase
     {
         //--- 定数
 
@@ -19,7 +19,7 @@
 
         //--- コンストラクタ
 
-        public ItemManageViewModel(ItemGroupViewModel itemGroupVM)
+        public ItemServiceViewModel(ItemGroupViewModel itemGroupVM)
         {
             this.itemGroupVM = itemGroupVM;
             ItemVMList = itemGroupVM.ItemVMList;

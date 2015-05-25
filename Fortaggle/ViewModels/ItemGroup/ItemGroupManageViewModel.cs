@@ -99,7 +99,7 @@
                     if (value != null)
                     {
                         IsSelect = true;
-                        ItemManageVM = new ItemManageViewModel(value);
+                        ItemManageVM = new ItemServiceViewModel(value);
                     }
                     else
                     {
@@ -134,9 +134,9 @@
 
         #region ItemManageViewModel ItemManageVM
 
-        private ItemManageViewModel _ItemManageVM;
+        private ItemServiceViewModel _ItemManageVM;
 
-        public ItemManageViewModel ItemManageVM
+        public ItemServiceViewModel ItemManageVM
         {
             get { return _ItemManageVM; }
             set

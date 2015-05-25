@@ -31,8 +31,8 @@
             </DataTemplate>
 
             <!--Item-->
-            <DataTemplate DataType="{x:Type vm_item:ItemManageViewModel}">
-                <view_item:ItemManage />
+            <DataTemplate DataType="{x:Type vm_item:ItemServiceViewModel}">
+                <view_item:ItemService />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm_item:ItemDialogViewModel}">
                 <view_item:ItemDialog />

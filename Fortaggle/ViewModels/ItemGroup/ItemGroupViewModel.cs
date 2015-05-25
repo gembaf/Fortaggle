@@ -40,7 +40,7 @@
                     return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
                 }));
 
-            ItemManageVM = new ItemManageViewModel(this);
+            ItemManageVM = new ItemServiceViewModel(this);
         }
 
         public ItemGroupViewModel()
@@ -71,7 +71,7 @@
 
         #region ItemManageViewModel ItemManageVM
 
-        public ItemManageViewModel ItemManageVM { get; private set; }
+        public ItemServiceViewModel ItemManageVM { get; private set; }
 
         #endregion
 
