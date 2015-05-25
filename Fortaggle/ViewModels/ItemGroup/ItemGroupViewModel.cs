@@ -33,7 +33,7 @@
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
-            ItemManageVM = new ItemServiceViewModel(itemGroup);
+            ItemServiceVM = new ItemServiceViewModel(itemGroup);
         }
 
         public ItemGroupViewModel()
@@ -62,9 +62,9 @@
 
         //--- 変更通知プロパティ
 
-        #region ItemManageViewModel ItemManageVM
+        #region ItemServiceViewModel ItemServiceVM
 
-        public ItemServiceViewModel ItemManageVM { get; private set; }
+        public ItemServiceViewModel ItemServiceVM { get; private set; }
 
         #endregion
 
