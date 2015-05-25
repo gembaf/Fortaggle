@@ -34,6 +34,11 @@
         {
             this.itemGroup = itemGroup;
             ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
+            ItemVMList = new ObservableCollection<ItemViewModel>(ItemVMList.OrderBy(
+                n =>
+                {
+                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
+                }));
         }
 
         public ItemGroupViewModel()
