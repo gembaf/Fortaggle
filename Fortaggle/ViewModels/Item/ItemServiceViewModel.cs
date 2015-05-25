@@ -2,12 +2,11 @@
 {
     using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Common;
-    using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
-    using System.Windows.Input;
     using System.Linq;
+    using System.Windows.Input;
 
     public class ItemServiceViewModel : ViewModelBase
     {
