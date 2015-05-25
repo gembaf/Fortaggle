@@ -1,14 +1,13 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
     using Fortaggle.ViewModels.Common;
-    using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
 
-    public class ItemGroupManageViewModel : ViewModelBase
+    public class ItemGroupServiceViewModel : ViewModelBase
     {
         //--- 定数
 
@@ -18,7 +17,7 @@
 
         //--- コンストラクタ
 
-        public ItemGroupManageViewModel()
+        public ItemGroupServiceViewModel()
         {
             ItemGroupVMList = ItemGroupViewModel.All();
             if (ItemGroupVMList.Count > 0)
@@ -28,17 +27,6 @@
         }
 
         //--- プロパティ
-
-        #region string Label 静的プロパティ
-
-        public static string Label
-        {
-            get { return "アイテム一覧"; }
-        }
-
-        #endregion
-
-        //--- 変更通知プロパティ
 
         #region ItemGroupDialogViewModel ItemGroupDialogVM
 
@@ -99,12 +87,10 @@
                     if (value != null)
                     {
                         IsSelect = true;
-                        ItemManageVM = new ItemManageViewModel(value);
                     }
                     else
                     {
                         IsSelect = false;
-                        ItemManageVM = null;
                     }
                     RaisePropertyChanged("SelectedItemGroupVM");
                 }
@@ -126,25 +112,6 @@
                 {
                     _IsSelect = value;
                     RaisePropertyChanged("IsSelect");
-                }
-            }
-        }
-
-        #endregion
-
-        #region ItemManageViewModel ItemManageVM
-
-        private ItemManageViewModel _ItemManageVM;
-
-        public ItemManageViewModel ItemManageVM
-        {
-            get { return _ItemManageVM; }
-            set
-            {
-                if (_ItemManageVM != value)
-                {
-                    _ItemManageVM = value;
-                    RaisePropertyChanged("ItemManageVM");
                 }
             }
         }

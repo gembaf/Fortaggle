@@ -1,6 +1,5 @@
 ﻿namespace Fortaggle.ViewModels
 {
-    using Fortaggle.ViewModels.ItemGroup;
     using Fortaggle.ViewModels.Ranking;
     using Fortaggle.ViewModels.TagGroup;
     using GalaSoft.MvvmLight;
@@ -20,7 +19,7 @@
         public MainViewModel()
         {
             Pages = new List<ViewModelBase>() {
-                new ItemGroupManageViewModel(),
+                new MainItemViewModel(),
                 new TagGroupListViewModel(),
                 new RankingViewModel()
             };

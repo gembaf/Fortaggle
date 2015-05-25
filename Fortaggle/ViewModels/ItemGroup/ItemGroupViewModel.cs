@@ -33,18 +33,21 @@
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
-            ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
-            ItemVMList = new ObservableCollection<ItemViewModel>(ItemVMList.OrderBy(
-                n =>
-                {
-                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
-                }));
+            ItemServiceVM = new ItemServiceViewModel(itemGroup);
         }
 
         public ItemGroupViewModel()
             : this(new ItemGroup())
         {
         }
+
+        //--- プロパティ
+
+        #region ItemServiceViewModel ItemServiceVM
+
+        public ItemServiceViewModel ItemServiceVM { get; private set; }
+
+        #endregion
 
         //--- 変更通知プロパティ(モデル)
 
@@ -66,12 +69,6 @@
         #endregion
 
         //--- 変更通知プロパティ
-
-        #region ObservableCollection<ItemViewModel> ItemVMList
-
-        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
-
-        #endregion
 
         #region bool HasViewError
 
@@ -117,18 +114,6 @@
             {
                 Name = this.Name
             };
-        }
-
-        public void AddItemVM(ItemViewModel itemVM)
-        {
-            itemVM.Save(itemGroup);
-            ItemVMList.Add(itemVM);
-        }
-
-        public void RemoveItemVM(ItemViewModel itemVM)
-        {
-            itemVM.Remove(itemGroup);
-            ItemVMList.Remove(itemVM);
         }
 
         //--- protected メソッド
