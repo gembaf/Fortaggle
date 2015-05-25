@@ -119,8 +119,8 @@
     <Compile Include="Views\ItemGroup\ItemGroupDialog.xaml.cs">
       <DependentUpon>ItemGroupDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemGroup\ItemGroupManage.xaml.cs">
-      <DependentUpon>ItemGroupManage.xaml</DependentUpon>
+    <Compile Include="Views\ItemGroup\ItemGroupService.xaml.cs">
+      <DependentUpon>ItemGroupService.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Item\ItemDialog.xaml.cs">
       <DependentUpon>ItemDialog.xaml</DependentUpon>
@@ -198,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemGroup\ItemGroupManage.xaml">
+    <Page Include="Views\ItemGroup\ItemGroupService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

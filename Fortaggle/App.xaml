@@ -39,8 +39,8 @@
             </DataTemplate>
 
             <!--ItemGroup-->
-            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupManageViewModel}">
-                <view_itemgroup:ItemGroupManage />
+            <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupServiceViewModel}">
+                <view_itemgroup:ItemGroupService />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupDialogViewModel}">
                 <view_itemgroup:ItemGroupDialog />
