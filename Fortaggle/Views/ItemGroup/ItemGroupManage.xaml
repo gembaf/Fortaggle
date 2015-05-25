@@ -48,11 +48,11 @@
 
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="アイテムグループ追加"
+                    <MenuItem Header="アイテムグループの新規作成"
                               Command="{Binding NewItemGroupDialogCommand}"/>
-                    <MenuItem Header="アイテムグループ編集"
+                    <MenuItem Header="開く"
                               Command="{Binding EditItemGroupDialogCommand}"/>
-                    <MenuItem Header="アイテムグループ削除"
+                    <MenuItem Header="削除"
                               Command="{Binding DeleteItemGroupDialogCommand}"/>
                 </ContextMenu>
             </ListBox.ContextMenu>
