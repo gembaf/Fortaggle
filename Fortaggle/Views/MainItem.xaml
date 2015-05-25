@@ -12,6 +12,8 @@
     <i:Interaction.Behaviors>
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.ItemGroupDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.ConfirmDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ItemDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ConfirmDialogVM}" />
     </i:Interaction.Behaviors>
 
     <ContentControl Content="{Binding ItemGroupServiceVM}"/>

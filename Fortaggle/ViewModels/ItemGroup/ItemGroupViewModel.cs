@@ -41,6 +41,14 @@
         {
         }
 
+        //--- プロパティ
+
+        #region ItemServiceViewModel ItemServiceVM
+
+        public ItemServiceViewModel ItemServiceVM { get; private set; }
+
+        #endregion
+
         //--- 変更通知プロパティ(モデル)
 
         #region string Name
@@ -61,12 +69,6 @@
         #endregion
 
         //--- 変更通知プロパティ
-
-        #region ItemServiceViewModel ItemServiceVM
-
-        public ItemServiceViewModel ItemServiceVM { get; private set; }
-
-        #endregion
 
         #region bool HasViewError
 

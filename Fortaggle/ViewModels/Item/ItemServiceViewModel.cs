@@ -203,8 +203,8 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    ItemDialogVM.ItemVM.Remove(itemGroup);
-                                    ItemVMList.Remove(ItemDialogVM.ItemVM);
+                                    SelectedItemVM.Remove(itemGroup);
+                                    ItemVMList.Remove(SelectedItemVM);
                                     ConfirmDialogVM = null;
                                 },
                                 // CancelAction
