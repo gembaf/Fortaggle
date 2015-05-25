@@ -104,6 +104,7 @@
     <Compile Include="ViewModels\Item\ItemStatusServiceViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemStatusViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
+    <Compile Include="ViewModels\MainItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ranking\RankingViewModel.cs" />
     <Compile Include="ViewModels\TagGroup\TagGroupListViewModel.cs" />
@@ -125,6 +126,9 @@
     </Compile>
     <Compile Include="Views\Item\ItemManage.xaml.cs">
       <DependentUpon>ItemManage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainItem.xaml.cs">
+      <DependentUpon>MainItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Ranking\Ranking.xaml.cs">
       <DependentUpon>Ranking.xaml</DependentUpon>
@@ -166,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Item\ItemManage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
