@@ -7,6 +7,7 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
+    using System.Windows.Media;
 
     public class ItemServiceViewModel : ViewModelBase
     {
@@ -29,6 +30,7 @@
                 {
                     return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
                 }));
+            ExecuteFileImage = SelectExecuteFileImage();
         }
 
         //--- プロパティ
@@ -55,6 +57,25 @@
                     _SelectedItemVM = value;
                     IsSelect = value != null;
                     RaisePropertyChanged("SelectedItemVM");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ImageSource ExecuteFileImage
+
+        private ImageSource _ExecuteFileImage;
+
+        public ImageSource ExecuteFileImage
+        {
+            get { return _ExecuteFileImage; }
+            set
+            {
+                if (_ExecuteFileImage != value)
+                {
+                    _ExecuteFileImage = value;
+                    RaisePropertyChanged("ExecuteFileImage");
                 }
             }
         }
@@ -229,6 +250,11 @@
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ImageSource SelectExecuteFileImage()
+        {
+            return ItemVMList.Count == 0 ? null : ItemVMList.First().ExecuteFileImage;
+        }
 
         //--- static メソッド
 
