@@ -326,5 +326,10 @@
             }
             return itemVMList;
         }
+
+        public static ImageSource NoImage()
+        {
+            return ExplorerManager.GetIconImage(null);
+        }
     }
 }

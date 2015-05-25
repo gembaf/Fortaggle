@@ -253,7 +253,8 @@
 
         private ImageSource SelectExecuteFileImage()
         {
-            return ItemVMList.Count == 0 ? null : ItemVMList.First().ExecuteFileImage;
+            var itemVM = ItemVMList.Count == 0 ? null : ItemVMList.FirstOrDefault(e => e.IsExistsExecuteFile);
+            return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
         }
 
         //--- static メソッド
