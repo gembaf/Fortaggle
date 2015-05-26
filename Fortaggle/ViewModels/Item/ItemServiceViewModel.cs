@@ -24,14 +24,8 @@
         public ItemServiceViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
-            ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
-            ItemVMList = new ObservableCollection<ItemViewModel>(ItemVMList.OrderBy(
-                n =>
-                {
-                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
-                }));
+            ItemVMList = OrderByRuby(ItemViewModel.Create(itemGroup.ItemList));
             ExecuteFileImage = SelectExecuteFileImage();
-            ItemVMList.CollectionChanged += ItemVMListCollectionChanged;
         }
 
         //--- プロパティ
@@ -40,7 +34,20 @@
 
         #region ObservableCollection<ItemViewModel> ItemVMList
 
-        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
+        private ObservableCollection<ItemViewModel> _ItemVMList;
+
+        public ObservableCollection<ItemViewModel> ItemVMList
+        {
+            get { return _ItemVMList; }
+            set
+            {
+                if (_ItemVMList != value)
+                {
+                    _ItemVMList = value;
+                    RaisePropertyChanged("ItemVMList");
+                }
+            }
+        }
 
         #endregion
 
@@ -160,6 +167,7 @@
                                 {
                                     ItemDialogVM.ItemVM.Save(itemGroup);
                                     ItemVMList.Add(ItemDialogVM.ItemVM);
+                                    ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 });
                         });
@@ -188,6 +196,7 @@
                                 () =>
                                 {
                                     SelectedItemVM.Update(ItemDialogVM.ItemVM);
+                                    ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 },
                                 SelectedItemVM.Clone());
@@ -226,6 +235,7 @@
                                 {
                                     SelectedItemVM.Remove(itemGroup);
                                     ItemVMList.Remove(SelectedItemVM);
+                                    ItemVMListCollectionChanged();
                                     ConfirmDialogVM = null;
                                 },
                                 // CancelAction
@@ -258,8 +268,18 @@
             return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
         }
 
-        private void ItemVMListCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private ObservableCollection<ItemViewModel> OrderByRuby(ObservableCollection<ItemViewModel> collection)
         {
+            return new ObservableCollection<ItemViewModel>(collection.OrderBy(
+                n =>
+                {
+                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
+                }));
+        }
+
+        private void ItemVMListCollectionChanged()
+        {
+            ItemVMList = OrderByRuby(ItemVMList);
             ExecuteFileImage = SelectExecuteFileImage();
         }
 
