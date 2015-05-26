@@ -7,6 +7,8 @@
     {
         //--- 定数
 
+        private static readonly DateTime defaultExecutedAt = new DateTime(1, 1, 1);
+
         //--- フィールド
 
         //--- 静的コンストラクタ
@@ -55,5 +57,10 @@
         //--- private メソッド
 
         //--- static メソッド
+
+        public static bool EqualToDefaultExecutedAt(DateTime dateTime)
+        {
+            return dateTime.Equals(defaultExecutedAt);
+        }
     }
 }

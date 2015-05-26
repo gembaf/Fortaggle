@@ -106,7 +106,7 @@
                                      Grid.Row="1">
                             <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.DisplayLabel}"
                                        FontSize="12"/>
-                            <TextBlock Text="{Binding ExecutedAt}"
+                            <TextBlock Text="{Binding DisplayExecutedAt}"
                                        FontSize="12"/>
                         </UniformGrid>
                     </Grid>

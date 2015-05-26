@@ -111,17 +111,16 @@
 
         #region DateTime ExecutedAt
 
-        private DateTime _ExecutedAt;
-
         public DateTime ExecutedAt
         {
-            get { return _ExecutedAt; }
+            get { return item.ExecutedAt; }
             set
             {
-                if (_ExecutedAt != value)
+                if (item.ExecutedAt != value)
                 {
-                    _ExecutedAt = value;
+                    item.ExecutedAt = value;
                     RaisePropertyChanged("ExecutedAt");
+                    RaisePropertyChanged("DisplayExecutedAt");
                 }
             }
         }
@@ -201,6 +200,19 @@
                     _IsExistsExecuteFile = value;
                     RaisePropertyChanged("IsExistsExecuteFile");
                 }
+            }
+        }
+
+        #endregion
+
+        #region string DisplayExecutedAt
+
+        public string DisplayExecutedAt
+        {
+            get
+            {
+                string strftime = Item.EqualToDefaultExecutedAt(ExecutedAt) ? "なし" : ExecutedAt.ToString("yyyy.MM.dd HH:mm");
+                return "最終実行日時 : " + strftime;
             }
         }
 
