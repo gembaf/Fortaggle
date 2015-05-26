@@ -123,13 +123,15 @@
         public void Update(ItemGroupViewModel itemGroupVM)
         {
             this.Name = itemGroupVM.Name;
+            this.Ruby = itemGroupVM.Ruby;
         }
 
         public ItemGroupViewModel Clone()
         {
             return new ItemGroupViewModel()
             {
-                Name = this.Name
+                Name = this.Name,
+                Ruby = this.Ruby
             };
         }
 
