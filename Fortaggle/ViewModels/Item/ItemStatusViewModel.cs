@@ -33,7 +33,44 @@
 
         public ItemStatus Status { get; set; }
 
-        public string Label { get; set; }
+        #region string Label
+
+        private string _Label;
+
+        public string Label
+        {
+            get { return _Label; }
+            set
+            {
+                if (_Label != value)
+                {
+                    _Label = value;
+                    DisplayLabel = "ステータス : " + value;
+                    RaisePropertyChanged("Label");
+                }
+            }
+        }
+
+        #endregion
+
+        #region string DisplayLabel
+
+        private string _DisplayLabel;
+
+        public string DisplayLabel
+        {
+            get { return _DisplayLabel; }
+            set
+            {
+                if (_DisplayLabel != value)
+                {
+                    _DisplayLabel = value;
+                    RaisePropertyChanged("DisplayLabel");
+                }
+            }
+        }
+
+        #endregion
 
         //--- public メソッド
 

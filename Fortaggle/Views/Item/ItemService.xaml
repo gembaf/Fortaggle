@@ -105,9 +105,7 @@
                         <UniformGrid Columns="1"
                                      Grid.Row="1">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="ステータス : "
-                                           FontSize="12"/>
-                                <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.Label}"
+                                <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.DisplayLabel}"
                                            FontSize="12"/>
                             </StackPanel>
                         </UniformGrid>
