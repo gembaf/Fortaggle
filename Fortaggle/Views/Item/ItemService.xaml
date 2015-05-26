@@ -13,7 +13,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
             <!--アイテム一覧-->
             <ListBox ItemsSource="{Binding ItemVMList}"
@@ -72,7 +72,7 @@
                   Background="AliceBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
-                    <RowDefinition Height="40" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
                 <!--アイテム詳細-->
@@ -93,20 +93,22 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0"
-                                    VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Name}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="(" />
-                                <TextBlock Text="{Binding Ruby}"/>
-                                <TextBlock Text=")" />
-                            </StackPanel>
+                                    VerticalAlignment="Center"
+                                    Margin="0,3,0,3">
+                            <TextBlock Text="{Binding Ruby}"
+                                       FontSize="10"
+                                       Foreground="Gray"/>
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="18"/>
                         </StackPanel>
 
-                        <UniformGrid Columns="2"
+                        <UniformGrid Columns="1"
                                      Grid.Row="1">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="ステータス : "/>
-                                <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.Label}"/>
+                                <TextBlock Text="ステータス : "
+                                           FontSize="12"/>
+                                <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.Label}"
+                                           FontSize="12"/>
                             </StackPanel>
                         </UniformGrid>
                     </Grid>
