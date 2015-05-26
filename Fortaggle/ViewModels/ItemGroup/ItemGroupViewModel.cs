@@ -68,6 +68,23 @@
 
         #endregion
 
+        #region string Ruby
+
+        public string Ruby
+        {
+            get { return itemGroup.Ruby; }
+            set
+            {
+                if (itemGroup.Ruby != value)
+                {
+                    itemGroup.Ruby = value;
+                    RaisePropertyChanged("Ruby");
+                }
+            }
+        }
+
+        #endregion
+
         //--- 変更通知プロパティ
 
         #region bool HasViewError
