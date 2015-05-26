@@ -1,10 +1,13 @@
 ﻿namespace Fortaggle.Models.Item
 {
     using Fortaggle.Models.Common;
+    using System;
 
     public class Item
     {
         //--- 定数
+
+        private static readonly DateTime defaultExecutedAt = new DateTime(1, 1, 1);
 
         //--- フィールド
 
@@ -33,6 +36,8 @@
 
         public string ExecuteFilePath { get; set; }
 
+        public DateTime ExecutedAt { get; set; }
+
         public ItemStatus Status { get; set; }
 
         //--- public メソッド
@@ -52,5 +57,10 @@
         //--- private メソッド
 
         //--- static メソッド
+
+        public static bool EqualToDefaultExecutedAt(DateTime dateTime)
+        {
+            return dateTime.Equals(defaultExecutedAt);
+        }
     }
 }

@@ -4,6 +4,7 @@
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -108,6 +109,24 @@
 
         #endregion
 
+        #region DateTime ExecutedAt
+
+        public DateTime ExecutedAt
+        {
+            get { return item.ExecutedAt; }
+            set
+            {
+                if (item.ExecutedAt != value)
+                {
+                    item.ExecutedAt = value;
+                    RaisePropertyChanged("ExecutedAt");
+                    RaisePropertyChanged("DisplayExecutedAt");
+                }
+            }
+        }
+
+        #endregion
+
         //--- 変更通知プロパティ
 
         #region ItemStatusServiceViewModel ItemStatusServiceVM
@@ -181,6 +200,19 @@
                     _IsExistsExecuteFile = value;
                     RaisePropertyChanged("IsExistsExecuteFile");
                 }
+            }
+        }
+
+        #endregion
+
+        #region string DisplayExecutedAt
+
+        public string DisplayExecutedAt
+        {
+            get
+            {
+                string strftime = Item.EqualToDefaultExecutedAt(ExecutedAt) ? "なし" : ExecutedAt.ToString("yyyy.MM.dd HH:mm");
+                return "最終実行日時 : " + strftime;
             }
         }
 
@@ -309,6 +341,7 @@
         public void ExecuteFile()
         {
             item.ExecuteFile();
+            ExecutedAt = DateTime.Now;
         }
 
         //--- protected メソッド

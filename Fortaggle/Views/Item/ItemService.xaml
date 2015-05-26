@@ -102,12 +102,12 @@
                                        FontSize="18"/>
                         </StackPanel>
 
-                        <UniformGrid Columns="1"
+                        <UniformGrid Columns="2"
                                      Grid.Row="1">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.DisplayLabel}"
-                                           FontSize="12"/>
-                            </StackPanel>
+                            <TextBlock Text="{Binding ItemStatusServiceVM.SelectedItemStatusVM.DisplayLabel}"
+                                       FontSize="12"/>
+                            <TextBlock Text="{Binding DisplayExecutedAt}"
+                                       FontSize="12"/>
                         </UniformGrid>
                     </Grid>
                 </Grid>
