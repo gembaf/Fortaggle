@@ -68,6 +68,23 @@
 
         #endregion
 
+        #region string Ruby
+
+        public string Ruby
+        {
+            get { return itemGroup.Ruby; }
+            set
+            {
+                if (itemGroup.Ruby != value)
+                {
+                    itemGroup.Ruby = value;
+                    RaisePropertyChanged("Ruby");
+                }
+            }
+        }
+
+        #endregion
+
         //--- 変更通知プロパティ
 
         #region bool HasViewError
@@ -94,25 +111,25 @@
         public void Save()
         {
             ItemGroupService.Add(itemGroup);
-            itemGroupVMList.Add(this);
         }
 
         public void Remove()
         {
             ItemGroupService.Remove(itemGroup);
-            itemGroupVMList.Remove(this);
         }
 
         public void Update(ItemGroupViewModel itemGroupVM)
         {
             this.Name = itemGroupVM.Name;
+            this.Ruby = itemGroupVM.Ruby;
         }
 
         public ItemGroupViewModel Clone()
         {
             return new ItemGroupViewModel()
             {
-                Name = this.Name
+                Name = this.Name,
+                Ruby = this.Ruby
             };
         }
 

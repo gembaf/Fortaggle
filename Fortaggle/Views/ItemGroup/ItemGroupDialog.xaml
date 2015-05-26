@@ -32,6 +32,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBlock Text="アイテムグループ名"
@@ -53,9 +54,17 @@
 
         </TextBox>
 
+        <TextBlock Text="ふりがな"
+                   Style="{StaticResource HeaderStyle}"
+                   Grid.Column="0"
+                   Grid.Row="1"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="1"
+                 Text="{Binding ItemGroupVM.Ruby}"/>
+
         <Button Content="保存"
                 Command="{Binding SaveItemGroupCommand}"
                 Grid.Column="1"
-                Grid.Row="1"/>
+                Grid.Row="2"/>
     </Grid>
 </UserControl>
