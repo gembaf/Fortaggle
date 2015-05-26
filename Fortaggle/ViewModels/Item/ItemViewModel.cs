@@ -4,6 +4,7 @@
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -102,6 +103,25 @@
                     ExecuteFileImage = ExplorerManager.GetIconImage(value);
                     IsExistsExecuteFile = ExplorerManager.IsExistsFile(value);
                     RaisePropertyChanged("ExecuteFilePath");
+                }
+            }
+        }
+
+        #endregion
+
+        #region DateTime ExecutedAt
+
+        private DateTime _ExecutedAt;
+
+        public DateTime ExecutedAt
+        {
+            get { return _ExecutedAt; }
+            set
+            {
+                if (_ExecutedAt != value)
+                {
+                    _ExecutedAt = value;
+                    RaisePropertyChanged("ExecutedAt");
                 }
             }
         }
@@ -309,6 +329,7 @@
         public void ExecuteFile()
         {
             item.ExecuteFile();
+            ExecutedAt = DateTime.Now;
         }
 
         //--- protected メソッド
