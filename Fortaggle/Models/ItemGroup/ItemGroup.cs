@@ -27,6 +27,8 @@
 
         public string Name { get; set; }
 
+        public string Ruby { get; set; }
+
         public List<Item> ItemList { get; set; }
 
         //--- public メソッド
