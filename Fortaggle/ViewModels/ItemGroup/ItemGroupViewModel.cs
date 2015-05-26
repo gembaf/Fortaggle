@@ -111,13 +111,13 @@
         public void Save()
         {
             ItemGroupService.Add(itemGroup);
-            itemGroupVMList.Add(this);
+            //itemGroupVMList.Add(this);
         }
 
         public void Remove()
         {
             ItemGroupService.Remove(itemGroup);
-            itemGroupVMList.Remove(this);
+            //itemGroupVMList.Remove(this);
         }
 
         public void Update(ItemGroupViewModel itemGroupVM)
