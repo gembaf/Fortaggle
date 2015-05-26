@@ -1,6 +1,7 @@
 ﻿namespace Fortaggle.Models.Item
 {
     using Fortaggle.Models.Common;
+    using System;
 
     public class Item
     {
@@ -32,6 +33,8 @@
         public string FolderPath { get; set; }
 
         public string ExecuteFilePath { get; set; }
+
+        public DateTime ExecutedAt { get; set; }
 
         public ItemStatus Status { get; set; }
 
