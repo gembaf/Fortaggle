@@ -8,6 +8,10 @@
         <Setter Property="Margin" Value="3" />
     </Style>
 
+    <Style x:Key="MiniButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="MaxWidth" Value="60" />
+    </Style>
+
     <Style x:Key="DeleteButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="LightCoral" />
         <Setter Property="Opacity" Value="0.8" />

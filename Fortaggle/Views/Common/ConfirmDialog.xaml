@@ -38,10 +38,12 @@
                    Grid.ColumnSpan="2"
                    Grid.Row="0"/>
         <Button Content="はい"
+                Style="{StaticResource MiniButton}"
                 Command="{Binding AcceptCommand}"
                 Grid.Column="0"
                 Grid.Row="1"/>
         <Button Content="いいえ"
+                Style="{StaticResource MiniButton}"
                 Command="{Binding CancelCommand}"
                 Grid.Column="1"
                 Grid.Row="1"/>
