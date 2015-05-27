@@ -63,6 +63,7 @@
                 {
                     _SelectedItemVM = value;
                     RaisePropertyChanged("SelectedItemVM");
+                    RaisePropertyChanged("IsSelect");
                 }
             }
         }
