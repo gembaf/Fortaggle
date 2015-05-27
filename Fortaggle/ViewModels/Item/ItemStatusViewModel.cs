@@ -45,7 +45,6 @@
                 if (_Label != value)
                 {
                     _Label = value;
-                    DisplayLabel = "ステータス : " + value;
                     RaisePropertyChanged("Label");
                 }
             }
@@ -55,19 +54,9 @@
 
         #region string DisplayLabel
 
-        private string _DisplayLabel;
-
         public string DisplayLabel
         {
-            get { return _DisplayLabel; }
-            set
-            {
-                if (_DisplayLabel != value)
-                {
-                    _DisplayLabel = value;
-                    RaisePropertyChanged("DisplayLabel");
-                }
-            }
+            get { return "ステータス : " + Label; }
         }
 
         #endregion

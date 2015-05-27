@@ -25,7 +25,6 @@
         {
             this.itemGroup = itemGroup;
             ItemVMList = OrderByRuby(ItemViewModel.Create(itemGroup.ItemList));
-            ExecuteFileImage = SelectExecuteFileImage();
         }
 
         //--- プロパティ
@@ -63,8 +62,8 @@
                 if (_SelectedItemVM != value)
                 {
                     _SelectedItemVM = value;
-                    IsSelect = value != null;
                     RaisePropertyChanged("SelectedItemVM");
+                    RaisePropertyChanged("IsSelect");
                 }
             }
         }
@@ -73,18 +72,12 @@
 
         #region ImageSource ExecuteFileImage
 
-        private ImageSource _ExecuteFileImage;
-
         public ImageSource ExecuteFileImage
         {
-            get { return _ExecuteFileImage; }
-            set
+            get
             {
-                if (_ExecuteFileImage != value)
-                {
-                    _ExecuteFileImage = value;
-                    RaisePropertyChanged("ExecuteFileImage");
-                }
+                var itemVM = ItemVMList.Count == 0 ? null : ItemVMList.FirstOrDefault(e => e.IsExistsExecuteFile);
+            	return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
             }
         }
 
@@ -130,19 +123,9 @@
 
         #region bool IsSelect
 
-        private bool _IsSelect;
-
         public bool IsSelect
         {
-            get { return _IsSelect; }
-            set
-            {
-                if (_IsSelect != value)
-                {
-                    _IsSelect = value;
-                    RaisePropertyChanged("IsSelect");
-                }
-            }
+            get { return SelectedItemVM != null; }
         }
 
         #endregion
@@ -262,12 +245,6 @@
 
         //--- private メソッド
 
-        private ImageSource SelectExecuteFileImage()
-        {
-            var itemVM = ItemVMList.Count == 0 ? null : ItemVMList.FirstOrDefault(e => e.IsExistsExecuteFile);
-            return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
-        }
-
         private ObservableCollection<ItemViewModel> OrderByRuby(ObservableCollection<ItemViewModel> collection)
         {
             return new ObservableCollection<ItemViewModel>(collection.OrderBy(
@@ -280,7 +257,7 @@
         private void ItemVMListCollectionChanged()
         {
             ItemVMList = OrderByRuby(ItemVMList);
-            ExecuteFileImage = SelectExecuteFileImage();
+            RaisePropertyChanged("ExecuteFileImage");
         }
 
         //--- static メソッド

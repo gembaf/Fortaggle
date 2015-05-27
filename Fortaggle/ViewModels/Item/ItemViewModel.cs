@@ -25,10 +25,7 @@
         public ItemViewModel(Item item)
         {
             this.item = item;
-            ExecuteFileImage = ExplorerManager.GetIconImage(ExecuteFilePath);
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
-            IsExistsFolder = ExplorerManager.IsExistsDirectory(FolderPath);
-            IsExistsExecuteFile = ExplorerManager.IsExistsFile(ExecuteFilePath);
         }
 
         public ItemViewModel()
@@ -82,8 +79,8 @@
                 if (item.FolderPath != value)
                 {
                     item.FolderPath = value;
-                    IsExistsFolder = ExplorerManager.IsExistsDirectory(value);
                     RaisePropertyChanged("FolderPath");
+                    RaisePropertyChanged("IsExistsFolder");
                 }
             }
         }
@@ -100,9 +97,9 @@
                 if (item.ExecuteFilePath != value)
                 {
                     item.ExecuteFilePath = value;
-                    ExecuteFileImage = ExplorerManager.GetIconImage(value);
-                    IsExistsExecuteFile = ExplorerManager.IsExistsFile(value);
                     RaisePropertyChanged("ExecuteFilePath");
+                    RaisePropertyChanged("ExecuteFileImage");
+                    RaisePropertyChanged("IsExistsExecuteFile");
                 }
             }
         }
@@ -150,57 +147,27 @@
 
         #region ImageSource ExecuteFileImage
 
-        private ImageSource _ExecuteFileImage;
-
         public ImageSource ExecuteFileImage
         {
-            get { return _ExecuteFileImage; }
-            private set
-            {
-                if (_ExecuteFileImage != value)
-                {
-                    _ExecuteFileImage = value;
-                    RaisePropertyChanged("ExecuteFileImage");
-                }
-            }
+            get { return ExplorerManager.GetIconImage(ExecuteFilePath); }
         }
 
         #endregion
 
         #region bool IsExistsFolder
 
-        private bool _IsExistsFolder;
-
         public bool IsExistsFolder
         {
-            get { return _IsExistsFolder; }
-            set
-            {
-                if (_IsExistsFolder != value)
-                {
-                    _IsExistsFolder = value;
-                    RaisePropertyChanged("IsExistsFolder");
-                }
-            }
+            get { return ExplorerManager.IsExistsDirectory(FolderPath); }
         }
 
         #endregion
 
         #region bool IsExistsExecuteFile
 
-        private bool _IsExistsExecuteFile;
-
         public bool IsExistsExecuteFile
         {
-            get { return _IsExistsExecuteFile; }
-            set
-            {
-                if (_IsExistsExecuteFile != value)
-                {
-                    _IsExistsExecuteFile = value;
-                    RaisePropertyChanged("IsExistsExecuteFile");
-                }
-            }
+            get { return ExplorerManager.IsExistsFile(ExecuteFilePath); }
         }
 
         #endregion

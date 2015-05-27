@@ -98,15 +98,8 @@
                 if (_SelectedItemGroupVM != value)
                 {
                     _SelectedItemGroupVM = value;
-                    if (value != null)
-                    {
-                        IsSelect = true;
-                    }
-                    else
-                    {
-                        IsSelect = false;
-                    }
                     RaisePropertyChanged("SelectedItemGroupVM");
+                    RaisePropertyChanged("IsSelect");
                 }
             }
         }
@@ -115,19 +108,9 @@
 
         #region bool IsSelect
 
-        private bool _IsSelect;
-
         public bool IsSelect
         {
-            get { return _IsSelect; }
-            set
-            {
-                if (_IsSelect != value)
-                {
-                    _IsSelect = value;
-                    RaisePropertyChanged("IsSelect");
-                }
-            }
+            get { return SelectedItemGroupVM != null; }
         }
 
         #endregion
