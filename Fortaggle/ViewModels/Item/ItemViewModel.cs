@@ -5,8 +5,6 @@
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Windows.Input;
     using System.Windows.Media;
 
@@ -16,15 +14,17 @@
 
         //--- フィールド
 
-        private Item item;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ (+1)
 
         public ItemViewModel(Item item)
         {
-            this.item = item;
+            Name = item.Name;
+            Ruby = item.Ruby;
+            FolderPath = item.FolderPath;
+            ExecuteFilePath = item.ExecuteFilePath;
+            ExecutedAt = item.ExecutedAt;
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
         }
 
@@ -37,14 +37,16 @@
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return item.Name; }
+            get { return _Name; }
             set
             {
-                if (item.Name != value)
+                if (_Name != value)
                 {
-                    item.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -54,14 +56,16 @@
 
         #region string Ruby
 
+        private string _Ruby;
+
         public string Ruby
         {
-            get { return item.Ruby; }
+            get { return _Ruby; }
             set
             {
-                if (item.Ruby != value)
+                if (_Ruby != value)
                 {
-                    item.Ruby = value;
+                    _Ruby = value;
                     RaisePropertyChanged("Ruby");
                 }
             }
@@ -71,14 +75,16 @@
 
         #region string FolderPath
 
+        private string _FolderPath;
+
         public string FolderPath
         {
-            get { return item.FolderPath; }
+            get { return _FolderPath; }
             set
             {
-                if (item.FolderPath != value)
+                if (_FolderPath != value)
                 {
-                    item.FolderPath = value;
+                    _FolderPath = value;
                     RaisePropertyChanged("FolderPath");
                     RaisePropertyChanged("IsExistsFolder");
                 }
@@ -89,14 +95,16 @@
 
         #region string ExecuteFilePath
 
+        private string _ExecuteFilePath;
+
         public string ExecuteFilePath
         {
-            get { return item.ExecuteFilePath; }
+            get { return _ExecuteFilePath; }
             set
             {
-                if (item.ExecuteFilePath != value)
+                if (_ExecuteFilePath != value)
                 {
-                    item.ExecuteFilePath = value;
+                    _ExecuteFilePath = value;
                     RaisePropertyChanged("ExecuteFilePath");
                     RaisePropertyChanged("ExecuteFileImage");
                     RaisePropertyChanged("IsExistsExecuteFile");
@@ -108,14 +116,16 @@
 
         #region DateTime ExecutedAt
 
+        private DateTime _ExecutedAt;
+
         public DateTime ExecutedAt
         {
-            get { return item.ExecutedAt; }
+            get { return _ExecutedAt; }
             set
             {
-                if (item.ExecutedAt != value)
+                if (_ExecutedAt != value)
                 {
-                    item.ExecutedAt = value;
+                    _ExecutedAt = value;
                     RaisePropertyChanged("ExecutedAt");
                     RaisePropertyChanged("DisplayExecutedAt");
                 }
@@ -268,24 +278,17 @@
 
         //--- public メソッド
 
-        public void Save(ItemGroup itemGroup)
+        public Item CreateItem()
         {
-            itemGroup.AddItem(item);
-        }
-
-        public void Remove(ItemGroup itemGroup)
-        {
-            itemGroup.RemoveItem(item);
-        }
-
-        public void Update(ItemViewModel itemVM)
-        {
-            this.Name = itemVM.Name;
-            this.Ruby = itemVM.Ruby;
-            this.FolderPath = itemVM.FolderPath;
-            this.ExecuteFilePath = itemVM.ExecuteFilePath;
-            this.ItemStatusServiceVM = itemVM.ItemStatusServiceVM;
-            this.item.Status = itemVM.ItemStatusServiceVM.SelectedItemStatusVM.Status;
+            return new Item()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                FolderPath = this.FolderPath,
+                ExecuteFilePath = this.ExecuteFilePath,
+                Status = this.ItemStatusServiceVM.SelectedItemStatusVM.Status,
+                ExecutedAt = this.ExecutedAt
+            };
         }
 
         public ItemViewModel Clone()
@@ -302,12 +305,12 @@
 
         public void OpenFolder()
         {
-            item.OpenFolder();
+            ExplorerManager.StartProcess(FolderPath);
         }
 
         public void ExecuteFile()
         {
-            item.ExecuteFile();
+            ExplorerManager.StartProcess(ExecuteFilePath);
             ExecutedAt = DateTime.Now;
         }
 
@@ -316,16 +319,6 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static ObservableCollection<ItemViewModel> Create(List<Item> itemList)
-        {
-            var itemVMList = new ObservableCollection<ItemViewModel>();
-            foreach (Item e in itemList)
-            {
-                itemVMList.Add(new ItemViewModel(e));
-            }
-            return itemVMList;
-        }
 
         public static ImageSource NoImage()
         {

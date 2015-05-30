@@ -42,16 +42,6 @@
 
         //--- public メソッド
 
-        public void OpenFolder()
-        {
-            ExplorerManager.StartProcess(FolderPath);
-        }
-
-        public void ExecuteFile()
-        {
-            ExplorerManager.StartProcess(ExecuteFilePath);
-        }
-
         //--- protected メソッド
 
         //--- private メソッド

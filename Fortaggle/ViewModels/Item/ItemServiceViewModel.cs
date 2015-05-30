@@ -4,6 +4,7 @@
     using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
@@ -15,16 +16,13 @@
 
         //--- フィールド
 
-        private ItemGroup itemGroup;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
-        public ItemServiceViewModel(ItemGroup itemGroup)
+        public ItemServiceViewModel(List<Item> itemList)
         {
-            this.itemGroup = itemGroup;
-            ItemVMList = OrderByRuby(ItemViewModel.Create(itemGroup.ItemList));
+            ItemVMList = InitializeItemVMList(itemList);
         }
 
         //--- プロパティ
@@ -148,7 +146,6 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    ItemDialogVM.ItemVM.Save(itemGroup);
                                     ItemVMList.Add(ItemDialogVM.ItemVM);
                                     ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
@@ -178,7 +175,9 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemVM.Update(ItemDialogVM.ItemVM);
+                                    int index = ItemVMList.IndexOf(SelectedItemVM);
+                                    ItemVMList[index] = ItemDialogVM.ItemVM;
+                                    SelectedItemVM = ItemVMList[index];
                                     ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 },
@@ -216,7 +215,6 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    SelectedItemVM.Remove(itemGroup);
                                     ItemVMList.Remove(SelectedItemVM);
                                     ItemVMListCollectionChanged();
                                     ConfirmDialogVM = null;
@@ -241,9 +239,31 @@
 
         //--- public メソッド
 
+        public List<Item> CreateItemList()
+        {
+            List<Item> itemList = new List<Item>();
+
+            foreach (ItemViewModel itemVM in ItemVMList)
+            {
+                itemList.Add(itemVM.CreateItem());
+            }
+
+            return itemList;
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ObservableCollection<ItemViewModel> InitializeItemVMList(List<Item> itemList)
+        {
+            var itemVMList = new ObservableCollection<ItemViewModel>();
+            foreach (Item item in itemList)
+            {
+                itemVMList.Add(new ItemViewModel(item));
+            }
+            return OrderByRuby(itemVMList);
+        }
 
         private ObservableCollection<ItemViewModel> OrderByRuby(ObservableCollection<ItemViewModel> collection)
         {
@@ -261,6 +281,5 @@
         }
 
         //--- static メソッド
-
     }
 }

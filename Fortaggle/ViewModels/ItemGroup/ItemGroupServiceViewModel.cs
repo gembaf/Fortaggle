@@ -4,6 +4,7 @@
     using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
@@ -20,7 +21,7 @@
 
         public ItemGroupServiceViewModel()
         {
-            ItemGroupVMList = OrderByRuby(ItemGroupViewModel.All());
+            ItemGroupVMList = InitializeItemGroupVMList(ItemGroupService.All());
             if (ItemGroupVMList.Count > 0)
             {
                 SelectedItemGroupVM = ItemGroupVMList.First();
@@ -134,7 +135,6 @@
                                 () =>
                                 {
                                     ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
-                                    ItemGroupDialogVM.ItemGroupVM.Save();
                                     ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 });
@@ -163,7 +163,9 @@
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Update(ItemGroupDialogVM.ItemGroupVM);
+                                    int index = ItemGroupVMList.IndexOf(SelectedItemGroupVM);
+                                    ItemGroupVMList[index] = ItemGroupDialogVM.ItemGroupVM;
+                                    SelectedItemGroupVM = ItemGroupVMList[index];
                                     ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 },
@@ -201,7 +203,6 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Remove();
                                     ItemGroupVMList.Remove(SelectedItemGroupVM);
                                     ConfirmDialogVM = null;
                                 },
@@ -225,9 +226,31 @@
 
         //--- public メソッド
 
+        public void Save()
+        {
+            ItemGroupService itemGroupService = new ItemGroupService();
+
+            foreach (ItemGroupViewModel itemGroupVM in ItemGroupVMList)
+            {
+                itemGroupService.Add(itemGroupVM.CreateItemGroup());
+            }
+
+            itemGroupService.Save();
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ObservableCollection<ItemGroupViewModel> InitializeItemGroupVMList(List<ItemGroup> itemGroupList)
+        {
+            var itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
+            foreach (ItemGroup itemGroup in itemGroupList)
+            {
+                itemGroupVMList.Add(new ItemGroupViewModel(itemGroup));
+            }
+            return OrderByRuby(itemGroupVMList);
+        }
 
         private ObservableCollection<ItemGroupViewModel> OrderByRuby(ObservableCollection<ItemGroupViewModel> collection)
         {

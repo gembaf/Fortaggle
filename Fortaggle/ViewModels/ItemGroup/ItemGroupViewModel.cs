@@ -13,27 +13,15 @@
 
         //--- フィールド
 
-        private static ObservableCollection<ItemGroupViewModel> itemGroupVMList;
-
-        private ItemGroup itemGroup;
-
         //--- 静的コンストラクタ
-
-        static ItemGroupViewModel()
-        {
-            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroupService.All())
-            {
-                itemGroupVMList.Add(new ItemGroupViewModel(e));
-            }
-        }
 
         //--- コンストラクタ (+1)
 
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
-            this.itemGroup = itemGroup;
-            ItemServiceVM = new ItemServiceViewModel(itemGroup);
+            Name = itemGroup.Name;
+            Ruby = itemGroup.Ruby;
+            ItemServiceVM = new ItemServiceViewModel(itemGroup.ItemList);
         }
 
         public ItemGroupViewModel()
@@ -53,14 +41,16 @@
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return itemGroup.Name; }
+            get { return _Name; }
             set
             {
-                if (itemGroup.Name != value)
+                if (_Name != value)
                 {
-                    itemGroup.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -70,14 +60,16 @@
 
         #region string Ruby
 
+        private string _Ruby;
+
         public string Ruby
         {
-            get { return itemGroup.Ruby; }
+            get { return _Ruby; }
             set
             {
-                if (itemGroup.Ruby != value)
+                if (_Ruby != value)
                 {
-                    itemGroup.Ruby = value;
+                    _Ruby = value;
                     RaisePropertyChanged("Ruby");
                 }
             }
@@ -108,20 +100,14 @@
 
         //--- public メソッド
 
-        public void Save()
+        public ItemGroup CreateItemGroup()
         {
-            ItemGroupService.Add(itemGroup);
-        }
-
-        public void Remove()
-        {
-            ItemGroupService.Remove(itemGroup);
-        }
-
-        public void Update(ItemGroupViewModel itemGroupVM)
-        {
-            this.Name = itemGroupVM.Name;
-            this.Ruby = itemGroupVM.Ruby;
+            return new ItemGroup()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                ItemList = ItemServiceVM.CreateItemList()
+            };
         }
 
         public ItemGroupViewModel Clone()
@@ -138,10 +124,5 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static ObservableCollection<ItemGroupViewModel> All()
-        {
-            return itemGroupVMList;
-        }
     }
 }
