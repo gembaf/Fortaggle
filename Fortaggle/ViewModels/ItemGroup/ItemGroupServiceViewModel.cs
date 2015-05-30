@@ -163,7 +163,9 @@
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Update(ItemGroupDialogVM.ItemGroupVM);
+                                    int index = ItemGroupVMList.IndexOf(SelectedItemGroupVM);
+                                    ItemGroupVMList[index] = ItemGroupDialogVM.ItemGroupVM;
+                                    SelectedItemGroupVM = ItemGroupVMList[index];
                                     ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 },

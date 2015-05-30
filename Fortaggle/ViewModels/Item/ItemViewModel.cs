@@ -296,16 +296,6 @@
             };
         }
 
-        public void Update(ItemViewModel itemVM)
-        {
-            this.Name = itemVM.Name;
-            this.Ruby = itemVM.Ruby;
-            this.FolderPath = itemVM.FolderPath;
-            this.ExecuteFilePath = itemVM.ExecuteFilePath;
-            this.ItemStatusServiceVM = itemVM.ItemStatusServiceVM;
-            this.item.Status = itemVM.ItemStatusServiceVM.SelectedItemStatusVM.Status;
-        }
-
         public ItemViewModel Clone()
         {
             return new ItemViewModel()

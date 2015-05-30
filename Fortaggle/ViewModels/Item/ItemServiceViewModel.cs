@@ -175,7 +175,9 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemVM.Update(ItemDialogVM.ItemVM);
+                                    int index = ItemVMList.IndexOf(SelectedItemVM);
+                                    ItemVMList[index] = ItemDialogVM.ItemVM;
+                                    SelectedItemVM = ItemVMList[index];
                                     ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 },
