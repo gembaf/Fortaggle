@@ -135,7 +135,6 @@
                                 () =>
                                 {
                                     ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
-                                    //ItemGroupDialogVM.ItemGroupVM.Save();
                                     ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 });
@@ -202,7 +201,6 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    //SelectedItemGroupVM.Remove();
                                     ItemGroupVMList.Remove(SelectedItemGroupVM);
                                     ConfirmDialogVM = null;
                                 },
@@ -234,7 +232,6 @@
             {
                 itemGroupService.Add(itemGroupVM.CreateItemGroup());
             }
-
 
             itemGroupService.Save();
         }

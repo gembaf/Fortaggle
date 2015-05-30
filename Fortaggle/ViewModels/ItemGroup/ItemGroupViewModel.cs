@@ -13,20 +13,9 @@
 
         //--- フィールド
 
-        private static ObservableCollection<ItemGroupViewModel> itemGroupVMList;
-
         private ItemGroup itemGroup;
 
         //--- 静的コンストラクタ
-
-        static ItemGroupViewModel()
-        {
-            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroupService.All())
-            {
-                itemGroupVMList.Add(new ItemGroupViewModel(e));
-            }
-        }
 
         //--- コンストラクタ (+1)
 
@@ -118,16 +107,6 @@
             };
         }
 
-        //public void Save()
-        //{
-        //    ItemGroupService.Add(itemGroup);
-        //}
-
-        //public void Remove()
-        //{
-        //    ItemGroupService.Remove(itemGroup);
-        //}
-
         public void Update(ItemGroupViewModel itemGroupVM)
         {
             this.Name = itemGroupVM.Name;
@@ -148,10 +127,5 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static ObservableCollection<ItemGroupViewModel> All()
-        {
-            return itemGroupVMList;
-        }
     }
 }

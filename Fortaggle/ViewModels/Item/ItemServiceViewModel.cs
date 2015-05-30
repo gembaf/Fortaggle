@@ -16,15 +16,12 @@
 
         //--- フィールド
 
-        //private ItemGroup itemGroup;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
         public ItemServiceViewModel(List<Item> itemList)
         {
-            //this.itemGroup = itemGroup;
             ItemVMList = InitializeItemVMList(itemList);
         }
 
@@ -149,7 +146,6 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    //ItemDialogVM.ItemVM.Save(itemGroup);
                                     ItemVMList.Add(ItemDialogVM.ItemVM);
                                     ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
@@ -217,7 +213,6 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    //SelectedItemVM.Remove(itemGroup);
                                     ItemVMList.Remove(SelectedItemVM);
                                     ItemVMListCollectionChanged();
                                     ConfirmDialogVM = null;
@@ -284,6 +279,5 @@
         }
 
         //--- static メソッド
-
     }
 }

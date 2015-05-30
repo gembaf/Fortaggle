@@ -281,16 +281,6 @@
             };
         }
 
-        //public void Save(ItemGroup itemGroup)
-        //{
-        //    itemGroup.AddItem(item);
-        //}
-
-        //public void Remove(ItemGroup itemGroup)
-        //{
-        //    itemGroup.RemoveItem(item);
-        //}
-
         public void Update(ItemViewModel itemVM)
         {
             this.Name = itemVM.Name;
@@ -329,16 +319,6 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static ObservableCollection<ItemViewModel> Create(List<Item> itemList)
-        {
-            var itemVMList = new ObservableCollection<ItemViewModel>();
-            foreach (Item e in itemList)
-            {
-                itemVMList.Add(new ItemViewModel(e));
-            }
-            return itemVMList;
-        }
 
         public static ImageSource NoImage()
         {
