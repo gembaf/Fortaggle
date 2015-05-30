@@ -14,15 +14,12 @@
 
         //--- フィールド
 
-        private Item item;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ (+1)
 
         public ItemViewModel(Item item)
         {
-            this.item = item;
             Name = item.Name;
             Ruby = item.Ruby;
             FolderPath = item.FolderPath;
@@ -308,12 +305,12 @@
 
         public void OpenFolder()
         {
-            item.OpenFolder();
+            ExplorerManager.StartProcess(FolderPath);
         }
 
         public void ExecuteFile()
         {
-            item.ExecuteFile();
+            ExplorerManager.StartProcess(ExecuteFilePath);
             ExecutedAt = DateTime.Now;
         }
 
