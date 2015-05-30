@@ -268,15 +268,28 @@
 
         //--- public メソッド
 
-        public void Save(ItemGroup itemGroup)
+        public Item CreateItem()
         {
-            itemGroup.AddItem(item);
+            return new Item()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                FolderPath = this.FolderPath,
+                ExecuteFilePath = this.ExecuteFilePath,
+                Status = this.ItemStatusServiceVM.SelectedItemStatusVM.Status,
+                ExecutedAt = this.ExecutedAt
+            };
         }
 
-        public void Remove(ItemGroup itemGroup)
-        {
-            itemGroup.RemoveItem(item);
-        }
+        //public void Save(ItemGroup itemGroup)
+        //{
+        //    itemGroup.AddItem(item);
+        //}
+
+        //public void Remove(ItemGroup itemGroup)
+        //{
+        //    itemGroup.RemoveItem(item);
+        //}
 
         public void Update(ItemViewModel itemVM)
         {

@@ -37,6 +37,11 @@
 
         //--- public メソッド
 
+        public void Save()
+        {
+            ItemGroupServiceVM.Save();
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

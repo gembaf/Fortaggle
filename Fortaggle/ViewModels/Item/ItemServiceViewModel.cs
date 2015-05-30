@@ -4,6 +4,7 @@
     using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
@@ -148,7 +149,7 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    ItemDialogVM.ItemVM.Save(itemGroup);
+                                    //ItemDialogVM.ItemVM.Save(itemGroup);
                                     ItemVMList.Add(ItemDialogVM.ItemVM);
                                     ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
@@ -216,7 +217,7 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    SelectedItemVM.Remove(itemGroup);
+                                    //SelectedItemVM.Remove(itemGroup);
                                     ItemVMList.Remove(SelectedItemVM);
                                     ItemVMListCollectionChanged();
                                     ConfirmDialogVM = null;
@@ -240,6 +241,18 @@
         #endregion
 
         //--- public メソッド
+
+        public List<Item> CreateItemList()
+        {
+            List<Item> itemList = new List<Item>();
+
+            foreach (ItemViewModel itemVM in ItemVMList)
+            {
+                itemList.Add(itemVM.CreateItem());
+            }
+
+            return itemList;
+        }
 
         //--- protected メソッド
 

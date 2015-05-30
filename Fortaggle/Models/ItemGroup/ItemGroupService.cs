@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public static class ItemGroupService
+    public class ItemGroupService
     {
         //--- 定数
 
@@ -10,35 +10,37 @@
 
         //--- フィールド
 
-        private static List<ItemGroup> itemGroupList;
+        private List<ItemGroup> itemGroupList;
 
-        //--- 静的コンストラクタ
+        //--- コンストラクタ
 
-        static ItemGroupService()
+        public ItemGroupService()
         {
-            itemGroupList = Common.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
+            itemGroupList = new List<ItemGroup>();
         }
 
-        //--- static メソッド
+        //--- public メソッド
 
-        public static void Add(ItemGroup itemGroup)
+        public void Add(ItemGroup itemGroup)
         {
             itemGroupList.Add(itemGroup);
         }
 
-        public static void Remove(ItemGroup itemGroup)
+        public void Remove(ItemGroup itemGroup)
         {
             itemGroupList.Remove(itemGroup);
         }
 
-        public static List<ItemGroup> All()
-        {
-            return itemGroupList;
-        }
-
-        public static void WriteXml()
+        public void Save()
         {
             Common.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
+        }
+
+        //--- static メソッド
+
+        public static List<ItemGroup> All()
+        {
+            return Common.XMLFileManager.ReadXml<List<ItemGroup>>(FileName);
         }
     }
 }

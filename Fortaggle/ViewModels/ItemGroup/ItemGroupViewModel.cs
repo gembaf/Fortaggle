@@ -108,15 +108,25 @@
 
         //--- public メソッド
 
-        public void Save()
+        public ItemGroup CreateItemGroup()
         {
-            ItemGroupService.Add(itemGroup);
+            return new ItemGroup()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                ItemList = ItemServiceVM.CreateItemList()
+            };
         }
 
-        public void Remove()
-        {
-            ItemGroupService.Remove(itemGroup);
-        }
+        //public void Save()
+        //{
+        //    ItemGroupService.Add(itemGroup);
+        //}
+
+        //public void Remove()
+        //{
+        //    ItemGroupService.Remove(itemGroup);
+        //}
 
         public void Update(ItemGroupViewModel itemGroupVM)
         {

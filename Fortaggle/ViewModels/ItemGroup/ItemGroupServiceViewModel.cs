@@ -134,7 +134,7 @@
                                 () =>
                                 {
                                     ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
-                                    ItemGroupDialogVM.ItemGroupVM.Save();
+                                    //ItemGroupDialogVM.ItemGroupVM.Save();
                                     ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 });
@@ -201,7 +201,7 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Remove();
+                                    //SelectedItemGroupVM.Remove();
                                     ItemGroupVMList.Remove(SelectedItemGroupVM);
                                     ConfirmDialogVM = null;
                                 },
@@ -224,6 +224,19 @@
         #endregion
 
         //--- public メソッド
+
+        public void Save()
+        {
+            ItemGroupService itemGroupService = new ItemGroupService();
+
+            foreach (ItemGroupViewModel itemGroupVM in ItemGroupVMList)
+            {
+                itemGroupService.Add(itemGroupVM.CreateItemGroup());
+            }
+
+
+            itemGroupService.Save();
+        }
 
         //--- protected メソッド
 
