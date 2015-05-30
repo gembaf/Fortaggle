@@ -25,6 +25,11 @@
         public ItemViewModel(Item item)
         {
             this.item = item;
+            Name = item.Name;
+            Ruby = item.Ruby;
+            FolderPath = item.FolderPath;
+            ExecuteFilePath = item.ExecuteFilePath;
+            ExecutedAt = item.ExecutedAt;
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
         }
 
@@ -37,14 +42,16 @@
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return item.Name; }
+            get { return _Name; }
             set
             {
-                if (item.Name != value)
+                if (_Name != value)
                 {
-                    item.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -54,14 +61,16 @@
 
         #region string Ruby
 
+        private string _Ruby;
+
         public string Ruby
         {
-            get { return item.Ruby; }
+            get { return _Ruby; }
             set
             {
-                if (item.Ruby != value)
+                if (_Ruby != value)
                 {
-                    item.Ruby = value;
+                    _Ruby = value;
                     RaisePropertyChanged("Ruby");
                 }
             }
@@ -71,14 +80,16 @@
 
         #region string FolderPath
 
+        private string _FolderPath;
+
         public string FolderPath
         {
-            get { return item.FolderPath; }
+            get { return _FolderPath; }
             set
             {
-                if (item.FolderPath != value)
+                if (_FolderPath != value)
                 {
-                    item.FolderPath = value;
+                    _FolderPath = value;
                     RaisePropertyChanged("FolderPath");
                     RaisePropertyChanged("IsExistsFolder");
                 }
@@ -89,14 +100,16 @@
 
         #region string ExecuteFilePath
 
+        private string _ExecuteFilePath;
+
         public string ExecuteFilePath
         {
-            get { return item.ExecuteFilePath; }
+            get { return _ExecuteFilePath; }
             set
             {
-                if (item.ExecuteFilePath != value)
+                if (_ExecuteFilePath != value)
                 {
-                    item.ExecuteFilePath = value;
+                    _ExecuteFilePath = value;
                     RaisePropertyChanged("ExecuteFilePath");
                     RaisePropertyChanged("ExecuteFileImage");
                     RaisePropertyChanged("IsExistsExecuteFile");
@@ -108,14 +121,16 @@
 
         #region DateTime ExecutedAt
 
+        private DateTime _ExecutedAt;
+
         public DateTime ExecutedAt
         {
-            get { return item.ExecutedAt; }
+            get { return _ExecutedAt; }
             set
             {
-                if (item.ExecutedAt != value)
+                if (_ExecutedAt != value)
                 {
-                    item.ExecutedAt = value;
+                    _ExecutedAt = value;
                     RaisePropertyChanged("ExecutedAt");
                     RaisePropertyChanged("DisplayExecutedAt");
                 }

@@ -13,15 +13,14 @@
 
         //--- フィールド
 
-        private ItemGroup itemGroup;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ (+1)
 
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
-            this.itemGroup = itemGroup;
+            Name = itemGroup.Name;
+            Ruby = itemGroup.Ruby;
             ItemServiceVM = new ItemServiceViewModel(itemGroup.ItemList);
         }
 
@@ -42,14 +41,16 @@
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return itemGroup.Name; }
+            get { return _Name; }
             set
             {
-                if (itemGroup.Name != value)
+                if (_Name != value)
                 {
-                    itemGroup.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -59,14 +60,16 @@
 
         #region string Ruby
 
+        private string _Ruby;
+
         public string Ruby
         {
-            get { return itemGroup.Ruby; }
+            get { return _Ruby; }
             set
             {
-                if (itemGroup.Ruby != value)
+                if (_Ruby != value)
                 {
-                    itemGroup.Ruby = value;
+                    _Ruby = value;
                     RaisePropertyChanged("Ruby");
                 }
             }
