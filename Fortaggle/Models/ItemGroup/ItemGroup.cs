@@ -33,16 +33,6 @@
 
         //--- public メソッド
 
-        public void AddItem(Item item)
-        {
-            ItemList.Add(item);
-        }
-
-        public void RemoveItem(Item item)
-        {
-            ItemList.Remove(item);
-        }
-
         //--- protected メソッド
 
         //--- private メソッド

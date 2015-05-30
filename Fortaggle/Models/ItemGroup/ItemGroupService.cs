@@ -26,11 +26,6 @@
             itemGroupList.Add(itemGroup);
         }
 
-        public void Remove(ItemGroup itemGroup)
-        {
-            itemGroupList.Remove(itemGroup);
-        }
-
         public void Save()
         {
             Common.XMLFileManager.WriteXml<List<ItemGroup>>(FileName, itemGroupList);
