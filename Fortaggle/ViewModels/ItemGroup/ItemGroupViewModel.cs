@@ -33,7 +33,7 @@
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
             this.itemGroup = itemGroup;
-            ItemServiceVM = new ItemServiceViewModel(itemGroup);
+            ItemServiceVM = new ItemServiceViewModel(itemGroup.ItemList);
         }
 
         public ItemGroupViewModel()

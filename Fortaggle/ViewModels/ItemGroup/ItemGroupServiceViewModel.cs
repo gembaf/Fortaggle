@@ -4,6 +4,7 @@
     using Fortaggle.ViewModels.Common;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
@@ -20,7 +21,7 @@
 
         public ItemGroupServiceViewModel()
         {
-            ItemGroupVMList = OrderByRuby(ItemGroupViewModel.All());
+            ItemGroupVMList = InitializeItemGroupVMList(ItemGroupService.All());
             if (ItemGroupVMList.Count > 0)
             {
                 SelectedItemGroupVM = ItemGroupVMList.First();
@@ -241,6 +242,16 @@
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ObservableCollection<ItemGroupViewModel> InitializeItemGroupVMList(List<ItemGroup> itemGroupList)
+        {
+            var itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
+            foreach (ItemGroup itemGroup in itemGroupList)
+            {
+                itemGroupVMList.Add(new ItemGroupViewModel(itemGroup));
+            }
+            return OrderByRuby(itemGroupVMList);
+        }
 
         private ObservableCollection<ItemGroupViewModel> OrderByRuby(ObservableCollection<ItemGroupViewModel> collection)
         {

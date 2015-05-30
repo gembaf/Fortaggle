@@ -16,16 +16,16 @@
 
         //--- フィールド
 
-        private ItemGroup itemGroup;
+        //private ItemGroup itemGroup;
 
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
-        public ItemServiceViewModel(ItemGroup itemGroup)
+        public ItemServiceViewModel(List<Item> itemList)
         {
-            this.itemGroup = itemGroup;
-            ItemVMList = OrderByRuby(ItemViewModel.Create(itemGroup.ItemList));
+            //this.itemGroup = itemGroup;
+            ItemVMList = InitializeItemVMList(itemList);
         }
 
         //--- プロパティ
@@ -257,6 +257,16 @@
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ObservableCollection<ItemViewModel> InitializeItemVMList(List<Item> itemList)
+        {
+            var itemVMList = new ObservableCollection<ItemViewModel>();
+            foreach (Item item in itemList)
+            {
+                itemVMList.Add(new ItemViewModel(item));
+            }
+            return OrderByRuby(itemVMList);
+        }
 
         private ObservableCollection<ItemViewModel> OrderByRuby(ObservableCollection<ItemViewModel> collection)
         {
