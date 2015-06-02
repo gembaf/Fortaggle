@@ -20,6 +20,29 @@
     </i:Interaction.Behaviors>
 
     <Grid>
-        <TextBlock Text="{Binding VMList[0].Label}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding VMList}"
+                 Style="{StaticResource WhiteListBox}"
+                 Grid.Row="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ListBoxItem>
+                        <CheckBox Content="{Binding Label}"
+                                  IsChecked="{Binding IsChecked}"/>
+                    </ListBoxItem>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
