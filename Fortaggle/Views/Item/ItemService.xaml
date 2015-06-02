@@ -16,7 +16,7 @@
                 <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
             <!--アイテム一覧-->
-            <ListBox ItemsSource="{Binding ItemVMList}"
+            <ListBox ItemsSource="{Binding DisplayItemVMList}"
                      SelectedItem="{Binding SelectedItemVM}"
                      Style="{StaticResource WhiteListBox}"
                      Grid.Row="0"

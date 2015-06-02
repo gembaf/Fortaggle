@@ -119,6 +119,11 @@
             };
         }
 
+        public bool IsContainCorrectItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            return ItemServiceVM.WhereItemStatus(itemStatusServiceVM) != 0;
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

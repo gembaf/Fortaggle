@@ -2,20 +2,10 @@
 {
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
-    using System;
-    using System.Collections.Generic;
 
     public class ItemStatusViewModel : ViewModelBase
     {
         //--- 定数
-
-        private static readonly Dictionary<ItemStatus, string> statusLabelMap = new Dictionary<ItemStatus, string>()
-        {
-            {ItemStatus.None, "未所持"},
-            {ItemStatus.Posession, "未着手"},
-            {ItemStatus.Active, "進行中"},
-            {ItemStatus.Finish, "完了済"}
-        };
 
         //--- フィールド
 
@@ -23,15 +13,20 @@
 
         //--- コンストラクタ
 
-        private ItemStatusViewModel(ItemStatus status)
+        public ItemStatusViewModel(ItemStatus status, string label)
         {
             Status = status;
-            Label = statusLabelMap[status];
+            Label = label;
+            IsChecked = true;
         }
 
         //--- プロパティ
 
+        #region ItemStatus Status
+
         public ItemStatus Status { get; set; }
+
+        #endregion
 
         #region string Label
 
@@ -61,6 +56,12 @@
 
         #endregion
 
+        #region bool IsChecked
+
+        public bool IsChecked { get; set; }
+
+        #endregion
+
         //--- public メソッド
 
         //--- protected メソッド
@@ -69,12 +70,5 @@
 
         //--- static メソッド
 
-        public static IEnumerable<ItemStatusViewModel> Create()
-        {
-            foreach (ItemStatus status in Enum.GetValues(typeof(ItemStatus)))
-            {
-                yield return new ItemStatusViewModel(status);
-            }
-        }
     }
 }

@@ -2,6 +2,7 @@
 {
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -9,26 +10,49 @@
     {
         //--- 定数
 
-        //--- フィールド
+        private static readonly Dictionary<ItemStatus, string> statusLabelMap = new Dictionary<ItemStatus, string>()
+        {
+            {ItemStatus.None, "未所持"},
+            {ItemStatus.Posession, "未着手"},
+            {ItemStatus.Active, "進行中"},
+            {ItemStatus.Finish, "完了済"}
+        };
 
-        private Item item;
+        //--- フィールド
 
         //--- 静的コンストラクタ
 
-        //--- コンストラクタ
+        //--- コンストラクタ (+1)
 
         public ItemStatusServiceViewModel(Item item)
         {
-            this.item = item;
-            ItemStatusVMList = ItemStatusViewModel.Create();
+            ItemStatusVMList = InitializeItemStatusVMList();
             SelectedItemStatusVM = ItemStatusVMList.FirstOrDefault<ItemStatusViewModel>((itemStatusVM) => itemStatusVM.Status == item.Status);
+        }
+
+        public ItemStatusServiceViewModel()
+            : this(new Item())
+        {
         }
 
         //--- プロパティ
 
-        #region IEnumerable<ItemStatusViewModel> ItemStatusVMList
+        #region List<ItemStatusViewModel> ItemStatusVMList
 
-        public IEnumerable<ItemStatusViewModel> ItemStatusVMList { get; private set; }
+        public List<ItemStatusViewModel> ItemStatusVMList { get; private set; }
+
+        #endregion
+
+        #region List<ItemStatusViewModel> CheckedItemStatusVMList
+
+        public List<ItemStatusViewModel> CheckedItemStatusVMList
+        {
+            get
+            {
+                var list = ItemStatusVMList.Where(e => e.IsChecked);
+                return new List<ItemStatusViewModel>(list);
+            }
+        }
 
         #endregion
 
@@ -55,14 +79,19 @@
 
         //--- public メソッド
 
-        public ItemStatusServiceViewModel Clone()
-        {
-            return new ItemStatusServiceViewModel(item);
-        }
-
         //--- protected メソッド
 
         //--- private メソッド
+
+        private List<ItemStatusViewModel> InitializeItemStatusVMList()
+        {
+            var list = new List<ItemStatusViewModel>();
+            foreach (ItemStatus status in Enum.GetValues(typeof(ItemStatus)))
+            {
+                list.Add(new ItemStatusViewModel(status, statusLabelMap[status]));
+            }
+            return list;
+        }
 
         //--- static メソッド
     }
