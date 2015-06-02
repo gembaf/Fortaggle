@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fortaggle.Views.Common
+namespace Fortaggle.Views.Item
 {
     /// <summary>
-    /// CheckboxDialog.xaml の相互作用ロジック
+    /// ItemStatuItemStatusDialog.xaml の相互作用ロジック
     /// </summary>
-    public partial class CheckboxDialog : UserControl
+    public partial class ItemStatusDialog : UserControl
     {
-        public CheckboxDialog()
+        public ItemStatusDialog()
         {
             InitializeComponent();
         }

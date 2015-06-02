@@ -2,6 +2,7 @@
 {
     using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Common;
+    using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
     using System.Collections.Generic;

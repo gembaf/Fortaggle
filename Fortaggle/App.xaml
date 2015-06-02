@@ -37,6 +37,9 @@
             <DataTemplate DataType="{x:Type vm_item:ItemDialogViewModel}">
                 <view_item:ItemDialog />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm_item:ItemStatusDialogViewModel}">
+                <view_item:ItemStatusDialog />
+            </DataTemplate>
 
             <!--ItemGroup-->
             <DataTemplate DataType="{x:Type vm_itemgroup:ItemGroupServiceViewModel}">
@@ -59,9 +62,6 @@
             <!--Common-->
             <DataTemplate DataType="{x:Type vm_common:ConfirmDialogViewModel}">
                 <view_common:ConfirmDialog />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type vm_common:CheckboxDialogViewModel}">
-                <view_common:CheckboxDialog />
             </DataTemplate>
 
             <!--ThemeとSkinの適用-->

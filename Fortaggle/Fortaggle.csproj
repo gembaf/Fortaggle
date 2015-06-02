@@ -93,7 +93,7 @@
     <Compile Include="Models\Item\ItemStatus.cs" />
     <Compile Include="Models\Common\ExplorerManager.cs" />
     <Compile Include="Models\Common\XMLFileManager.cs" />
-    <Compile Include="ViewModels\Common\CheckboxDialogViewModel.cs" />
+    <Compile Include="ViewModels\Item\ItemStatusDialogViewModel.cs" />
     <Compile Include="ViewModels\Common\ConfirmDialogViewModel.cs" />
     <Compile Include="ViewModels\Common\OpenFileDialog.cs" />
     <Compile Include="ViewModels\Common\FolderBrowserDialog.cs" />
@@ -113,8 +113,8 @@
     <Compile Include="Views\Behaviors\DialogBehavior.cs" />
     <Compile Include="Views\Behaviors\FileDropBehavior.cs" />
     <Compile Include="Views\Behaviors\ValidationErrorBehavior.cs" />
-    <Compile Include="Views\Common\CheckboxDialog.xaml.cs">
-      <DependentUpon>CheckboxDialog.xaml</DependentUpon>
+    <Compile Include="Views\Item\ItemStatusDialog.xaml.cs">
+      <DependentUpon>ItemStatusDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Common\ConfirmDialog.xaml.cs">
       <DependentUpon>ConfirmDialog.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Common\CheckboxDialog.xaml">
+    <Page Include="Views\Item\ItemStatusDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

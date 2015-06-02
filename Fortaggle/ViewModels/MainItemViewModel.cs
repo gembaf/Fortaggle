@@ -1,6 +1,5 @@
 ﻿namespace Fortaggle.ViewModels
 {
-    using Fortaggle.ViewModels.Common;
     using Fortaggle.ViewModels.Item;
     using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
@@ -10,8 +9,6 @@
     public class MainItemViewModel : ViewModelBase
     {
         //--- 定数
-
-        private static readonly ItemStatusServiceViewModel ItemStatusServiceVM = new ItemStatusServiceViewModel();
 
         //--- フィールド
 
@@ -45,9 +42,9 @@
 
         #region CheckboxDialogViewModel CheckboxDialogVM
 
-        private CheckboxDialogViewModel _CheckboxDialogVM;
+        private ItemStatusDialogViewModel _CheckboxDialogVM;
 
-        public CheckboxDialogViewModel CheckboxDialogVM
+        public ItemStatusDialogViewModel CheckboxDialogVM
         {
             get { return _CheckboxDialogVM; }
             set
@@ -77,12 +74,11 @@
                     _SelectItemStatusDialogCommand = new RelayCommand(
                         () =>
                         {
-                            CheckboxDialogVM = new CheckboxDialogViewModel(
+                            CheckboxDialogVM = new ItemStatusDialogViewModel(
                                 () =>
                                 {
                                     CheckboxDialogVM = null;
-                                },
-                                ItemStatusServiceVM.ItemStatusVMList);
+                                });
                         });
                 }
                 return _SelectItemStatusDialogCommand;

@@ -1,10 +1,9 @@
-﻿namespace Fortaggle.ViewModels.Common
+﻿namespace Fortaggle.ViewModels.Item
 {
     using GalaSoft.MvvmLight;
     using System;
-	using System.Collections.Generic;
 
-    public class CheckboxDialogViewModel : ViewModelBase
+    public class ItemStatusDialogViewModel : ViewModelBase
     {
         //--- 定数
 
@@ -16,17 +15,17 @@
 
         //--- コンストラクタ
 
-        public CheckboxDialogViewModel(Action closeAction, IEnumerable<ViewModelBase> list)
+        public ItemStatusDialogViewModel(Action closeAction)
         {
             this.closeAction = closeAction;
-            VMList = new List<ViewModelBase>(list);
+            ItemStatusServiceVM = new ItemStatusServiceViewModel();
         }
 
         //--- プロパティ
 
-        #region List<ViewModelBase>
+        #region ItemStatusServiceViewModel ItemStatusServiceVM
 
-        public List<ViewModelBase> VMList { get; set; }
+        public ItemStatusServiceViewModel ItemStatusServiceVM { get; set; }
 
         #endregion
 
