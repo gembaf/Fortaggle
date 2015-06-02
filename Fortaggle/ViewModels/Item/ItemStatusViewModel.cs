@@ -17,6 +17,7 @@
         {
             Status = status;
             Label = label;
+            IsChecked = true;
         }
 
         //--- プロパティ

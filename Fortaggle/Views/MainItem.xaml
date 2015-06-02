@@ -14,7 +14,7 @@
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.ConfirmDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ItemDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ConfirmDialogVM}" />
-        <behavior:DialogBehavior Content="{Binding CheckboxDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding ItemStatusDialogVM}" />
     </i:Interaction.Behaviors>
 
     <DockPanel>

@@ -23,6 +23,7 @@
         public ItemServiceViewModel(List<Item> itemList)
         {
             ItemVMList = InitializeItemVMList(itemList);
+            DisplayItemVMList = ItemVMList;
         }
 
         //--- プロパティ
@@ -42,6 +43,25 @@
                 {
                     _ItemVMList = value;
                     RaisePropertyChanged("ItemVMList");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ObservableCollection<ItemViewModel> DisplayItemVMList
+
+        private ObservableCollection<ItemViewModel> _DisplayItemVMList;
+
+        public ObservableCollection<ItemViewModel> DisplayItemVMList
+        {
+            get { return _DisplayItemVMList; }
+            set
+            {
+                if (_DisplayItemVMList != value)
+                {
+                    _DisplayItemVMList = value;
+                    RaisePropertyChanged("DisplayItemVMList");
                 }
             }
         }
@@ -242,13 +262,18 @@
         public List<Item> CreateItemList()
         {
             List<Item> itemList = new List<Item>();
-
             foreach (ItemViewModel itemVM in ItemVMList)
             {
                 itemList.Add(itemVM.CreateItem());
             }
-
             return itemList;
+        }
+
+        public int WhereItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            var list = ItemVMList.Where<ItemViewModel>(e => e.IsCorrectStatus(itemStatusServiceVM));
+            DisplayItemVMList = OrderByRuby(new ObservableCollection<ItemViewModel>(list));
+            return DisplayItemVMList.Count;
         }
 
         //--- protected メソッド
@@ -277,6 +302,7 @@
         private void ItemVMListCollectionChanged()
         {
             ItemVMList = OrderByRuby(ItemVMList);
+            DisplayItemVMList = ItemVMList;
             RaisePropertyChanged("ExecuteFileImage");
         }
 

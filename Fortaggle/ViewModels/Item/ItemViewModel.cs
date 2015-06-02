@@ -314,6 +314,18 @@
             ExecutedAt = DateTime.Now;
         }
 
+        public bool IsCorrectStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            foreach (ItemStatusViewModel itemStatusVM in itemStatusServiceVM.CheckedItemStatusVMList)
+            {
+                if (itemStatusVM.Status == this.ItemStatusServiceVM.SelectedItemStatusVM.Status)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         //--- protected メソッド
 
         //--- private メソッド

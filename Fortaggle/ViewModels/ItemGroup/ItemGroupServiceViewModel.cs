@@ -23,6 +23,7 @@
         public ItemGroupServiceViewModel()
         {
             ItemGroupVMList = InitializeItemGroupVMList(ItemGroupService.All());
+            DisplayItemGroupVMList = ItemGroupVMList;
             if (ItemGroupVMList.Count > 0)
             {
                 SelectedItemGroupVM = ItemGroupVMList.First();
@@ -82,6 +83,25 @@
                 {
                     _ItemGroupVMList = value;
                     RaisePropertyChanged("ItemGroupVMList");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ObservableCollection<ItemGroupViewModel> DisplayItemGroupVMList
+
+        private ObservableCollection<ItemGroupViewModel> _DisplayItemGroupVMList;
+
+        public ObservableCollection<ItemGroupViewModel> DisplayItemGroupVMList
+        {
+            get { return _DisplayItemGroupVMList; }
+            set
+            {
+                if (_DisplayItemGroupVMList != value)
+                {
+                    _DisplayItemGroupVMList = value;
+                    RaisePropertyChanged("DisplayItemGroupVMList");
                 }
             }
         }
@@ -239,6 +259,12 @@
             itemGroupService.Save();
         }
 
+        public void WhereItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            var list = ItemGroupVMList.Where(e => e.IsContainCorrectItemStatus(itemStatusServiceVM));
+            DisplayItemGroupVMList = OrderByRuby(new ObservableCollection<ItemGroupViewModel>(list));
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
@@ -265,6 +291,7 @@
         private void ItemGroupVMListCollectionChanged()
         {
             ItemGroupVMList = OrderByRuby(ItemGroupVMList);
+            DisplayItemGroupVMList = ItemGroupVMList;
         }
 
         //--- static メソッド

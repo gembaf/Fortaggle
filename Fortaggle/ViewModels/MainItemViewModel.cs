@@ -1,14 +1,18 @@
 ﻿namespace Fortaggle.ViewModels
 {
+    using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Item;
     using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Windows.Input;
 
     public class MainItemViewModel : ViewModelBase
     {
         //--- 定数
+
+        private static readonly ItemStatusServiceViewModel ItemStatusServiceVM = new ItemStatusServiceViewModel();
 
         //--- フィールド
 
@@ -40,19 +44,19 @@
 
         //--- 変更通知プロパティ
 
-        #region CheckboxDialogViewModel CheckboxDialogVM
+        #region ItemStatusDialogViewModel ItemStatusDialogVM
 
-        private ItemStatusDialogViewModel _CheckboxDialogVM;
+        private ItemStatusDialogViewModel _ItemStatusDialogVM;
 
-        public ItemStatusDialogViewModel CheckboxDialogVM
+        public ItemStatusDialogViewModel ItemStatusDialogVM
         {
-            get { return _CheckboxDialogVM; }
+            get { return _ItemStatusDialogVM; }
             set
             {
-                if (_CheckboxDialogVM != value)
+                if (_ItemStatusDialogVM != value)
                 {
-                    _CheckboxDialogVM = value;
-                    RaisePropertyChanged("CheckboxDialogVM");
+                    _ItemStatusDialogVM = value;
+                    RaisePropertyChanged("ItemStatusDialogVM");
                 }
             }
         }
@@ -74,11 +78,13 @@
                     _SelectItemStatusDialogCommand = new RelayCommand(
                         () =>
                         {
-                            CheckboxDialogVM = new ItemStatusDialogViewModel(
+                            ItemStatusDialogVM = new ItemStatusDialogViewModel(
                                 () =>
                                 {
-                                    CheckboxDialogVM = null;
-                                });
+                                    ItemGroupServiceVM.WhereItemStatus(ItemStatusServiceVM);
+                                    ItemStatusDialogVM = null;
+                                },
+                                ItemStatusServiceVM);
                         });
                 }
                 return _SelectItemStatusDialogCommand;

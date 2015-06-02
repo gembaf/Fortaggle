@@ -6,7 +6,9 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:Fortaggle.Views.Behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             MinHeight="300" MinWidth="300"
+             Background="White">
 
     <i:Interaction.Behaviors>
         <behaviors:WindowStyleBehavior>
@@ -44,5 +46,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Button Grid.Row="1"
+                Content="絞り込み"
+                Command="{Binding WhereItemStatusCommand}"/>
     </Grid>
 </UserControl>

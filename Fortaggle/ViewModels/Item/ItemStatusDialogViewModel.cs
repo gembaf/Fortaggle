@@ -1,7 +1,9 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
     using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
     using System;
+    using System.Windows.Input;
 
     public class ItemStatusDialogViewModel : ViewModelBase
     {
@@ -15,10 +17,10 @@
 
         //--- コンストラクタ
 
-        public ItemStatusDialogViewModel(Action closeAction)
+        public ItemStatusDialogViewModel(Action closeAction, ItemStatusServiceViewModel itemStatusServiceVM)
         {
             this.closeAction = closeAction;
-            ItemStatusServiceVM = new ItemStatusServiceViewModel();
+            ItemStatusServiceVM = itemStatusServiceVM;
         }
 
         //--- プロパティ
@@ -26,6 +28,26 @@
         #region ItemStatusServiceViewModel ItemStatusServiceVM
 
         public ItemStatusServiceViewModel ItemStatusServiceVM { get; set; }
+
+        #endregion
+
+        //--- コマンド
+
+        #region WhereItemStatusCommand
+
+        private ICommand _WhereItemStatusCommand;
+
+        public ICommand WhereItemStatusCommand
+        {
+            get
+            {
+                if (_WhereItemStatusCommand == null)
+                {
+                    _WhereItemStatusCommand = new RelayCommand(closeAction);
+                }
+                return _WhereItemStatusCommand;
+            }
+        }
 
         #endregion
 

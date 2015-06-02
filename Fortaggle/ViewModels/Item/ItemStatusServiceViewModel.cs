@@ -37,9 +37,22 @@
 
         //--- プロパティ
 
-        #region IEnumerable<ItemStatusViewModel> ItemStatusVMList
+        #region List<ItemStatusViewModel> ItemStatusVMList
 
-        public IEnumerable<ItemStatusViewModel> ItemStatusVMList { get; private set; }
+        public List<ItemStatusViewModel> ItemStatusVMList { get; private set; }
+
+        #endregion
+
+        #region List<ItemStatusViewModel> CheckedItemStatusVMList
+
+        public List<ItemStatusViewModel> CheckedItemStatusVMList
+        {
+            get
+            {
+                var list = ItemStatusVMList.Where(e => e.IsChecked);
+                return new List<ItemStatusViewModel>(list);
+            }
+        }
 
         #endregion
 
@@ -70,12 +83,14 @@
 
         //--- private メソッド
 
-        private IEnumerable<ItemStatusViewModel> InitializeItemStatusVMList()
+        private List<ItemStatusViewModel> InitializeItemStatusVMList()
         {
+            var list = new List<ItemStatusViewModel>();
             foreach (ItemStatus status in Enum.GetValues(typeof(ItemStatus)))
             {
-                yield return new ItemStatusViewModel(status, statusLabelMap[status]);
+                list.Add(new ItemStatusViewModel(status, statusLabelMap[status]));
             }
+            return list;
         }
 
         //--- static メソッド

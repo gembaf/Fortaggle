@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <!--アイテムグループ一覧-->
-        <ListBox ItemsSource="{Binding ItemGroupVMList}"
+        <ListBox ItemsSource="{Binding DisplayItemGroupVMList}"
                  SelectedItem="{Binding SelectedItemGroupVM}"
                  Style="{StaticResource WhiteListBox}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
