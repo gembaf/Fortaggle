@@ -20,15 +20,12 @@
 
         //--- フィールド
 
-        private Item item;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
         public ItemStatusServiceViewModel(Item item)
         {
-            this.item = item;
             ItemStatusVMList = InitializeItemStatusVMList();
             SelectedItemStatusVM = ItemStatusVMList.FirstOrDefault<ItemStatusViewModel>((itemStatusVM) => itemStatusVM.Status == item.Status);
         }
@@ -63,11 +60,6 @@
         #endregion
 
         //--- public メソッド
-
-        public ItemStatusServiceViewModel Clone()
-        {
-            return new ItemStatusServiceViewModel(item);
-        }
 
         //--- protected メソッド
 

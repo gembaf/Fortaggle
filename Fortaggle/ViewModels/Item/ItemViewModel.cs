@@ -299,7 +299,7 @@
                 Ruby = this.Ruby,
                 FolderPath = this.FolderPath,
                 ExecuteFilePath = this.ExecuteFilePath,
-                ItemStatusServiceVM = this.ItemStatusServiceVM.Clone()
+                ItemStatusServiceVM = this.ItemStatusServiceVM
             };
         }
 
