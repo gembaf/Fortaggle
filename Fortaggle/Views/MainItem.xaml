@@ -14,7 +14,16 @@
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.ConfirmDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ItemDialogVM}" />
         <behavior:DialogBehavior Content="{Binding ItemGroupServiceVM.SelectedItemGroupVM.ItemServiceVM.ConfirmDialogVM}" />
+        <behavior:DialogBehavior Content="{Binding CheckboxDialogVM}" />
     </i:Interaction.Behaviors>
 
-    <ContentControl Content="{Binding ItemGroupServiceVM}"/>
+    <DockPanel>
+        <UniformGrid DockPanel.Dock="Top"
+                     Columns="4"
+                     Height="50">
+            <Button Content="ステータス選択"
+                    Command="{Binding SelectItemStatusDialogCommand}"/>
+        </UniformGrid>
+        <ContentControl Content="{Binding ItemGroupServiceVM}"/>
+    </DockPanel>
 </UserControl>

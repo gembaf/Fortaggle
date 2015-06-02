@@ -60,6 +60,9 @@
             <DataTemplate DataType="{x:Type vm_common:ConfirmDialogViewModel}">
                 <view_common:ConfirmDialog />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm_common:CheckboxDialogViewModel}">
+                <view_common:CheckboxDialog />
+            </DataTemplate>
 
             <!--ThemeとSkinの適用-->
             <ResourceDictionary.MergedDictionaries>
