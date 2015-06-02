@@ -22,12 +22,17 @@
 
         //--- 静的コンストラクタ
 
-        //--- コンストラクタ
+        //--- コンストラクタ (+1)
 
         public ItemStatusServiceViewModel(Item item)
         {
             ItemStatusVMList = InitializeItemStatusVMList();
             SelectedItemStatusVM = ItemStatusVMList.FirstOrDefault<ItemStatusViewModel>((itemStatusVM) => itemStatusVM.Status == item.Status);
+        }
+
+        public ItemStatusServiceViewModel()
+            : this(new Item())
+        {
         }
 
         //--- プロパティ

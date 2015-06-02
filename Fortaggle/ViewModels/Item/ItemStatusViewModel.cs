@@ -55,6 +55,12 @@
 
         #endregion
 
+        #region bool IsChecked
+
+        public bool IsChecked { get; set; }
+
+        #endregion
+
         //--- public メソッド
 
         //--- protected メソッド
