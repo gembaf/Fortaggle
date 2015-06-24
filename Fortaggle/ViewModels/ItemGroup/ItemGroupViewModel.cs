@@ -115,7 +115,8 @@
             return new ItemGroupViewModel()
             {
                 Name = this.Name,
-                Ruby = this.Ruby
+                Ruby = this.Ruby,
+                ItemServiceVM = this.ItemServiceVM
             };
         }
 
