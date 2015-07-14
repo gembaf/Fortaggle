@@ -13,27 +13,15 @@
 
         //--- フィールド
 
-        private static ObservableCollection<ItemGroupViewModel> itemGroupVMList;
-
-        private ItemGroup itemGroup;
-
         //--- 静的コンストラクタ
-
-        static ItemGroupViewModel()
-        {
-            itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
-            foreach (ItemGroup e in ItemGroupService.All())
-            {
-                itemGroupVMList.Add(new ItemGroupViewModel(e));
-            }
-        }
 
         //--- コンストラクタ (+1)
 
         public ItemGroupViewModel(ItemGroup itemGroup)
         {
-            this.itemGroup = itemGroup;
-            ItemVMList = ItemViewModel.Create(itemGroup.ItemList);
+            Name = itemGroup.Name;
+            Ruby = itemGroup.Ruby;
+            ItemServiceVM = new ItemServiceViewModel(itemGroup.ItemList);
         }
 
         public ItemGroupViewModel()
@@ -41,18 +29,28 @@
         {
         }
 
+        //--- プロパティ
+
+        #region ItemServiceViewModel ItemServiceVM
+
+        public ItemServiceViewModel ItemServiceVM { get; private set; }
+
+        #endregion
+
         //--- 変更通知プロパティ(モデル)
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return itemGroup.Name; }
+            get { return _Name; }
             set
             {
-                if (itemGroup.Name != value)
+                if (_Name != value)
                 {
-                    itemGroup.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
                 }
             }
@@ -60,13 +58,26 @@
 
         #endregion
 
-        //--- 変更通知プロパティ
+        #region string Ruby
 
-        #region ObservableCollection<ItemViewModel> ItemVMList
+        private string _Ruby;
 
-        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
+        public string Ruby
+        {
+            get { return _Ruby; }
+            set
+            {
+                if (_Ruby != value)
+                {
+                    _Ruby = value;
+                    RaisePropertyChanged("Ruby");
+                }
+            }
+        }
 
         #endregion
+
+        //--- 変更通知プロパティ
 
         #region bool HasViewError
 
@@ -89,41 +100,29 @@
 
         //--- public メソッド
 
-        public void Save()
+        public ItemGroup CreateItemGroup()
         {
-            ItemGroupService.Add(itemGroup);
-            itemGroupVMList.Add(this);
-        }
-
-        public void Remove()
-        {
-            ItemGroupService.Remove(itemGroup);
-            itemGroupVMList.Remove(this);
-        }
-
-        public void Update(ItemGroupViewModel itemGroupVM)
-        {
-            this.Name = itemGroupVM.Name;
+            return new ItemGroup()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                ItemList = ItemServiceVM.CreateItemList()
+            };
         }
 
         public ItemGroupViewModel Clone()
         {
             return new ItemGroupViewModel()
             {
-                Name = this.Name
+                Name = this.Name,
+                Ruby = this.Ruby,
+                ItemServiceVM = this.ItemServiceVM
             };
         }
 
-        public void AddItemVM(ItemViewModel itemVM)
+        public bool IsContainCorrectItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
         {
-            itemVM.Save(itemGroup);
-            ItemVMList.Add(itemVM);
-        }
-
-        public void RemoveItemVM(ItemViewModel itemVM)
-        {
-            itemVM.Remove(itemGroup);
-            ItemVMList.Remove(itemVM);
+            return ItemServiceVM.WhereItemStatus(itemStatusServiceVM) != 0;
         }
 
         //--- protected メソッド
@@ -131,10 +130,5 @@
         //--- private メソッド
 
         //--- static メソッド
-
-        public static ObservableCollection<ItemGroupViewModel> All()
-        {
-            return itemGroupVMList;
-        }
     }
 }

@@ -1,14 +1,16 @@
 ﻿namespace Fortaggle.ViewModels.ItemGroup
 {
+    using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Common;
     using Fortaggle.ViewModels.Item;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
 
-    public class ItemGroupManageViewModel : ViewModelBase
+    public class ItemGroupServiceViewModel : ViewModelBase
     {
         //--- 定数
 
@@ -18,9 +20,10 @@
 
         //--- コンストラクタ
 
-        public ItemGroupManageViewModel()
+        public ItemGroupServiceViewModel()
         {
-            ItemGroupVMList = ItemGroupViewModel.All();
+            ItemGroupVMList = InitializeItemGroupVMList(ItemGroupService.All());
+            DisplayItemGroupVMList = ItemGroupVMList;
             if (ItemGroupVMList.Count > 0)
             {
                 SelectedItemGroupVM = ItemGroupVMList.First();
@@ -28,17 +31,6 @@
         }
 
         //--- プロパティ
-
-        #region string Label 静的プロパティ
-
-        public static string Label
-        {
-            get { return "アイテム一覧"; }
-        }
-
-        #endregion
-
-        //--- 変更通知プロパティ
 
         #region ItemGroupDialogViewModel ItemGroupDialogVM
 
@@ -80,7 +72,39 @@
 
         #region ObservableCollection<ItemGroupViewModel> ItemGroupVMList
 
-        public ObservableCollection<ItemGroupViewModel> ItemGroupVMList { get; private set; }
+        private ObservableCollection<ItemGroupViewModel> _ItemGroupVMList;
+
+        public ObservableCollection<ItemGroupViewModel> ItemGroupVMList
+        {
+            get { return _ItemGroupVMList; }
+            set
+            {
+                if (_ItemGroupVMList != value)
+                {
+                    _ItemGroupVMList = value;
+                    RaisePropertyChanged("ItemGroupVMList");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ObservableCollection<ItemGroupViewModel> DisplayItemGroupVMList
+
+        private ObservableCollection<ItemGroupViewModel> _DisplayItemGroupVMList;
+
+        public ObservableCollection<ItemGroupViewModel> DisplayItemGroupVMList
+        {
+            get { return _DisplayItemGroupVMList; }
+            set
+            {
+                if (_DisplayItemGroupVMList != value)
+                {
+                    _DisplayItemGroupVMList = value;
+                    RaisePropertyChanged("DisplayItemGroupVMList");
+                }
+            }
+        }
 
         #endregion
 
@@ -96,17 +120,8 @@
                 if (_SelectedItemGroupVM != value)
                 {
                     _SelectedItemGroupVM = value;
-                    if (value != null)
-                    {
-                        IsSelect = true;
-                        ItemManageVM = new ItemManageViewModel(value);
-                    }
-                    else
-                    {
-                        IsSelect = false;
-                        ItemManageVM = null;
-                    }
                     RaisePropertyChanged("SelectedItemGroupVM");
+                    RaisePropertyChanged("IsSelect");
                 }
             }
         }
@@ -115,38 +130,9 @@
 
         #region bool IsSelect
 
-        private bool _IsSelect;
-
         public bool IsSelect
         {
-            get { return _IsSelect; }
-            set
-            {
-                if (_IsSelect != value)
-                {
-                    _IsSelect = value;
-                    RaisePropertyChanged("IsSelect");
-                }
-            }
-        }
-
-        #endregion
-
-        #region ItemManageViewModel ItemManageVM
-
-        private ItemManageViewModel _ItemManageVM;
-
-        public ItemManageViewModel ItemManageVM
-        {
-            get { return _ItemManageVM; }
-            set
-            {
-                if (_ItemManageVM != value)
-                {
-                    _ItemManageVM = value;
-                    RaisePropertyChanged("ItemManageVM");
-                }
-            }
+            get { return SelectedItemGroupVM != null; }
         }
 
         #endregion
@@ -169,7 +155,8 @@
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
-                                    ItemGroupDialogVM.ItemGroupVM.Save();
+                                    ItemGroupVMList.Add(ItemGroupDialogVM.ItemGroupVM);
+                                    ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 });
                         });
@@ -191,15 +178,24 @@
                 if (_EditItemGroupDialogCommand == null)
                 {
                     _EditItemGroupDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ItemGroupDialogVM = new ItemGroupDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Update(ItemGroupDialogVM.ItemGroupVM);
+                                    int index = ItemGroupVMList.IndexOf(SelectedItemGroupVM);
+                                    ItemGroupVMList[index] = ItemGroupDialogVM.ItemGroupVM;
+                                    SelectedItemGroupVM = ItemGroupVMList[index];
+                                    ItemGroupVMListCollectionChanged();
                                     ItemGroupDialogVM = null;
                                 },
                                 SelectedItemGroupVM.Clone());
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _EditItemGroupDialogCommand;
@@ -219,6 +215,7 @@
                 if (_DeleteItemGroupDialogCommand == null)
                 {
                     _DeleteItemGroupDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -227,7 +224,7 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    SelectedItemGroupVM.Remove();
+                                    ItemGroupVMList.Remove(SelectedItemGroupVM);
                                     ConfirmDialogVM = null;
                                 },
                                 // CancelAction
@@ -235,6 +232,11 @@
                                 {
                                     ConfirmDialogVM = null;
                                 });
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _DeleteItemGroupDialogCommand;
@@ -245,9 +247,52 @@
 
         //--- public メソッド
 
+        public void Save()
+        {
+            ItemGroupService itemGroupService = new ItemGroupService();
+
+            foreach (ItemGroupViewModel itemGroupVM in ItemGroupVMList)
+            {
+                itemGroupService.Add(itemGroupVM.CreateItemGroup());
+            }
+
+            itemGroupService.Save();
+        }
+
+        public void WhereItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            var list = ItemGroupVMList.Where(e => e.IsContainCorrectItemStatus(itemStatusServiceVM));
+            DisplayItemGroupVMList = OrderByRuby(new ObservableCollection<ItemGroupViewModel>(list));
+        }
+
         //--- protected メソッド
 
         //--- private メソッド
+
+        private ObservableCollection<ItemGroupViewModel> InitializeItemGroupVMList(List<ItemGroup> itemGroupList)
+        {
+            var itemGroupVMList = new ObservableCollection<ItemGroupViewModel>();
+            foreach (ItemGroup itemGroup in itemGroupList)
+            {
+                itemGroupVMList.Add(new ItemGroupViewModel(itemGroup));
+            }
+            return OrderByRuby(itemGroupVMList);
+        }
+
+        private ObservableCollection<ItemGroupViewModel> OrderByRuby(ObservableCollection<ItemGroupViewModel> collection)
+        {
+            return new ObservableCollection<ItemGroupViewModel>(collection.OrderBy(
+                n =>
+                {
+                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
+                }));
+        }
+
+        private void ItemGroupVMListCollectionChanged()
+        {
+            ItemGroupVMList = OrderByRuby(ItemGroupVMList);
+            DisplayItemGroupVMList = ItemGroupVMList;
+        }
 
         //--- static メソッド
     }

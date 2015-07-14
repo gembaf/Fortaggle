@@ -3,8 +3,9 @@
     using Fortaggle.Models.Common;
     using Fortaggle.Models.Item;
     using GalaSoft.MvvmLight;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
+    using GalaSoft.MvvmLight.Command;
+    using System;
+    using System.Windows.Input;
     using System.Windows.Media;
 
     public class ItemViewModel : ViewModelBase
@@ -13,19 +14,18 @@
 
         //--- フィールド
 
-        private Item item;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ (+1)
 
         public ItemViewModel(Item item)
         {
-            this.item = item;
-            ExecuteFileImage = ExplorerManager.GetIconImage(ExecuteFilePath);
+            Name = item.Name;
+            Ruby = item.Ruby;
+            FolderPath = item.FolderPath;
+            ExecuteFilePath = item.ExecuteFilePath;
+            ExecutedAt = item.ExecutedAt;
             ItemStatusServiceVM = new ItemStatusServiceViewModel(item);
-            IsExistsFolder = ExplorerManager.IsExistsDirectory(FolderPath);
-            IsExistsExecuteFile = ExplorerManager.IsExistsFile(ExecuteFilePath);
         }
 
         public ItemViewModel()
@@ -37,15 +37,36 @@
 
         #region string Name
 
+        private string _Name;
+
         public string Name
         {
-            get { return item.Name; }
+            get { return _Name; }
             set
             {
-                if (item.Name != value)
+                if (_Name != value)
                 {
-                    item.Name = value;
+                    _Name = value;
                     RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        #endregion
+
+        #region string Ruby
+
+        private string _Ruby;
+
+        public string Ruby
+        {
+            get { return _Ruby; }
+            set
+            {
+                if (_Ruby != value)
+                {
+                    _Ruby = value;
+                    RaisePropertyChanged("Ruby");
                 }
             }
         }
@@ -54,16 +75,18 @@
 
         #region string FolderPath
 
+        private string _FolderPath;
+
         public string FolderPath
         {
-            get { return item.FolderPath; }
+            get { return _FolderPath; }
             set
             {
-                if (item.FolderPath != value)
+                if (_FolderPath != value)
                 {
-                    item.FolderPath = value;
-                    IsExistsFolder = ExplorerManager.IsExistsDirectory(value);
+                    _FolderPath = value;
                     RaisePropertyChanged("FolderPath");
+                    RaisePropertyChanged("IsExistsFolder");
                 }
             }
         }
@@ -72,17 +95,39 @@
 
         #region string ExecuteFilePath
 
+        private string _ExecuteFilePath;
+
         public string ExecuteFilePath
         {
-            get { return item.ExecuteFilePath; }
+            get { return _ExecuteFilePath; }
             set
             {
-                if (item.ExecuteFilePath != value)
+                if (_ExecuteFilePath != value)
                 {
-                    item.ExecuteFilePath = value;
-                    ExecuteFileImage = ExplorerManager.GetIconImage(value);
-                    IsExistsExecuteFile = ExplorerManager.IsExistsFile(value);
+                    _ExecuteFilePath = value;
                     RaisePropertyChanged("ExecuteFilePath");
+                    RaisePropertyChanged("ExecuteFileImage");
+                    RaisePropertyChanged("IsExistsExecuteFile");
+                }
+            }
+        }
+
+        #endregion
+
+        #region DateTime ExecutedAt
+
+        private DateTime _ExecutedAt;
+
+        public DateTime ExecutedAt
+        {
+            get { return _ExecutedAt; }
+            set
+            {
+                if (_ExecutedAt != value)
+                {
+                    _ExecutedAt = value;
+                    RaisePropertyChanged("ExecutedAt");
+                    RaisePropertyChanged("DisplayExecutedAt");
                 }
             }
         }
@@ -112,56 +157,39 @@
 
         #region ImageSource ExecuteFileImage
 
-        private ImageSource _ExecuteFileImage;
-
         public ImageSource ExecuteFileImage
         {
-            get { return _ExecuteFileImage; }
-            private set
-            {
-                if (_ExecuteFileImage != value)
-                {
-                    _ExecuteFileImage = value;
-                    RaisePropertyChanged("ExecuteFileImage");
-                }
-            }
+            get { return ExplorerManager.GetIconImage(ExecuteFilePath); }
         }
 
         #endregion
 
         #region bool IsExistsFolder
 
-        private bool _IsExistsFolder;
-
         public bool IsExistsFolder
         {
-            get { return _IsExistsFolder; }
-            set
-            {
-                if (_IsExistsFolder != value)
-                {
-                    _IsExistsFolder = value;
-                    RaisePropertyChanged("IsExistsFolder");
-                }
-            }
+            get { return ExplorerManager.IsExistsDirectory(FolderPath); }
         }
 
         #endregion
 
         #region bool IsExistsExecuteFile
 
-        private bool _IsExistsExecuteFile;
-
         public bool IsExistsExecuteFile
         {
-            get { return _IsExistsExecuteFile; }
-            set
+            get { return ExplorerManager.IsExistsFile(ExecuteFilePath); }
+        }
+
+        #endregion
+
+        #region string DisplayExecutedAt
+
+        public string DisplayExecutedAt
+        {
+            get
             {
-                if (_IsExistsExecuteFile != value)
-                {
-                    _IsExistsExecuteFile = value;
-                    RaisePropertyChanged("IsExistsExecuteFile");
-                }
+                string strftime = Item.EqualToDefaultExecutedAt(ExecutedAt) ? "なし" : ExecutedAt.ToString("yyyy.MM.dd HH:mm");
+                return "最終実行日時 : " + strftime;
             }
         }
 
@@ -190,25 +218,77 @@
 
         #endregion
 
+        //--- コマンド
+
+        #region OpenFolderCommand
+
+        private ICommand _OpenFolderCommand;
+        
+        public ICommand OpenFolderCommand
+        {
+            get
+            {
+                if (_OpenFolderCommand == null)
+                {
+                    _OpenFolderCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            OpenFolder();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsExistsFolder;
+                        });
+                }
+                return _OpenFolderCommand;
+            }
+        }
+
+        #endregion
+
+        #region ExecuteFileCommand
+
+        private ICommand _ExecuteFileCommand;
+        
+        public ICommand ExecuteFileCommand
+        {
+            get
+            {
+                if (_ExecuteFileCommand == null)
+                {
+                    _ExecuteFileCommand = new RelayCommand(
+                        // Action
+                        () =>
+                        {
+                            ExecuteFile();
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsExistsExecuteFile;
+                        });
+                }
+                return _ExecuteFileCommand;
+            }
+        }
+
+        #endregion
+
         //--- public メソッド
 
-        public void Save(ItemGroup itemGroup)
+        public Item CreateItem()
         {
-            itemGroup.AddItem(item);
-        }
-
-        public void Remove(ItemGroup itemGroup)
-        {
-            itemGroup.RemoveItem(item);
-        }
-
-        public void Update(ItemViewModel itemVM)
-        {
-            this.Name = itemVM.Name;
-            this.FolderPath = itemVM.FolderPath;
-            this.ExecuteFilePath = itemVM.ExecuteFilePath;
-            this.ItemStatusServiceVM = itemVM.ItemStatusServiceVM;
-            this.item.Status = itemVM.ItemStatusServiceVM.SelectedItemStatusVM.Status;
+            return new Item()
+            {
+                Name = this.Name,
+                Ruby = this.Ruby,
+                FolderPath = this.FolderPath,
+                ExecuteFilePath = this.ExecuteFilePath,
+                Status = this.ItemStatusServiceVM.SelectedItemStatusVM.Status,
+                ExecutedAt = this.ExecutedAt
+            };
         }
 
         public ItemViewModel Clone()
@@ -216,20 +296,34 @@
             return new ItemViewModel()
             {
                 Name = this.Name,
+                Ruby = this.Ruby,
                 FolderPath = this.FolderPath,
                 ExecuteFilePath = this.ExecuteFilePath,
-                ItemStatusServiceVM = this.ItemStatusServiceVM.Clone()
+                ItemStatusServiceVM = this.ItemStatusServiceVM
             };
         }
 
         public void OpenFolder()
         {
-            item.OpenFolder();
+            ExplorerManager.StartProcess(FolderPath);
         }
 
         public void ExecuteFile()
         {
-            item.ExecuteFile();
+            ExplorerManager.StartProcess(ExecuteFilePath);
+            ExecutedAt = DateTime.Now;
+        }
+
+        public bool IsCorrectStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            foreach (ItemStatusViewModel itemStatusVM in itemStatusServiceVM.CheckedItemStatusVMList)
+            {
+                if (itemStatusVM.Status == this.ItemStatusServiceVM.SelectedItemStatusVM.Status)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         //--- protected メソッド
@@ -238,14 +332,9 @@
 
         //--- static メソッド
 
-        public static ObservableCollection<ItemViewModel> Create(List<Item> itemList)
+        public static ImageSource NoImage()
         {
-            var itemVMList = new ObservableCollection<ItemViewModel>();
-            foreach (Item e in itemList)
-            {
-                itemVMList.Add(new ItemViewModel(e));
-            }
-            return itemVMList;
+            return ExplorerManager.GetIconImage(null);
         }
     }
 }

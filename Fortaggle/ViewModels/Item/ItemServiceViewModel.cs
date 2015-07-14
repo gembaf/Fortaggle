@@ -1,28 +1,29 @@
 ﻿namespace Fortaggle.ViewModels.Item
 {
+    using Fortaggle.Models.Item;
     using Fortaggle.ViewModels.Common;
-    using Fortaggle.ViewModels.ItemGroup;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Windows.Input;
+    using System.Windows.Media;
 
-    public class ItemManageViewModel : ViewModelBase
+    public class ItemServiceViewModel : ViewModelBase
     {
         //--- 定数
 
         //--- フィールド
 
-        private ItemGroupViewModel itemGroupVM;
-
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
 
-        public ItemManageViewModel(ItemGroupViewModel itemGroupVM)
+        public ItemServiceViewModel(List<Item> itemList)
         {
-            this.itemGroupVM = itemGroupVM;
-            ItemVMList = itemGroupVM.ItemVMList;
+            ItemVMList = InitializeItemVMList(itemList);
+            DisplayItemVMList = ItemVMList;
         }
 
         //--- プロパティ
@@ -31,7 +32,39 @@
 
         #region ObservableCollection<ItemViewModel> ItemVMList
 
-        public ObservableCollection<ItemViewModel> ItemVMList { get; private set; }
+        private ObservableCollection<ItemViewModel> _ItemVMList;
+
+        public ObservableCollection<ItemViewModel> ItemVMList
+        {
+            get { return _ItemVMList; }
+            set
+            {
+                if (_ItemVMList != value)
+                {
+                    _ItemVMList = value;
+                    RaisePropertyChanged("ItemVMList");
+                }
+            }
+        }
+
+        #endregion
+
+        #region ObservableCollection<ItemViewModel> DisplayItemVMList
+
+        private ObservableCollection<ItemViewModel> _DisplayItemVMList;
+
+        public ObservableCollection<ItemViewModel> DisplayItemVMList
+        {
+            get { return _DisplayItemVMList; }
+            set
+            {
+                if (_DisplayItemVMList != value)
+                {
+                    _DisplayItemVMList = value;
+                    RaisePropertyChanged("DisplayItemVMList");
+                }
+            }
+        }
 
         #endregion
 
@@ -47,9 +80,22 @@
                 if (_SelectedItemVM != value)
                 {
                     _SelectedItemVM = value;
-                    IsSelect = value != null;
                     RaisePropertyChanged("SelectedItemVM");
+                    RaisePropertyChanged("IsSelect");
                 }
+            }
+        }
+
+        #endregion
+
+        #region ImageSource ExecuteFileImage
+
+        public ImageSource ExecuteFileImage
+        {
+            get
+            {
+                var itemVM = ItemVMList.Count == 0 ? null : ItemVMList.FirstOrDefault(e => e.IsExistsExecuteFile);
+            	return itemVM == null ? ItemViewModel.NoImage() : itemVM.ExecuteFileImage;
             }
         }
 
@@ -95,19 +141,9 @@
 
         #region bool IsSelect
 
-        private bool _IsSelect;
-
         public bool IsSelect
         {
-            get { return _IsSelect; }
-            set
-            {
-                if (_IsSelect != value)
-                {
-                    _IsSelect = value;
-                    RaisePropertyChanged("IsSelect");
-                }
-            }
+            get { return SelectedItemVM != null; }
         }
 
         #endregion
@@ -130,7 +166,8 @@
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    itemGroupVM.AddItemVM(ItemDialogVM.ItemVM);
+                                    ItemVMList.Add(ItemDialogVM.ItemVM);
+                                    ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 });
                         });
@@ -152,15 +189,24 @@
                 if (_EditItemDialogCommand == null)
                 {
                     _EditItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ItemDialogVM = new ItemDialogViewModel(
                                 () =>
                                 {
-                                    SelectedItemVM.Update(ItemDialogVM.ItemVM);
+                                    int index = ItemVMList.IndexOf(SelectedItemVM);
+                                    ItemVMList[index] = ItemDialogVM.ItemVM;
+                                    SelectedItemVM = ItemVMList[index];
+                                    ItemVMListCollectionChanged();
                                     ItemDialogVM = null;
                                 },
                                 SelectedItemVM.Clone());
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _EditItemDialogCommand;
@@ -180,6 +226,7 @@
                 if (_DeleteItemDialogCommand == null)
                 {
                     _DeleteItemDialogCommand = new RelayCommand(
+                        // Action
                         () =>
                         {
                             ConfirmDialogVM = new ConfirmDialogViewModel(
@@ -188,7 +235,8 @@
                                 // AcceptAction
                                 () =>
                                 {
-                                    itemGroupVM.RemoveItemVM(SelectedItemVM);
+                                    ItemVMList.Remove(SelectedItemVM);
+                                    ItemVMListCollectionChanged();
                                     ConfirmDialogVM = null;
                                 },
                                 // CancelAction
@@ -196,6 +244,11 @@
                                 {
                                     ConfirmDialogVM = null;
                                 });
+                        },
+                        // CanExecute
+                        () =>
+                        {
+                            return IsSelect;
                         });
                 }
                 return _DeleteItemDialogCommand;
@@ -204,49 +257,55 @@
 
         #endregion
 
-        #region OpenFolderCommand
-
-        private ICommand _OpenFolderCommand;
-        
-        public ICommand OpenFolderCommand
-        {
-            get
-            {
-                if (_OpenFolderCommand == null)
-                {
-                    _OpenFolderCommand = new RelayCommand(() => SelectedItemVM.OpenFolder());
-                }
-                return _OpenFolderCommand;
-            }
-        }
-
-        #endregion
-
-        #region ExecuteFileCommand
-
-        private ICommand _ExecuteFileCommand;
-        
-        public ICommand ExecuteFileCommand
-        {
-            get
-            {
-                if (_ExecuteFileCommand == null)
-                {
-                    _ExecuteFileCommand = new RelayCommand(() => SelectedItemVM.ExecuteFile());
-                }
-                return _ExecuteFileCommand;
-            }
-        }
-
-        #endregion
-
         //--- public メソッド
+
+        public List<Item> CreateItemList()
+        {
+            List<Item> itemList = new List<Item>();
+            foreach (ItemViewModel itemVM in ItemVMList)
+            {
+                itemList.Add(itemVM.CreateItem());
+            }
+            return itemList;
+        }
+
+        public int WhereItemStatus(ItemStatusServiceViewModel itemStatusServiceVM)
+        {
+            var list = ItemVMList.Where<ItemViewModel>(e => e.IsCorrectStatus(itemStatusServiceVM));
+            DisplayItemVMList = OrderByRuby(new ObservableCollection<ItemViewModel>(list));
+            return DisplayItemVMList.Count;
+        }
 
         //--- protected メソッド
 
         //--- private メソッド
 
-        //--- static メソッド
+        private ObservableCollection<ItemViewModel> InitializeItemVMList(List<Item> itemList)
+        {
+            var itemVMList = new ObservableCollection<ItemViewModel>();
+            foreach (Item item in itemList)
+            {
+                itemVMList.Add(new ItemViewModel(item));
+            }
+            return OrderByRuby(itemVMList);
+        }
 
+        private ObservableCollection<ItemViewModel> OrderByRuby(ObservableCollection<ItemViewModel> collection)
+        {
+            return new ObservableCollection<ItemViewModel>(collection.OrderBy(
+                n =>
+                {
+                    return string.IsNullOrEmpty(n.Ruby) ? n.Name : n.Ruby;
+                }));
+        }
+
+        private void ItemVMListCollectionChanged()
+        {
+            ItemVMList = OrderByRuby(ItemVMList);
+            DisplayItemVMList = ItemVMList;
+            RaisePropertyChanged("ExecuteFileImage");
+        }
+
+        //--- static メソッド
     }
 }

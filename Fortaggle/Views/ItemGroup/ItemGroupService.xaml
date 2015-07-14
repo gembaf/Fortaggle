@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Fortaggle.Views.ItemGroup.ItemGroupService"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1024"
+             Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <!--アイテムグループ一覧-->
+        <ListBox ItemsSource="{Binding DisplayItemGroupVMList}"
+                 SelectedItem="{Binding SelectedItemGroupVM}"
+                 Style="{StaticResource WhiteListBox}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Grid.Column="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding ItemServiceVM.ExecuteFileImage}"
+                               Height="40" Width="40"
+                               Grid.Column="0"/>
+                        <TextBlock Text="{Binding Name}"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="アイテムグループの新規作成"
+                              Command="{Binding NewItemGroupDialogCommand}"/>
+                    <MenuItem Header="開く"
+                              Command="{Binding EditItemGroupDialogCommand}"/>
+                    <MenuItem Header="削除"
+                              Command="{Binding DeleteItemGroupDialogCommand}"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <DockPanel Grid.Column="1">
+            <!--アイテムグループ詳細-->
+            <Border DockPanel.Dock="Top"
+                    Style="{StaticResource BlackBorder}">
+                <!--アイテムグループ名-->
+                <TextBlock Text="{Binding SelectedItemGroupVM.Name}"
+                           FontSize="20"
+                           Foreground="Green"
+                           Padding="10" />
+            </Border>
+            <!--アイテム一覧-->
+            <ContentControl Content="{Binding SelectedItemGroupVM.ItemServiceVM}" />
+        </DockPanel>
+    </Grid>
+</UserControl>

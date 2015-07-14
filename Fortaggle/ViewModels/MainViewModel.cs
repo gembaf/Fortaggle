@@ -1,6 +1,5 @@
 ﻿namespace Fortaggle.ViewModels
 {
-    using Fortaggle.ViewModels.ItemGroup;
     using Fortaggle.ViewModels.Ranking;
     using Fortaggle.ViewModels.TagGroup;
     using GalaSoft.MvvmLight;
@@ -13,6 +12,12 @@
 
         //--- フィールド
 
+        private MainItemViewModel mainItemVM = new MainItemViewModel();
+
+        private TagGroupListViewModel tagGroupListVM = new TagGroupListViewModel();
+
+        private RankingViewModel rankingVM = new RankingViewModel();
+
         //--- 静的コンストラクタ
 
         //--- コンストラクタ
@@ -20,9 +25,9 @@
         public MainViewModel()
         {
             Pages = new List<ViewModelBase>() {
-                new ItemGroupManageViewModel(),
-                new TagGroupListViewModel(),
-                new RankingViewModel()
+                mainItemVM,
+                tagGroupListVM,
+                rankingVM
             };
             SelectedPage = Pages.First();
         }
@@ -31,7 +36,8 @@
 
         ~MainViewModel()
         {
-            Fortaggle.Models.Item.ItemGroupService.WriteXml();
+            mainItemVM.Save();
+            //Fortaggle.Models.Item.ItemGroupService.WriteXml();
         }
 
         //--- プロパティ

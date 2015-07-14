@@ -1,10 +1,13 @@
 ﻿namespace Fortaggle.Models.Item
 {
     using Fortaggle.Models.Common;
+    using System;
 
     public class Item
     {
         //--- 定数
+
+        private static readonly DateTime defaultExecutedAt = new DateTime(1, 1, 1);
 
         //--- フィールド
 
@@ -27,28 +30,27 @@
 
         public string Name { get; set; }
 
+        public string Ruby { get; set; }
+
         public string FolderPath { get; set; }
 
         public string ExecuteFilePath { get; set; }
 
+        public DateTime ExecutedAt { get; set; }
+
         public ItemStatus Status { get; set; }
 
         //--- public メソッド
-
-        public void OpenFolder()
-        {
-            ExplorerManager.StartProcess(FolderPath);
-        }
-
-        public void ExecuteFile()
-        {
-            ExplorerManager.StartProcess(ExecuteFilePath);
-        }
 
         //--- protected メソッド
 
         //--- private メソッド
 
         //--- static メソッド
+
+        public static bool EqualToDefaultExecutedAt(DateTime dateTime)
+        {
+            return dateTime.Equals(defaultExecutedAt);
+        }
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Fortaggle.Views.Item
 {
     /// <summary>
-    /// ItemManage.xaml の相互作用ロジック
+    /// ItemStatuItemStatusDialog.xaml の相互作用ロジック
     /// </summary>
-    public partial class ItemManage : UserControl
+    public partial class ItemStatusDialog : UserControl
     {
-        public ItemManage()
+        public ItemStatusDialog()
         {
             InitializeComponent();
         }

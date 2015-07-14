@@ -27,19 +27,11 @@
 
         public string Name { get; set; }
 
+        public string Ruby { get; set; }
+
         public List<Item> ItemList { get; set; }
 
         //--- public メソッド
-
-        public void AddItem(Item item)
-        {
-            ItemList.Add(item);
-        }
-
-        public void RemoveItem(Item item)
-        {
-            ItemList.Remove(item);
-        }
 
         //--- protected メソッド
 
